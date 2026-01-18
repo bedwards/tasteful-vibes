@@ -1,0 +1,64 @@
+---
+/**
+ * TypingEffect.astro - Animated terminal typing effect component
+ *
+ * Props:
+ * - text: The text to type out character by character
+ * - typingSpeed: Speed in milliseconds between characters (default: 80)
+ * - startDelay: Delay in milliseconds before typing starts (default: 500)
+ * - showCursor: Whether to show the blinking cursor (default: true)
+ * - class: Additional CSS classes to apply
+ */
+
+interface Props {
+  text: string;
+  typingSpeed?: number;
+  startDelay?: number;
+  showCursor?: boolean;
+  class?: string;
+}
+
+const {
+  text,
+  typingSpeed = 80,
+  startDelay = 500,
+  showCursor = true,
+  class: className = ''
+} = Astro.props;
+
+// Generate a unique ID for this instance
+const instanceId = `typing-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<span class:list={["typing-container", className]} id={instanceId}>
+  <span class="typing-text text-terminal-green" data-text={text}></span>
+  {showCursor && <span class="typing-cursor text-terminal-green"></span>}
+</span>
+
+<script define:vars={{ instanceId, text, typingSpeed, startDelay }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById(instanceId);
+    if (!container) return;
+
+    const textElement = container.querySelector('.typing-text');
+    const cursorElement = container.querySelector('.typing-cursor');
+
+    if (!textElement) return;
+
+    let currentIndex = 0;
+    const fullText = text;
+
+    // Start typing after the specified delay
+    setTimeout(() => {
+      const typeNextChar = () => {
+        if (currentIndex < fullText.length) {
+          textElement.textContent = fullText.substring(0, currentIndex + 1);
+          currentIndex++;
+          setTimeout(typeNextChar, typingSpeed);
+        }
+      };
+
+      typeNextChar();
+    }, startDelay);
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
 // Terminal-style hero section
+import TypingEffect from './TypingEffect.astro';
 ---
 
 <section class="min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
@@ -25,6 +26,14 @@
           </p>
           <p class="text-terminal-muted">
             Vibe Coding Expert & AI-First Developer
+          </p>
+          <p class="text-sm sm:text-base">
+            <span class="text-terminal-muted mr-2">></span>
+            <TypingEffect
+              text="building the future with AI"
+              typingSpeed={60}
+              startDelay={800}
+            />
           </p>
         </div>
 
