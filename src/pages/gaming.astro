@@ -1,0 +1,298 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Gaming vertical page - Brian Edwards' Roblox game development work.
+precious_jim profile with 15+ published Roblox experiences.
+Games include: Baubles of the Bale, Cupcake Quest, Downline Redux, Glassline Redux, Pickles Knows the Way, Verdant Basin, Ashweight, Neon Soccerot, White Whale, Mertin-Flemmer, and more.
+Also covers: Roblox Studio MCP Server, Luau scripting, voxel world generation with cubed-worlds.
+Vibe coding enables rapid game prototyping and iteration.
+`;
+---
+
+<BaseLayout title="Gaming" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Gaming Vertical</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        15+ published Roblox experiences. Vibe coding meets game development.
+        Ship games in days, not months.
+      </p>
+    </div>
+
+    <!-- Hero Statement -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-red/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-red text-sm font-semibold">game-dev-revolution.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Vibe Coding + Game Dev = Unstoppable</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          While other developers spend months planning their first game, I've shipped <span class="text-terminal-accent font-semibold">15+ complete Roblox experiences</span>.
+          That's not a typo. Vibe coding with Claude Code lets me prototype gameplay mechanics in hours,
+          iterate on feedback in real-time, and push production-ready games faster than traditional studios.
+        </p>
+
+        <p class="text-terminal-text leading-relaxed">
+          The secret? Stop overthinking. Start building. Let AI handle the boilerplate while you focus on what makes your game fun.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-6">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-red glow-text">15+</div>
+            <p class="text-terminal-muted text-sm mt-2">Published Roblox experiences</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-accent glow-text">Days</div>
+            <p class="text-terminal-muted text-sm mt-2">Not months to ship a game</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-yellow glow-text">Luau</div>
+            <p class="text-terminal-muted text-sm mt-2">Native scripting fluency</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roblox Profile Screenshot -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">precious_jim-profile.png</span>
+      </div>
+      <div class="terminal-body">
+        <div class="screenshot-container">
+          <img src="/screenshots/roblox-profile.png" alt="precious_jim Roblox profile" class="screenshot-img" />
+        </div>
+        <p class="screenshot-caption">precious_jim - The vibe coder's Roblox profile</p>
+      </div>
+    </div>
+
+    <!-- Games Showcase -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">published-games.md</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-xl font-bold text-terminal-accent">Published Experiences</h2>
+
+        <div class="screenshot-container mb-6">
+          <img src="/screenshots/roblox-games-grid.png" alt="Roblox games grid showing published experiences" class="screenshot-img" />
+        </div>
+        <p class="screenshot-caption">Games built with vibe coding - each one shipped in days</p>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+          <div class="border-l-2 border-terminal-red pl-4">
+            <h3 class="font-semibold text-terminal-text">Baubles of the Bale</h3>
+            <p class="text-terminal-muted text-sm">Holiday-themed collectible adventure</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold text-terminal-text">Cupcake Quest</h3>
+            <p class="text-terminal-muted text-sm">Sweet exploration platformer</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold text-terminal-text">Downline Redux</h3>
+            <p class="text-terminal-muted text-sm">Fast-paced descent challenge</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold text-terminal-text">Glassline Redux</h3>
+            <p class="text-terminal-muted text-sm">Precision platforming on fragile surfaces</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold text-terminal-text">Pickles Knows the Way</h3>
+            <p class="text-terminal-muted text-sm">Guide Pickles through puzzling paths</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-red pl-4">
+            <h3 class="font-semibold text-terminal-text">Verdant Basin</h3>
+            <p class="text-terminal-muted text-sm">Lush open-world exploration</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold text-terminal-text">Ashweight</h3>
+            <p class="text-terminal-muted text-sm">Dark atmospheric adventure</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold text-terminal-text">Neon Soccerot</h3>
+            <p class="text-terminal-muted text-sm">Futuristic sports action</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold text-terminal-text">White Whale</h3>
+            <p class="text-terminal-muted text-sm">Epic oceanic adventure</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold text-terminal-text">Mertin-Flemmer</h3>
+            <p class="text-terminal-muted text-sm">Character-driven experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Creator Dashboard -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">creator-dashboard.png</span>
+      </div>
+      <div class="terminal-body">
+        <div class="screenshot-container">
+          <img src="/screenshots/roblox-creator-dashboard.png" alt="Roblox Creator Dashboard" class="screenshot-img" />
+        </div>
+        <p class="screenshot-caption">Active development across multiple experiences</p>
+      </div>
+    </div>
+
+    <!-- Technical Stack -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">tech-stack.md</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-xl font-bold text-terminal-accent">Technical Arsenal</h2>
+
+        <div class="space-y-4">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Roblox Studio MCP Server</h3>
+            <p class="text-terminal-muted text-sm">
+              <a href="https://github.com/splash-screen-studio/studio-rust-mcp-server" target="_blank" class="link-accent">splash-screen-studio/studio-rust-mcp-server</a>
+            </p>
+            <p class="text-terminal-muted text-sm mt-1">
+              Custom MCP server connecting Claude Code directly to Roblox Studio.
+              Edit scripts, manage assets, and iterate on game logic without leaving the terminal.
+              Rust-powered for blazing performance.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Luau Scripting</h3>
+            <p class="text-terminal-muted text-sm">
+              Native fluency in Roblox's Luau scripting language. AI-assisted code generation
+              that actually understands Roblox APIs, services, and best practices.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Voxel World Generation</h3>
+            <p class="text-terminal-muted text-sm">
+              <a href="https://github.com/world-stitchers/cubed-worlds" target="_blank" class="link-accent">world-stitchers/cubed-worlds</a>
+            </p>
+            <p class="text-terminal-muted text-sm mt-1">
+              Procedural voxel terrain generation. Infinite worlds, efficient chunking,
+              seamless loading. The foundation for open-world experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vibe Coding for Games -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">vibe-coding-games.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-xl font-bold text-terminal-accent">Why Vibe Coding Dominates Game Dev</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Traditional game development is a grind. Months of planning, endless debugging,
+          scope creep that kills projects before they launch. Vibe coding flips the script.
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+          <p class="text-terminal-yellow font-semibold mb-2">The Vibe Coding Game Dev Loop:</p>
+          <ol class="text-terminal-muted text-sm space-y-2 list-decimal list-inside">
+            <li><span class="text-terminal-text">Describe the mechanic</span> - "I want a double-jump with particle effects"</li>
+            <li><span class="text-terminal-text">Claude writes the Luau</span> - Complete with best practices</li>
+            <li><span class="text-terminal-text">Test in Studio</span> - Instant feedback via MCP server</li>
+            <li><span class="text-terminal-text">Iterate</span> - "Make the jump feel floatier"</li>
+            <li><span class="text-terminal-text">Ship</span> - Publish when it's fun, not when it's "perfect"</li>
+          </ol>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          I've shipped games in a single weekend that would take traditional teams months.
+          Not because I'm faster at typing—because AI handles the tedious parts while I focus on <span class="text-terminal-accent font-semibold">game feel</span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- The Pitch -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-red/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-red text-sm font-semibold">hire-for-games.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-xl font-bold text-terminal-accent">Need a Game Built? Let's Talk.</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Whether you want a Roblox experience for your brand, a prototype to pitch investors,
+          or training for your team on AI-assisted game development—I deliver results that seem impossible.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="border-l-2 border-terminal-red pl-4">
+            <h3 class="font-semibold">Roblox Experience Development</h3>
+            <p class="text-terminal-muted text-sm">Full game from concept to published experience</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Rapid Prototyping</h3>
+            <p class="text-terminal-muted text-sm">Test your game idea in days, not months</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Luau Scripting</h3>
+            <p class="text-terminal-muted text-sm">Custom systems, optimizations, complex mechanics</p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold">Team Training</h3>
+            <p class="text-terminal-muted text-sm">Teach your devs to vibe code games</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="text-center py-12">
+      <h2 class="text-2xl font-bold mb-4">Ready to ship your game?</h2>
+      <p class="text-terminal-muted mb-8">
+        Stop planning. Start building. Let's make your game real.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/hire" class="btn-primary">Hire Me</a>
+        <a href="/projects" class="btn-secondary">See All Projects</a>
+      </div>
+    </section>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
