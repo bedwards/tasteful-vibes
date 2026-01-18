@@ -1,0 +1,388 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Enterprise and MSP services page - Brian Edwards provides AI-first development services for enterprises.
+Brian has 6 years at Atlassian (Bitbucket Cloud, 10M+ users) and 5 years at Zenoss (enterprise monitoring).
+Services: Workflow automation, team training on vibe coding/Claude Code, custom internal tools, legacy modernization, DevOps automation, retainer support.
+Engagement models: Workflow Audit (fixed price), Team Training (per session), Project Delivery (fixed price), Monthly Retainer (ongoing).
+Key value prop: Reduce development costs by 75% with AI-first development.
+Contact: brian.mabry.edwards@gmail.com, 512-584-6841
+`;
+---
+
+<BaseLayout title="Enterprise Services" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Your Competitors Are Already Using AI</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        While you're still debating whether to adopt AI-first development, your competitors are shipping features 4x faster.
+        The window to catch up is closing.
+      </p>
+    </div>
+
+    <!-- Warning Section -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-red/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-red text-sm font-semibold">URGENT: market-reality.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-red">The AI Development Gap is Widening</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Every month you wait, AI-native competitors gain ground. They're not just faster—they're
+          <span class="text-terminal-accent font-semibold">75% more cost-efficient</span>. Your best engineers
+          are watching. They know what's possible. How long before they leave for companies that let them work at AI speed?
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red">
+            <p class="text-3xl font-bold text-terminal-red">4x</p>
+            <p class="text-terminal-muted text-sm mt-1">Faster delivery by AI-first teams</p>
+          </div>
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow">
+            <p class="text-3xl font-bold text-terminal-yellow">75%</p>
+            <p class="text-terminal-muted text-sm mt-1">Reduction in development costs</p>
+          </div>
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green">
+            <p class="text-3xl font-bold text-terminal-green">10x</p>
+            <p class="text-terminal-muted text-sm mt-1">Engineer productivity multiplier</p>
+          </div>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          The enterprises that thrive in 2025 and beyond aren't the ones with the biggest teams.
+          They're the ones with the smartest workflows. <span class="text-terminal-yellow font-semibold">Is your organization ready?</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Enterprise Credentials -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">credentials.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Enterprise-Proven Experience</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          I don't just talk about enterprise software. I've built it. At scale. For over a decade.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 my-6">
+          <div class="border-l-4 border-terminal-accent pl-4">
+            <h3 class="font-bold text-terminal-accent text-lg">Atlassian - Bitbucket Cloud</h3>
+            <p class="text-terminal-yellow font-semibold">6 Years</p>
+            <p class="text-terminal-muted text-sm mt-2">
+              Built and scaled developer tools serving <span class="text-terminal-text font-semibold">10+ million users</span>.
+              Enterprise-grade reliability. Global scale. I know what "production-ready" actually means.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-terminal-green pl-4">
+            <h3 class="font-bold text-terminal-green text-lg">Zenoss - Enterprise Monitoring</h3>
+            <p class="text-terminal-yellow font-semibold">5 Years</p>
+            <p class="text-terminal-muted text-sm mt-2">
+              Enterprise monitoring solutions for Fortune 500 companies. High availability.
+              Mission-critical systems. The kind of software that can't afford to fail.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+          <p class="text-terminal-accent font-semibold mb-2">The Difference:</p>
+          <p class="text-terminal-muted">
+            Most "AI consultants" have never shipped enterprise software. I've spent 11+ years doing exactly that.
+            Now I'm combining that enterprise rigor with AI-first development. The results speak for themselves.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">services/</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-2xl font-bold text-terminal-accent">Enterprise Services</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold text-terminal-accent">Workflow Automation & Optimization</h3>
+            <p class="text-terminal-muted text-sm mt-2">
+              Audit your current development processes. Identify bottlenecks. Implement AI-powered workflows
+              that multiply your team's output. Most enterprises see 3-5x productivity gains within 90 days.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold text-terminal-green">Team Training - Vibe Coding & Claude Code</h3>
+            <p class="text-terminal-muted text-sm mt-2">
+              Transform your engineers into AI-native developers. Hands-on workshops using your actual codebase.
+              No slides. No theory. Real results from day one.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold text-terminal-yellow">Custom Internal Tools Development</h3>
+            <p class="text-terminal-muted text-sm mt-2">
+              Those internal tools you've been putting off for years? Build them in weeks. Admin dashboards.
+              Automation scripts. Integration layers. Done fast, done right.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold text-terminal-purple">Legacy System Modernization</h3>
+            <p class="text-terminal-muted text-sm mt-2">
+              Stop maintaining code from 2008. AI-assisted modernization lets you refactor, migrate, and
+              rebuild legacy systems at a fraction of traditional cost and time.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-red pl-4">
+            <h3 class="font-semibold text-terminal-text">DevOps & Infrastructure Automation</h3>
+            <p class="text-terminal-muted text-sm mt-2">
+              CI/CD pipelines. Infrastructure as code. Monitoring and alerting. The operational excellence
+              that lets your team ship confidently, every single day.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-muted pl-4">
+            <h3 class="font-semibold text-terminal-text">Ongoing Retainer Support</h3>
+            <p class="text-terminal-muted text-sm mt-2">
+              Continuous access to AI-first expertise. Code reviews. Architecture decisions. Emergency support.
+              Like having a senior AI engineer on staff without the $400k salary.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-green/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-green text-sm font-semibold">roi-analysis.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-green">The ROI Your CFO Will Love</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          This isn't about replacing developers. It's about multiplying their impact. Here's the math:
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red mb-4">
+          <p class="text-terminal-red font-semibold mb-2">Traditional Development (Your Current Reality):</p>
+          <ul class="text-terminal-muted text-sm space-y-1">
+            <li>6-person team x $150k average salary = <span class="text-terminal-red">$900k/year</span></li>
+            <li>12-18 month project timelines</li>
+            <li>High turnover, knowledge loss, onboarding costs</li>
+            <li>Technical debt accumulating faster than you can pay it down</li>
+          </ul>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green">
+          <p class="text-terminal-green font-semibold mb-2">AI-First Development (Your Future):</p>
+          <ul class="text-terminal-muted text-sm space-y-1">
+            <li>Same team, 4x output = <span class="text-terminal-green">75% cost reduction per feature</span></li>
+            <li>3-4 month project timelines (same scope)</li>
+            <li>Engineers stay because they're doing meaningful work, not grunt work</li>
+            <li>Technical debt? AI helps pay it down while shipping features</li>
+          </ul>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed mt-4">
+          A single workflow optimization engagement typically pays for itself within <span class="text-terminal-accent font-semibold">60 days</span>.
+          The question isn't whether you can afford AI-first development. It's whether you can afford not to.
+        </p>
+      </div>
+    </section>
+
+    <!-- Engagement Models -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">engagement-models.md</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-2xl font-bold text-terminal-accent">Engagement Models</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Flexible options designed for enterprise procurement. Clear scope. Clear pricing. Clear outcomes.
+        </p>
+
+        <div class="space-y-6">
+          <div class="bg-terminal-bg p-6 rounded-lg border border-terminal-accent">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="font-bold text-terminal-accent text-lg">Workflow Audit</h3>
+              <span class="tag tag-accent">Fixed Price</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-3">
+              Comprehensive analysis of your development workflows. Identify AI acceleration opportunities.
+              Detailed roadmap with prioritized recommendations and expected ROI for each.
+            </p>
+            <ul class="text-terminal-text text-sm space-y-1">
+              <li>2-week engagement</li>
+              <li>Interviews with key stakeholders</li>
+              <li>Codebase and toolchain analysis</li>
+              <li>Executive presentation with findings</li>
+            </ul>
+          </div>
+
+          <div class="bg-terminal-bg p-6 rounded-lg border border-terminal-green">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="font-bold text-terminal-green text-lg">Team Training</h3>
+              <span class="tag tag-green">Per Session</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-3">
+              Hands-on workshops that transform your engineers. No passive learning—we build real features
+              together using Claude Code and vibe coding techniques.
+            </p>
+            <ul class="text-terminal-text text-sm space-y-1">
+              <li>Half-day or full-day sessions</li>
+              <li>Your codebase, your problems</li>
+              <li>5-15 engineers per session (optimal)</li>
+              <li>Follow-up office hours included</li>
+            </ul>
+          </div>
+
+          <div class="bg-terminal-bg p-6 rounded-lg border border-terminal-yellow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="font-bold text-terminal-yellow text-lg">Project Delivery</h3>
+              <span class="tag tag-yellow">Fixed Price</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-3">
+              End-to-end delivery of internal tools, integrations, or modernization projects.
+              Clear scope, clear timeline, clear deliverables.
+            </p>
+            <ul class="text-terminal-text text-sm space-y-1">
+              <li>Discovery and scoping phase</li>
+              <li>Milestone-based delivery</li>
+              <li>Full documentation and knowledge transfer</li>
+              <li>30-day warranty on delivered work</li>
+            </ul>
+          </div>
+
+          <div class="bg-terminal-bg p-6 rounded-lg border border-terminal-purple">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="font-bold text-terminal-purple text-lg">Monthly Retainer</h3>
+              <span class="tag tag-purple">Ongoing</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-3">
+              Continuous access to AI-first expertise. Perfect for organizations committed to long-term
+              transformation or needing ongoing development support.
+            </p>
+            <ul class="text-terminal-text text-sm space-y-1">
+              <li>Reserved hours per month</li>
+              <li>Priority response times</li>
+              <li>Slack/Teams integration available</li>
+              <li>Quarterly strategy reviews</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof / Fear -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-yellow/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-yellow text-sm font-semibold">market-trends.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-yellow">The Market Isn't Waiting</h2>
+
+        <div class="space-y-4">
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-accent font-semibold">McKinsey estimates</span> that AI-assisted coding
+            will double developer productivity by 2026. That's not a prediction anymore—it's happening now.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-green font-semibold">Your best engineers know this.</span> They're already
+            using AI tools in their personal projects. They're frustrated that your organization is falling behind.
+            How long before they go somewhere that lets them work at full speed?
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-red font-semibold">Your competitors know this too.</span> The ones investing
+            in AI-first development today will have an insurmountable lead in 18 months. The cost to catch up
+            grows every quarter you wait.
+          </p>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow mt-6">
+          <p class="text-terminal-yellow font-semibold mb-2">The Question:</p>
+          <p class="text-terminal-text">
+            Will you be the enterprise that transformed early and dominated? Or the one that's still
+            "evaluating AI tools" while competitors eat your market share?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="terminal-window">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">next-steps.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Start Your AI Transformation</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          The first step is a conversation. No sales pitch—just an honest assessment of where AI can
+          (and can't) help your organization. 30 minutes that could change your development trajectory.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+          <div>
+            <p class="text-terminal-muted text-sm mb-2">Email</p>
+            <a href="mailto:brian.mabry.edwards@gmail.com?subject=Enterprise AI Consultation" class="link-accent text-lg">
+              brian.mabry.edwards@gmail.com
+            </a>
+          </div>
+          <div>
+            <p class="text-terminal-muted text-sm mb-2">Phone</p>
+            <a href="tel:512-584-6841" class="link-accent text-lg">512-584-6841</a>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-6">
+          <a href="mailto:brian.mabry.edwards@gmail.com?subject=Enterprise AI Consultation&body=I'm interested in learning more about AI-first development for my organization.%0A%0ACompany:%0ATeam Size:%0ACurrent Challenge:%0A" class="btn-primary">
+            Schedule a Call
+          </a>
+          <a href="/hire" class="btn-secondary">View All Services</a>
+          <a href="https://www.linkedin.com/in/brian-mabry-edwards/" target="_blank" class="btn-secondary">
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <p class="text-terminal-muted text-sm mt-6 italic">
+          Enterprise NDA and procurement requirements accommodated. References available upon request.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
