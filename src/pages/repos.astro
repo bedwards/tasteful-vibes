@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+import repoData from '../data/repos.json';
+
+const pageContext = `
+Complete repository list - ${repoData.stats.totalRepos} public repos across ${Object.keys(repoData.stats.bySource).length} accounts/organizations.
+Total size: ${(repoData.stats.totalSize / 1024).toFixed(0)} MB of code.
+Languages: ${Object.keys(repoData.stats.byLanguage).join(', ')}.
+Verticals: Education, Healthcare, Music, Gaming, Data Science, E-commerce.
+`;
+
+// Group repos by source
+const reposBySource = repoData.repos.reduce((acc, repo) => {
+  if (!acc[repo.source]) {
+    acc[repo.source] = [];
+  }
+  acc[repo.source].push(repo);
+  return acc;
+}, {} as Record<string, typeof repoData.repos>);
+
+// Sort sources by number of repos
+const sortedSources = Object.entries(reposBySource)
+  .sort((a, b) => b[1].length - a[1].length);
+
+// Get top languages
+const topLanguages = Object.entries(repoData.stats.byLanguage)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10);
+
+// Get vertical counts
+const verticalCounts = repoData.stats.byVertical;
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+  });
+}
+
+function formatSize(kb: number) {
+  if (kb < 1024) return `${kb} KB`;
+  return `${(kb / 1024).toFixed(1)} MB`;
+}
+
+function getVerticalColor(vertical: string) {
+  const colors: Record<string, string> = {
+    education: 'tag-yellow',
+    healthcare: 'tag-green',
+    music: 'tag-purple',
+    gaming: 'tag-red',
+    'data-science': 'tag-accent',
+    ecommerce: 'tag-yellow',
+    other: '',
+  };
+  return colors[vertical] || '';
+}
+---
+
+<BaseLayout title="All Repositories" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">All Repositories</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        {repoData.stats.totalRepos} public repositories across {Object.keys(repoData.stats.bySource).length} accounts and organizations.
+        {(repoData.stats.totalSize / 1024).toFixed(0)} MB of open source code.
+      </p>
+      <p class="text-terminal-muted text-sm mt-2">
+        Last updated: {formatDate(repoData.generatedAt)}
+      </p>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">stats.json</span>
+      </div>
+      <div class="terminal-body">
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+          <div class="stat-card">
+            <div class="stat-value">{repoData.stats.totalRepos}</div>
+            <div class="stat-label">Total Repos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">{(repoData.stats.totalSize / 1024).toFixed(0)} MB</div>
+            <div class="stat-label">Total Size</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">{Object.keys(repoData.stats.byLanguage).length}</div>
+            <div class="stat-label">Languages</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">{Object.keys(repoData.stats.bySource).length}</div>
+            <div class="stat-label">Accounts/Orgs</div>
+          </div>
+        </div>
+
+        <!-- Language Breakdown -->
+        <h3 class="text-lg font-semibold text-terminal-accent mb-4">Languages</h3>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {topLanguages.map(([lang, count]) => (
+            <span class="tag">
+              {lang}: {count}
+            </span>
+          ))}
+        </div>
+
+        <!-- Vertical Breakdown -->
+        <h3 class="text-lg font-semibold text-terminal-accent mb-4">Verticals</h3>
+        <div class="flex flex-wrap gap-2">
+          {Object.entries(verticalCounts).map(([vertical, count]) => (
+            <span class={`tag ${getVerticalColor(vertical)}`}>
+              {vertical}: {count}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter/Search -->
+    <div class="mb-8">
+      <input
+        type="text"
+        id="repo-search"
+        placeholder="Search repositories..."
+        class="w-full md:w-96 px-4 py-2 bg-terminal-surface border border-terminal-border rounded-lg text-terminal-text placeholder:text-terminal-muted focus:outline-none focus:border-terminal-accent"
+      />
+    </div>
+
+    <!-- Repos by Source -->
+    <div class="space-y-12" id="repos-container">
+      {sortedSources.map(([source, repos]) => (
+        <section class="terminal-window repo-source" data-source={source}>
+          <div class="terminal-header">
+            <span class="terminal-dot bg-terminal-red"></span>
+            <span class="terminal-dot bg-terminal-yellow"></span>
+            <span class="terminal-dot bg-terminal-green"></span>
+            <span class="ml-4 text-terminal-muted text-sm">
+              {repos[0].sourceType === 'org' ? `org:${source}` : `user:${source}`}
+            </span>
+            <span class="ml-auto text-terminal-accent text-sm">{repos.length} repos</span>
+          </div>
+          <div class="terminal-body">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {repos.map(repo => (
+                <a
+                  href={repo.url}
+                  target="_blank"
+                  class="repo-card bg-terminal-bg rounded-lg border border-terminal-border p-4 hover:border-terminal-accent transition-colors block"
+                  data-name={repo.name.toLowerCase()}
+                  data-description={(repo.description || '').toLowerCase()}
+                  data-language={(repo.language || '').toLowerCase()}
+                  data-vertical={repo.vertical}
+                >
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="font-semibold text-terminal-accent truncate flex-1">{repo.name}</h3>
+                    {repo.language && (
+                      <span class="text-xs text-terminal-muted ml-2">{repo.language}</span>
+                    )}
+                  </div>
+                  <p class="text-terminal-muted text-sm mb-3 line-clamp-2">
+                    {repo.description || 'No description'}
+                  </p>
+                  <div class="flex items-center justify-between text-xs text-terminal-muted">
+                    <span>{formatSize(repo.size)}</span>
+                    <span class={`tag text-xs ${getVerticalColor(repo.vertical)}`}>
+                      {repo.vertical}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-12">
+      <p class="text-terminal-muted mb-4">
+        Want to explore a specific project or discuss collaboration?
+      </p>
+      <a href="/hire" class="btn-primary">Let's Talk</a>
+    </div>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+
+  <script>
+    // Search functionality
+    const searchInput = document.getElementById('repo-search') as HTMLInputElement;
+    const repoCards = document.querySelectorAll('.repo-card');
+    const repoSources = document.querySelectorAll('.repo-source');
+
+    searchInput?.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+
+      repoCards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const description = card.getAttribute('data-description') || '';
+        const language = card.getAttribute('data-language') || '';
+        const vertical = card.getAttribute('data-vertical') || '';
+
+        const matches = !query ||
+          name.includes(query) ||
+          description.includes(query) ||
+          language.includes(query) ||
+          vertical.includes(query);
+
+        (card as HTMLElement).style.display = matches ? 'block' : 'none';
+      });
+
+      // Hide empty source sections
+      repoSources.forEach(section => {
+        const visibleCards = section.querySelectorAll('.repo-card[style="display: block"], .repo-card:not([style])');
+        let hasVisible = false;
+        visibleCards.forEach(card => {
+          if ((card as HTMLElement).style.display !== 'none') {
+            hasVisible = true;
+          }
+        });
+        (section as HTMLElement).style.display = hasVisible ? 'block' : 'none';
+      });
+    });
+  </script>
+
+  <style>
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</BaseLayout>
