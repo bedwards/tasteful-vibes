@@ -259,6 +259,105 @@ This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git workt
         </div>
       </section>
 
+      <!-- Prompts That Ship -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompts-that-ship.sh</span>
+        </div>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-2xl font-bold text-terminal-accent">Prompts That Ship</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            Real prompts from real sessions. These aren't theoretical - each one shipped working code.
+          </p>
+
+          <!-- Prompt 1: Portfolio Site -->
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+            <p class="text-terminal-accent font-semibold mb-2">Building This Site</p>
+            <div class="bg-black p-3 rounded font-mono text-sm overflow-x-auto">
+              <p class="text-terminal-green">$ claude</p>
+              <p class="text-terminal-muted mt-2">> Create interactive web site hosted on cloudflare pages,</p>
+              <p class="text-terminal-muted">  with cloudflare workers ai integration.</p>
+              <p class="text-terminal-muted">  [Detailed requirements follow...]</p>
+            </div>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-terminal-green font-bold">Result:</span>
+              <span class="text-terminal-text">Built this entire portfolio site from scratch - Astro, Tailwind, AI chat, deployed to Cloudflare.</span>
+            </div>
+          </div>
+
+          <!-- Prompt 2: Repo Organization -->
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green">
+            <p class="text-terminal-green font-semibold mb-2">Organizing 100+ Repos</p>
+            <div class="bg-black p-3 rounded font-mono text-sm overflow-x-auto">
+              <p class="text-terminal-green">$ claude</p>
+              <p class="text-terminal-muted mt-2">> Git submodule all repos since September 2025.</p>
+              <p class="text-terminal-muted">  Calculate file counts and sizes.</p>
+              <p class="text-terminal-muted">  Rank by total file size.</p>
+            </div>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-terminal-green font-bold">Result:</span>
+              <span class="text-terminal-text">Automated organization of 100+ repositories with metrics dashboard.</span>
+            </div>
+          </div>
+
+          <!-- Prompt 3: AskUserQuestion -->
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow">
+            <p class="text-terminal-yellow font-semibold mb-2">Preference Discovery</p>
+            <div class="bg-black p-3 rounded font-mono text-sm overflow-x-auto">
+              <p class="text-terminal-green">$ claude</p>
+              <p class="text-terminal-muted mt-2">> Ask me many multiple choice questions to help you</p>
+              <p class="text-terminal-muted">  understand my taste and help you proceed.</p>
+            </div>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-terminal-green font-bold">Result:</span>
+              <span class="text-terminal-text">Claude uses its AskUserQuestion tool to gather requirements interactively before building.</span>
+            </div>
+          </div>
+
+          <!-- Prompt 4: HUMAN-*.md -->
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-purple">
+            <p class="text-terminal-purple font-semibold mb-2">Structured Handoffs</p>
+            <div class="bg-black p-3 rounded font-mono text-sm overflow-x-auto">
+              <p class="text-terminal-green">$ claude</p>
+              <p class="text-terminal-muted mt-2">> Create HUMAN-*.md files in root for what you need from me.</p>
+              <p class="text-terminal-muted">  Report and STOP!</p>
+            </div>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-terminal-green font-bold">Result:</span>
+              <span class="text-terminal-text">Claude creates files like HUMAN-CONTENT-NEEDED.md, HUMAN-CREDENTIALS.md - clean handoff points.</span>
+            </div>
+          </div>
+
+          <!-- Prompt 5: RALPH Loop -->
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red">
+            <p class="text-terminal-red font-semibold mb-2">RALPH Autonomous Loop</p>
+            <div class="bg-black p-3 rounded font-mono text-sm overflow-x-auto">
+              <p class="text-terminal-green">$ /ralph-loop "Build a REST API for todos.</p>
+              <p class="text-terminal-green">  Requirements: CRUD operations, input validation, tests.</p>
+              <p class="text-terminal-green">  Output &lt;promise&gt;COMPLETE&lt;/promise&gt; when done."</p>
+              <p class="text-terminal-muted">  --completion-promise "COMPLETE"</p>
+              <p class="text-terminal-muted">  --max-iterations 50</p>
+            </div>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-terminal-green font-bold">Result:</span>
+              <span class="text-terminal-text">Fully autonomous development - Claude iterates until tests pass and code ships.</span>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-yellow font-semibold mb-2">The Pattern:</p>
+            <p class="text-terminal-muted">
+              Be specific about outcomes. Let Claude handle implementation. Verify it worked. Iterate.
+              These prompts work because they describe <span class="text-terminal-accent">what success looks like</span>, not how to get there.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- Resources -->
       <section class="terminal-window">
         <div class="terminal-header">
