@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChatButton from '../../components/ChatButton.astro';
+
+const pageContext = `
+Payment success page - Thank you for your purchase.
+Brian will follow up within 24 hours to schedule your session.
+`;
+---
+
+<BaseLayout title="Payment Successful" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto text-center">
+    <div class="terminal-window">
+      <div class="terminal-header bg-terminal-green/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-green text-sm font-semibold">payment-success</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <div class="text-6xl mb-4">✓</div>
+        <h1 class="text-3xl font-bold text-terminal-green">Payment Successful!</h1>
+
+        <p class="text-terminal-text text-lg">
+          Thank you for your purchase. Your transaction has been completed.
+        </p>
+
+        <div class="bg-terminal-bg p-6 rounded-lg border border-terminal-green">
+          <h2 class="text-lg font-semibold text-terminal-accent mb-4">What happens next?</h2>
+          <ul class="space-y-3 text-left text-terminal-muted">
+            <li class="flex items-start gap-3">
+              <span class="text-terminal-green font-bold">1.</span>
+              <span>You'll receive a confirmation email with your receipt</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-terminal-green font-bold">2.</span>
+              <span>Brian will reach out within 24 hours to schedule your session</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-terminal-green font-bold">3.</span>
+              <span>You'll receive calendar invite with video call link</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <p class="text-terminal-muted mb-2">Questions? Contact me directly:</p>
+          <a href="mailto:brian.mabry.edwards@gmail.com" class="link-accent">brian.mabry.edwards@gmail.com</a>
+        </div>
+
+        <div class="pt-6 flex flex-wrap justify-center gap-4">
+          <a href="/" class="btn-secondary">Back to Home</a>
+          <a href="/hire" class="btn-primary">View More Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>

@@ -6,6 +6,8 @@ const pageContext = `
 Hire Brian Edwards page - Services, rates, and contact information.
 Brian offers: full project delivery, workflow audit, team training, ongoing support.
 He delivers in 1/4 the traditional time. He can train your team to do the same.
+PRICING: Consultation $150, Workflow Audit $500, Half-Day Workshop $1,500, Full-Day Workshop $2,500.
+RETAINERS: Basic $2,000/mo (10 hrs), Pro $4,500/mo (25 hrs with pair programming).
 Contact: brian.mabry.edwards@gmail.com, 512-584-6841
 Location: Waco, Texas, USA
 `;
@@ -325,6 +327,135 @@ Location: Waco, Texas, USA
       </div>
     </div>
 
+    <!-- Pricing -->
+    <div class="terminal-window mb-12" id="pricing">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">pricing.json</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-2xl font-bold text-terminal-accent">Quick Start Options</h2>
+        <p class="text-terminal-muted">Book and pay instantly. No back-and-forth scheduling.</p>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Consultation -->
+          <div class="bg-terminal-bg rounded-lg border border-terminal-border p-4 hover:border-terminal-accent transition-colors">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-semibold text-terminal-accent">Initial Consultation</h3>
+              <span class="text-terminal-green font-bold">$150</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-4">
+              1-hour video call to discuss your project, requirements, and vibe coding approach.
+            </p>
+            <button
+              class="w-full btn-primary text-sm py-2 stripe-checkout-btn"
+              data-price-id="consultation"
+            >
+              Book Consultation
+            </button>
+          </div>
+
+          <!-- Workflow Audit -->
+          <div class="bg-terminal-bg rounded-lg border border-terminal-border p-4 hover:border-terminal-accent transition-colors">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-semibold text-terminal-yellow">Workflow Audit</h3>
+              <span class="text-terminal-green font-bold">$500</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-4">
+              Comprehensive review of your development process with AI acceleration recommendations.
+            </p>
+            <button
+              class="w-full btn-primary text-sm py-2 stripe-checkout-btn"
+              data-price-id="workflow-audit"
+            >
+              Book Audit
+            </button>
+          </div>
+
+          <!-- Half-Day Workshop -->
+          <div class="bg-terminal-bg rounded-lg border border-terminal-border p-4 hover:border-terminal-accent transition-colors">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-semibold text-terminal-green">Half-Day Workshop</h3>
+              <span class="text-terminal-green font-bold">$1,500</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-4">
+              4-hour hands-on workshop for your team on vibe coding with Claude Code.
+            </p>
+            <button
+              class="w-full btn-primary text-sm py-2 stripe-checkout-btn"
+              data-price-id="workshop-half"
+            >
+              Book Workshop
+            </button>
+          </div>
+
+          <!-- Full-Day Workshop -->
+          <div class="bg-terminal-bg rounded-lg border border-terminal-border p-4 hover:border-terminal-accent transition-colors">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-semibold text-terminal-purple">Full-Day Workshop</h3>
+              <span class="text-terminal-green font-bold">$2,500</span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-4">
+              8-hour intensive workshop with practical exercises on your actual codebase.
+            </p>
+            <button
+              class="w-full btn-primary text-sm py-2 stripe-checkout-btn"
+              data-price-id="workshop-full"
+            >
+              Book Workshop
+            </button>
+          </div>
+        </div>
+
+        <!-- Retainers -->
+        <h3 class="text-lg font-bold text-terminal-accent pt-4">Monthly Retainers</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Basic Retainer -->
+          <div class="bg-terminal-bg rounded-lg border border-terminal-border p-4 hover:border-terminal-accent transition-colors">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-semibold text-terminal-accent">Basic Retainer</h3>
+              <span class="text-terminal-green font-bold">$2,000<span class="text-terminal-muted text-sm">/mo</span></span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-4">
+              10 hours/month of consulting, code reviews, and async support.
+            </p>
+            <button
+              class="w-full btn-secondary text-sm py-2 stripe-checkout-btn"
+              data-price-id="retainer-basic"
+            >
+              Subscribe
+            </button>
+          </div>
+
+          <!-- Pro Retainer -->
+          <div class="bg-terminal-bg rounded-lg border border-terminal-accent p-4 relative">
+            <div class="absolute -top-2 -right-2 bg-terminal-accent text-terminal-bg text-xs font-bold px-2 py-1 rounded">
+              POPULAR
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-semibold text-terminal-accent">Pro Retainer</h3>
+              <span class="text-terminal-green font-bold">$4,500<span class="text-terminal-muted text-sm">/mo</span></span>
+            </div>
+            <p class="text-terminal-muted text-sm mb-4">
+              25 hours/month including pair programming sessions and priority support.
+            </p>
+            <button
+              class="w-full btn-primary text-sm py-2 stripe-checkout-btn"
+              data-price-id="retainer-pro"
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+
+        <p class="text-terminal-muted text-xs pt-4">
+          Need a custom quote for a larger project? <a href="mailto:brian.mabry.edwards@gmail.com?subject=Custom Project Quote" class="link-accent">Email me</a> for a personalized estimate.
+        </p>
+      </div>
+    </div>
+
     <!-- CTA -->
     <div class="text-center py-8">
       <p class="text-terminal-muted mb-4">Ready to get started?</p>
@@ -338,4 +469,54 @@ Location: Waco, Texas, USA
   </div>
 
   <ChatButton pageContext={pageContext} />
+
+  <script>
+    // Stripe checkout handling
+    document.addEventListener('DOMContentLoaded', () => {
+      const checkoutButtons = document.querySelectorAll('.stripe-checkout-btn');
+
+      checkoutButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+          const btn = e.target as HTMLButtonElement;
+          const priceId = btn.dataset.priceId;
+
+          if (!priceId) return;
+
+          // Disable button and show loading state
+          btn.disabled = true;
+          const originalText = btn.textContent;
+          btn.textContent = 'Processing...';
+
+          try {
+            const response = await fetch('/api/stripe', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                priceId,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (data.url) {
+              // Redirect to Stripe checkout
+              window.location.href = data.url;
+            } else if (data.error) {
+              console.error('Stripe error:', data.error);
+              alert('Payment system temporarily unavailable. Please email brian.mabry.edwards@gmail.com to book.');
+              btn.disabled = false;
+              btn.textContent = originalText;
+            }
+          } catch (error) {
+            console.error('Checkout error:', error);
+            alert('Something went wrong. Please email brian.mabry.edwards@gmail.com to book.');
+            btn.disabled = false;
+            btn.textContent = originalText;
+          }
+        });
+      });
+    });
+  </script>
 </BaseLayout>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChatButton from '../../components/ChatButton.astro';
+
+const pageContext = `
+Payment cancelled page - No charges were made.
+Feel free to reach out with questions or try again when ready.
+`;
+---
+
+<BaseLayout title="Payment Cancelled" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto text-center">
+    <div class="terminal-window">
+      <div class="terminal-header bg-terminal-yellow/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-yellow text-sm font-semibold">payment-cancelled</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <div class="text-6xl mb-4">↩</div>
+        <h1 class="text-3xl font-bold text-terminal-yellow">Payment Cancelled</h1>
+
+        <p class="text-terminal-text text-lg">
+          No worries! Your payment was cancelled and no charges were made.
+        </p>
+
+        <div class="bg-terminal-bg p-6 rounded-lg border border-terminal-border">
+          <h2 class="text-lg font-semibold text-terminal-accent mb-4">Have questions?</h2>
+          <p class="text-terminal-muted mb-4">
+            If you'd like to discuss the services before purchasing, or if you have
+            any concerns, I'm happy to chat first with no obligation.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="mailto:brian.mabry.edwards@gmail.com?subject=Question about services" class="btn-secondary">
+              Email Me
+            </a>
+            <a href="tel:512-584-6841" class="btn-secondary">
+              Call: 512-584-6841
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 flex flex-wrap justify-center gap-4">
+          <a href="/" class="btn-secondary">Back to Home</a>
+          <a href="/hire" class="btn-primary">View Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
