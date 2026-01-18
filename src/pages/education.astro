@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Education vertical page - Brian Edwards' education technology work.
+Brian teaches at Future Educator Academy in Waco ISD.
+Projects include: Google Classroom API automation (bme-wacoisd/google-classroom), TEA-aligned lesson plans,
+school scheduling optimization, and Conjunction Junction educational game with LLM feedback.
+Vibe coding transforms education technology - building tools in days that would take months traditionally.
+`;
+---
+
+<BaseLayout title="Education" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Education Technology</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Transforming K-12 education with AI-powered tools. Built by a teacher who codes.
+      </p>
+    </div>
+
+    <!-- The Teacher Who Codes -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">teacher-who-codes.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">The Teacher Who Codes</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          I teach at <span class="text-terminal-yellow font-semibold">Future Educator Academy</span> in Waco ISD.
+          By day, I'm preparing the next generation of teachers. By night, I'm building the tools that make
+          education actually work.
+        </p>
+
+        <p class="text-terminal-text leading-relaxed">
+          Most edtech is built by engineers who've never stood in front of 30 kids trying to explain conjunctions.
+          <span class="text-terminal-accent font-semibold">I have.</span> That's why my tools actually solve real problems.
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+          <p class="text-terminal-yellow font-semibold mb-2">The Vibe Coding Advantage:</p>
+          <p class="text-terminal-muted">
+            Traditional edtech takes 6-12 months to ship. I build production-ready tools in <span class="text-terminal-green font-semibold">days</span>.
+            When you're a teacher, you don't have time to wait. You need solutions now.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Classroom Automation -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">google-classroom-api.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Google Classroom API Automation</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Teachers spend <span class="text-terminal-red font-semibold">hours</span> on administrative busywork in Google Classroom.
+          Creating assignments, duplicating materials across sections, managing rosters.
+          I automated all of it.
+        </p>
+
+        <div class="space-y-4">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Bulk Assignment Creation</h3>
+            <p class="text-terminal-muted text-sm">
+              Push lesson plans to all sections with one command. No more clicking through 6 different classes.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Roster Sync</h3>
+            <p class="text-terminal-muted text-sm">
+              Automatic student enrollment from district SIS. Changes propagate in real-time.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Grade Export</h3>
+            <p class="text-terminal-muted text-sm">
+              Pull grades into any format. Integrate with gradebook systems that don't talk to Google.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <a href="https://github.com/bme-wacoisd/google-classroom" target="_blank" class="tag tag-accent">
+            bme-wacoisd/google-classroom
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEA-Aligned Lesson Plans -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">tea-aligned-curriculum.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">TEA-Aligned Lesson Plans & Curriculum</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Texas Essential Knowledge and Skills (TEKS) compliance isn't optional. But manually mapping every
+          lesson to standards is a nightmare. I built tools that generate
+          <span class="text-terminal-green font-semibold">TEA-aligned lesson plans automatically</span>.
+        </p>
+
+        <div class="screenshot-container my-6">
+          <img src="/screenshots/future-educator-lessons.png" alt="Future Educator Academy Lesson Plans" class="screenshot-img" />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="screenshot-container">
+            <img src="/screenshots/lesson-plan-slides.png" alt="Auto-generated lesson slides" class="screenshot-img" />
+            <p class="text-terminal-muted text-xs mt-2 text-center">Auto-generated presentation slides</p>
+          </div>
+          <div class="screenshot-container">
+            <img src="/screenshots/lesson-plan-quizzes.png" alt="Auto-generated quizzes" class="screenshot-img" />
+            <p class="text-terminal-muted text-xs mt-2 text-center">Standards-aligned assessments</p>
+          </div>
+        </div>
+
+        <div class="screenshot-container my-6">
+          <img src="/screenshots/tea-aligned-slides.png" alt="TEA-aligned slide deck" class="screenshot-img" />
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green">
+          <p class="text-terminal-green font-semibold mb-2">What This Means for Teachers:</p>
+          <p class="text-terminal-muted">
+            Upload your content. Get a complete lesson plan with TEKS mapping, slides, quizzes, and differentiation
+            strategies. What used to take hours now takes <span class="text-terminal-accent font-semibold">minutes</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- School Scheduling -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">school-scheduling.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">School Scheduling Optimization</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          School scheduling is an NP-hard problem. Most districts use software from the 90s and then spend weeks
+          doing manual adjustments. I built a modern solution that actually optimizes for what matters.
+        </p>
+
+        <div class="space-y-4">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Constraint Satisfaction</h3>
+            <p class="text-terminal-muted text-sm">
+              Teacher availability, room capacity, student course requests, required sequences - all handled.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Optimization Goals</h3>
+            <p class="text-terminal-muted text-sm">
+              Minimize student conflicts. Balance class sizes. Maximize teacher prep time. Actually achievable objectives.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">What-If Analysis</h3>
+            <p class="text-terminal-muted text-sm">
+              What if we add a new section? What if this teacher goes part-time? Run scenarios in seconds.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow mt-4">
+          <p class="text-terminal-yellow font-semibold mb-2">Real Impact:</p>
+          <p class="text-terminal-muted">
+            Districts spend thousands on scheduling consultants. This tool gives you better results for
+            <span class="text-terminal-green font-semibold">a fraction of the cost</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conjunction Junction -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-purple/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-purple text-sm font-semibold">conjunction-junction.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-purple">Conjunction Junction</h2>
+        <p class="text-terminal-accent font-semibold">"And, But, So - what's your function?"</p>
+
+        <p class="text-terminal-text leading-relaxed">
+          An interactive web game teaching kids (ages 7-10) proper conjunction usage.
+          But here's what makes it revolutionary: <span class="text-terminal-green font-semibold">real-time LLM feedback</span>.
+        </p>
+
+        <div class="screenshot-container my-6">
+          <img src="/screenshots/conjunction-junction.png" alt="Conjunction Junction game" class="screenshot-img" />
+        </div>
+
+        <div class="space-y-4">
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold">Intelligent Feedback</h3>
+            <p class="text-terminal-muted text-sm">
+              Not just "wrong, try again." The LLM explains <span class="text-terminal-accent">why</span> the answer works
+              or doesn't work. Personalized grammar instruction at scale.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Adaptive Difficulty</h3>
+            <p class="text-terminal-muted text-sm">
+              The game adjusts to each student's level. Struggling kids get more scaffolding.
+              Advanced kids get harder sentences.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Teacher Dashboard</h3>
+            <p class="text-terminal-muted text-sm">
+              Track student progress. Identify common misconceptions. Export data for intervention planning.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-purple mt-4">
+          <p class="text-terminal-purple font-semibold mb-2">The Future of EdTech:</p>
+          <p class="text-terminal-muted">
+            This is what AI in education should look like. Not replacing teachers, but giving every student
+            a <span class="text-terminal-accent font-semibold">personalized tutor</span> that never gets tired.
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <a href="https://github.com/bedwards/conjunction" target="_blank" class="tag tag-purple">
+            bedwards/conjunction
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Vibe Coding for Education -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-green/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-green text-sm font-semibold">vibe-coding-education.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-green">Why Vibe Coding Transforms Education</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-accent glow-text">Days</div>
+            <p class="text-terminal-muted text-sm mt-2">Not months to build new tools</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-green glow-text">Free</div>
+            <p class="text-terminal-muted text-sm mt-2">Open source, not vendor lock-in</p>
+          </div>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          Big edtech companies charge districts <span class="text-terminal-red font-semibold">$50-200 per student per year</span>
+          for mediocre software. They have 18-month development cycles. They don't understand classrooms.
+        </p>
+
+        <p class="text-terminal-text leading-relaxed">
+          I can build custom solutions <span class="text-terminal-green font-semibold">tuned to your specific needs</span>
+          in a fraction of the time and cost. Because I'm a teacher. Because I use vibe coding.
+          Because I actually understand the problem.
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green mt-4">
+          <p class="text-terminal-green font-semibold mb-2">The Bottom Line:</p>
+          <p class="text-terminal-muted">
+            Your district can keep paying Pearson and PowerSchool for tools that don't work.
+            Or you can get <span class="text-terminal-accent font-semibold">custom solutions built by someone who's been in the classroom</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center py-12">
+      <h2 class="text-2xl font-bold mb-4">Ready to Transform Your District's EdTech?</h2>
+      <p class="text-terminal-muted mb-8 max-w-xl mx-auto">
+        Whether you need custom tools, Google Classroom automation, or curriculum development,
+        I can deliver in weeks what traditional vendors take years to build.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/hire" class="btn-primary">Let's Talk</a>
+        <a href="/projects" class="btn-secondary">See All Projects</a>
+      </div>
+    </section>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
