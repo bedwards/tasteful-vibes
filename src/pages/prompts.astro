@@ -1,0 +1,425 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Effective Prompts page - Learn how to write prompts that ship real software.
+Brian Edwards shares real prompts he has used to build 100+ projects with Claude Code.
+This page covers: Portfolio site prompts, repo organization, preference gathering, handoff points, RALPH loops, and enterprise platform development.
+`;
+---
+
+<BaseLayout title="Effective Prompts" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Prompts That Ship</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Real prompts from real projects. These aren't hypotheticals—each one produced working software.
+        Learn the patterns that turn natural language into production code.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Introduction -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-philosophy.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">The Art of Effective Prompts</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            Great prompts share common traits: they're <span class="text-terminal-yellow font-semibold">specific about outcomes</span>,
+            <span class="text-terminal-green font-semibold">clear about constraints</span>, and
+            <span class="text-terminal-accent font-semibold">explicit about completion criteria</span>.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            Below are prompts I've actually used to build software. Each includes the prompt itself,
+            the context in which I used it, and the outcome it produced.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <p class="text-terminal-yellow font-semibold mb-2">Key Principle:</p>
+            <p class="text-terminal-muted">
+              Don't tell Claude how to code. Tell Claude what you want to exist when it's done.
+              Let the AI figure out the implementation—that's what it's good at.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt 1: Portfolio Site -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-01-portfolio.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">1. Portfolio Site Prompt</h2>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm border border-terminal-accent overflow-x-auto">
+            <p class="text-terminal-green whitespace-pre-wrap">"Create interactive web site hosted on cloudflare pages, with cloudflare workers ai integration. Terminal/coder aesthetic. Floating AI chat. Projects organized by verticals..."</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold mb-1">Context</p>
+              <p class="text-terminal-muted text-sm">
+                Needed a portfolio site that showcased vibe coding methodology.
+                Wanted it to feel like a terminal to reinforce the developer brand.
+              </p>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold mb-1">Result</p>
+              <p class="text-terminal-muted text-sm">
+                <span class="text-terminal-yellow font-semibold">This entire tasteful-vibes site</span>—built in a single Claude Code session.
+                Astro, Tailwind, Cloudflare Workers AI integration, all working.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-purple font-semibold mb-2">Why It Works:</p>
+            <p class="text-terminal-muted text-sm">
+              Specifies the deployment target (Cloudflare Pages), the aesthetic (terminal/coder),
+              key features (floating AI chat), and organization principle (verticals).
+              Gives Claude enough direction without micromanaging implementation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt 2: Repo Organization -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-02-repos.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">2. Repo Organization Prompt</h2>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm border border-terminal-green overflow-x-auto">
+            <p class="text-terminal-green whitespace-pre-wrap">"Git submodule all repos since September 2025. Calculate file counts and sizes. Rank by total file size."</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold mb-1">Context</p>
+              <p class="text-terminal-muted text-sm">
+                Had 100+ repos created during an intense vibe coding period.
+                Needed to understand the scope and organize them meaningfully.
+              </p>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold mb-1">Result</p>
+              <p class="text-terminal-muted text-sm">
+                <span class="text-terminal-yellow font-semibold">100+ repos organized automatically</span>.
+                Complete with file counts, size rankings, and submodule structure
+                for the portfolio site's project grid.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-purple font-semibold mb-2">Why It Works:</p>
+            <p class="text-terminal-muted text-sm">
+              Clear time boundary (September 2025), specific operations (submodule, calculate, rank),
+              and explicit sorting criteria (total file size). No ambiguity about what "organized" means.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt 3: Preference Gathering -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-03-preferences.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">3. Preference Gathering Prompt</h2>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm border border-terminal-yellow overflow-x-auto">
+            <p class="text-terminal-green whitespace-pre-wrap">"Ask me many multiple choice questions to help you understand my taste and help you proceed."</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold mb-1">Context</p>
+              <p class="text-terminal-muted text-sm">
+                Starting a design project where I knew what I wanted but couldn't articulate it.
+                Needed Claude to extract my preferences through structured questions.
+              </p>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold mb-1">Result</p>
+              <p class="text-terminal-muted text-sm">
+                Claude used its <span class="text-terminal-yellow font-semibold">AskUserQuestion tool</span> to present
+                multiple choice questions about colors, layouts, typography, and interaction patterns.
+                Built a preference profile before writing any code.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-purple font-semibold mb-2">Why It Works:</p>
+            <p class="text-terminal-muted text-sm">
+              Inverts the typical flow. Instead of you trying to describe what you want,
+              Claude interrogates you with specific options. Multiple choice format forces
+              concrete decisions rather than vague preferences.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt 4: Handoff Points -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-04-handoff.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">4. Handoff Points Prompt</h2>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm border border-terminal-purple overflow-x-auto">
+            <p class="text-terminal-green whitespace-pre-wrap">"Create HUMAN-*.md files in root for what you need from me. Report and STOP!"</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold mb-1">Context</p>
+              <p class="text-terminal-muted text-sm">
+                Working on a complex project where Claude would inevitably need human input
+                (API keys, design decisions, business logic). Wanted structured handoffs.
+              </p>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold mb-1">Result</p>
+              <p class="text-terminal-muted text-sm">
+                Claude created <span class="text-terminal-yellow font-semibold">HUMAN-*.md files</span> like
+                HUMAN-API-KEYS.md, HUMAN-DESIGN-DECISIONS.md with specific questions
+                and clear instructions for what it needed to continue.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-purple font-semibold mb-2">Why It Works:</p>
+            <p class="text-terminal-muted text-sm">
+              "Report and STOP!" is crucial. Without it, Claude might try to proceed with assumptions.
+              The HUMAN-* prefix makes these files easy to find and signals their purpose.
+              Creates a clear async workflow for human-AI collaboration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt 5: RALPH Loop -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-05-ralph.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">5. RALPH Loop Prompt</h2>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm border border-terminal-red overflow-x-auto">
+            <p class="text-terminal-green whitespace-pre-wrap">/ralph-loop 'Build a REST API for todos. Requirements: CRUD operations, input validation, tests. Output &lt;promise&gt;COMPLETE&lt;/promise&gt; when done.' --completion-promise 'COMPLETE' --max-iterations 50</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold mb-1">Context</p>
+              <p class="text-terminal-muted text-sm">
+                Well-defined task with clear completion criteria.
+                Wanted to let Claude iterate autonomously without manual intervention.
+              </p>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold mb-1">Result</p>
+              <p class="text-terminal-muted text-sm">
+                <span class="text-terminal-yellow font-semibold">Autonomous development loops</span>.
+                Claude iterated through implementation, testing, fixing, until all tests passed
+                and it output the completion promise.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red mt-4">
+            <p class="text-terminal-red font-semibold mb-2">Warning:</p>
+            <p class="text-terminal-muted text-sm">
+              RALPH loops can get expensive. The --max-iterations flag is a safety net.
+              $50-100+ is possible for complex tasks. Use for well-defined tasks with
+              automatic verification (like "all tests pass").
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-purple font-semibold mb-2">Why It Works:</p>
+            <p class="text-terminal-muted text-sm">
+              The completion promise (&lt;promise&gt;COMPLETE&lt;/promise&gt;) gives Claude a clear signal
+              to emit when done. Requirements are specific and testable. Max iterations
+              prevents runaway costs if the task proves harder than expected.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt 6: Folk Care -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">prompt-06-folkcare.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">6. Folk Care Healthcare Platform</h2>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm border border-terminal-accent overflow-x-auto">
+            <p class="text-terminal-green whitespace-pre-wrap">"Build HIPAA-compliant home healthcare software with EVV, family portals, scheduling, and billing."</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold mb-1">Context</p>
+              <p class="text-terminal-muted text-sm">
+                Major project: enterprise-grade healthcare platform that typically takes
+                teams of developers 6-12 months. Compliance requirements, complex workflows.
+              </p>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold mb-1">Result</p>
+              <p class="text-terminal-muted text-sm">
+                <span class="text-terminal-yellow font-semibold">Enterprise-grade platform in 28 days</span>.
+                Production-ready EVV compliance, scheduling, billing, family portals.
+                Now deployable by agencies at $20-30/month vs $750-2,250/user/month from vendors.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-purple font-semibold mb-2">Why It Works:</p>
+            <p class="text-terminal-muted text-sm">
+              This prompt was the starting point of many sessions. The key terms (HIPAA, EVV)
+              signal compliance requirements. Feature list (portals, scheduling, billing) defines
+              scope. Claude's domain knowledge filled in the implementation details.
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green mt-4">
+            <p class="text-terminal-green font-semibold mb-2">Pro Tip:</p>
+            <p class="text-terminal-muted text-sm">
+              For large projects, this initial prompt spawned dozens of follow-up sessions.
+              Each session tackled a specific feature or subsystem. The prompt set the north star;
+              subsequent prompts drilled into details.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt Patterns Summary -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">patterns.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Prompt Patterns That Work</h2>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-accent font-semibold">Outcome-Oriented</p>
+              <p class="text-terminal-muted text-sm">Describe what should exist, not how to build it.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-green font-semibold">Explicit Completion</p>
+              <p class="text-terminal-muted text-sm">Use "STOP!", completion promises, or clear success criteria.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-yellow pl-4">
+              <p class="text-terminal-yellow font-semibold">Domain Keywords</p>
+              <p class="text-terminal-muted text-sm">Terms like "HIPAA", "EVV", "REST API" trigger relevant domain knowledge.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-purple pl-4">
+              <p class="text-terminal-purple font-semibold">Structured Handoffs</p>
+              <p class="text-terminal-muted text-sm">Use file conventions (HUMAN-*.md) for async human-AI collaboration.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-red pl-4">
+              <p class="text-terminal-red font-semibold">Safety Limits</p>
+              <p class="text-terminal-muted text-sm">Always set max iterations or explicit stop conditions for autonomous loops.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Anti-Patterns -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">antipatterns.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-red">Prompts That Don't Ship</h2>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-terminal-red pl-4">
+              <p class="text-terminal-red font-semibold">"Make it good"</p>
+              <p class="text-terminal-muted text-sm">Too vague. Good by what criteria? For whom?</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-red pl-4">
+              <p class="text-terminal-red font-semibold">"Use React with hooks and Redux..."</p>
+              <p class="text-terminal-muted text-sm">Over-specifying implementation. Let Claude choose the right tool.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-red pl-4">
+              <p class="text-terminal-red font-semibold">"Build me an app"</p>
+              <p class="text-terminal-muted text-sm">No constraints, no features, no completion criteria. Claude will ask follow-ups or guess poorly.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-red pl-4">
+              <p class="text-terminal-red font-semibold">Prompts without stop conditions</p>
+              <p class="text-terminal-muted text-sm">For autonomous loops, always include max iterations or completion signals.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center py-12">
+        <h2 class="text-2xl font-bold mb-4">Ready to write prompts that ship?</h2>
+        <p class="text-terminal-muted mb-8">
+          I can train your team on vibe coding methodology or build your project directly.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/hire" class="btn-primary">Hire Me</a>
+          <a href="/vibe-coding" class="btn-secondary">Learn Vibe Coding</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
