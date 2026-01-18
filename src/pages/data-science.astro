@@ -1,0 +1,407 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Data Science vertical page - Brian Edwards' AI/ML expertise and Kaggle competition experience.
+Projects include: March Machine Learning Mania (bedwards/mania), World Bank Development Indicators with Polars (wdi-py),
+Graphyard graph analysis tools and blog, Graph Neural Networks (gnn), GYAT Graph Predictive Attention Network,
+Conduit Kaggle competition pipeline. Kaggle profile: brianedwards.
+Brian combines cutting-edge ML techniques with production-ready engineering for real-world data science applications.
+`;
+---
+
+<BaseLayout title="Data Science" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Data Science & Machine Learning</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Kaggle competitor. Graph neural network researcher. Production ML engineer.
+        I don't just build models—I build winning systems.
+      </p>
+    </div>
+
+    <!-- Kaggle Profile -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">kaggle-profile.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Kaggle Competitor</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          I compete where the best data scientists in the world prove their worth. Kaggle isn't academic—it's
+          survival of the fittest algorithms. My profile:
+          <a href="https://www.kaggle.com/brianedwards" target="_blank" class="link-accent font-semibold">kaggle.com/brianedwards</a>
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+          <p class="text-terminal-yellow font-semibold mb-2">Why Kaggle Matters:</p>
+          <p class="text-terminal-muted">
+            Anyone can claim ML expertise. Kaggle rankings are proof. You're competing against
+            thousands of PhD researchers, industry veterans, and AI labs. Every competition teaches
+            techniques that work in the real world—not just in papers.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://www.kaggle.com/brianedwards" target="_blank" class="tag tag-green">View Kaggle Profile</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- March Machine Learning Mania -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">mania.py</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">March Machine Learning Mania</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          The annual NCAA tournament prediction competition. 68 teams, millions of possible brackets,
+          and the chaos of March Madness. My system combines historical performance data, advanced
+          basketball metrics, and ensemble learning to predict upset probabilities with precision.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Statistical Foundation</h3>
+            <p class="text-terminal-muted text-sm">
+              Ken Pomeroy metrics, strength of schedule adjustments, tempo-free efficiency ratings
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Ensemble Models</h3>
+            <p class="text-terminal-muted text-sm">
+              XGBoost, LightGBM, neural networks—stacked for optimal bracket predictions
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Upset Detection</h3>
+            <p class="text-terminal-muted text-sm">
+              Specialized models for identifying bracket-busting upsets before they happen
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold">Reproducible Pipeline</h3>
+            <p class="text-terminal-muted text-sm">
+              Full end-to-end automation from data ingestion to submission generation
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://github.com/bedwards/mania" target="_blank" class="tag tag-accent">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conduit -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">conduit-pipeline.py</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Conduit - Kaggle Competition Pipeline</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          A battle-tested pipeline for Kaggle competitions. From raw data to leaderboard submission,
+          Conduit handles the tedious infrastructure so you can focus on feature engineering and
+          model experimentation. Built from lessons learned across dozens of competitions.
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm space-y-2">
+          <p class="text-terminal-muted"># Typical Conduit workflow</p>
+          <p class="text-terminal-green">conduit init my-competition</p>
+          <p class="text-terminal-green">conduit feature add momentum_indicators</p>
+          <p class="text-terminal-green">conduit train --model xgboost --cv 5</p>
+          <p class="text-terminal-green">conduit submit --ensemble best_3</p>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green mt-4">
+          <p class="text-terminal-green font-semibold mb-2">Key Features:</p>
+          <ul class="text-terminal-muted text-sm space-y-1">
+            <li>- Automated cross-validation with stratification</li>
+            <li>- Feature importance tracking and selection</li>
+            <li>- Experiment logging with MLflow integration</li>
+            <li>- Ensemble creation and blending utilities</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://github.com/bedwards/conduit" target="_blank" class="tag tag-accent">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- World Bank Development Indicators -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">wdi-py.py</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">World Bank Development Indicators</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Global development data analysis using Polars—the blazing-fast DataFrame library that makes
+          pandas feel like a horse-drawn carriage. This project processes decades of economic indicators
+          across 200+ countries with the speed and efficiency that modern data science demands.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-4">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-terminal-accent glow-text">1400+</div>
+            <p class="text-terminal-muted text-sm mt-1">Development Indicators</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-terminal-green glow-text">217</div>
+            <p class="text-terminal-muted text-sm mt-1">Countries & Regions</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-terminal-yellow glow-text">60+</div>
+            <p class="text-terminal-muted text-sm mt-1">Years of Data</p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow mt-4">
+          <p class="text-terminal-yellow font-semibold mb-2">Why Polars?</p>
+          <p class="text-terminal-muted">
+            10-100x faster than pandas. Lazy evaluation. Multi-threaded by default.
+            When you're processing billions of data points, speed isn't a luxury—it's survival.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://github.com/bedwards/wdi-py" target="_blank" class="tag tag-accent">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Graphyard -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">graphyard.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Graphyard - Graph Analysis Tools & Blog</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          The world is graphs. Social networks, knowledge bases, molecular structures, supply chains—
+          everything interesting is connected. Graphyard is my laboratory for graph algorithms,
+          network analysis, and the deep mathematical structures that underpin complex systems.
+        </p>
+
+        <div class="screenshot-container my-6">
+          <img
+            src="/screenshots/graphyard-article.png"
+            alt="Graphyard blog article on graph analysis"
+            class="screenshot-img"
+          />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Graph Algorithms</h3>
+            <p class="text-terminal-muted text-sm">
+              PageRank, community detection, centrality measures, shortest paths at scale
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Network Visualization</h3>
+            <p class="text-terminal-muted text-sm">
+              Interactive force-directed layouts, hierarchical structures, temporal evolution
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Technical Blog</h3>
+            <p class="text-terminal-muted text-sm">
+              Deep dives into graph theory, algorithm implementations, real-world applications
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold">Open Source Tools</h3>
+            <p class="text-terminal-muted text-sm">
+              Reusable libraries for graph processing and analysis
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://github.com/bedwards/graphyard" target="_blank" class="tag tag-accent">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Graph Neural Networks -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">gnn.py</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Graph Neural Networks (GNN)</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          When traditional neural networks meet graph structures, magic happens. GNNs learn representations
+          that capture both node features and structural relationships. My implementations push the
+          boundaries of message passing, attention mechanisms, and scalable training on massive graphs.
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+          <p class="text-terminal-accent font-semibold mb-2">Applications:</p>
+          <ul class="text-terminal-muted text-sm space-y-1">
+            <li>- Drug discovery and molecular property prediction</li>
+            <li>- Social network analysis and influence propagation</li>
+            <li>- Recommendation systems with relational data</li>
+            <li>- Fraud detection in financial transaction networks</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://github.com/bedwards/gnn" target="_blank" class="tag tag-accent">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GYAT -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-yellow/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-yellow text-sm font-semibold">gyat-architecture.py</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-yellow">GYAT - Graph Predictive Attention Network</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          My custom architecture combining graph attention mechanisms with predictive self-supervised
+          learning. GYAT learns rich node embeddings by predicting masked graph structures—like BERT,
+          but for networks. The attention mechanism dynamically weights neighbor contributions based
+          on learned relevance.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4 mt-4">
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold text-terminal-yellow">Multi-Head Attention</h3>
+            <p class="text-terminal-muted text-sm">
+              Parallel attention heads capture diverse relationship types
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Predictive Pretraining</h3>
+            <p class="text-terminal-muted text-sm">
+              Self-supervised learning on graph structure for robust representations
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Scalable Training</h3>
+            <p class="text-terminal-muted text-sm">
+              Mini-batch sampling for graphs with millions of nodes
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow mt-4">
+          <p class="text-terminal-yellow font-semibold mb-2">Research Frontier:</p>
+          <p class="text-terminal-muted">
+            GYAT represents the cutting edge of graph representation learning. This isn't
+            off-the-shelf ML—it's original research applied to real problems.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <a href="https://github.com/bedwards/gyat" target="_blank" class="tag tag-yellow">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Pitch -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-green/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-green text-sm font-semibold">why-hire-me.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-green">Why My Data Science is Different</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-terminal-accent font-semibold mb-2">Battle-Tested</h3>
+            <p class="text-terminal-muted text-sm">
+              Kaggle competitions are the proving ground. I've competed against the best
+              and learned what actually works—not what looks good in a paper.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-terminal-yellow font-semibold mb-2">Production-Ready</h3>
+            <p class="text-terminal-muted text-sm">
+              Notebooks are prototypes. I build pipelines that run in production, scale with
+              your data, and don't break at 3 AM.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-terminal-green font-semibold mb-2">Full Stack ML</h3>
+            <p class="text-terminal-muted text-sm">
+              Data engineering, feature stores, model training, deployment, monitoring—
+              I own the entire lifecycle, not just the modeling phase.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-terminal-purple font-semibold mb-2">Research-Grade</h3>
+            <p class="text-terminal-muted text-sm">
+              Custom architectures like GYAT aren't just academic exercises. They're
+              competitive advantages when off-the-shelf solutions plateau.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center py-12">
+      <h2 class="text-2xl font-bold mb-4">Need ML That Actually Works?</h2>
+      <p class="text-terminal-muted mb-8 max-w-xl mx-auto">
+        Whether you need a Kaggle-winning prediction system, a production ML pipeline, or
+        custom research—I deliver results, not just models.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/hire" class="btn-primary">Hire Me</a>
+        <a href="/projects" class="btn-secondary">See All Projects</a>
+      </div>
+    </section>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
