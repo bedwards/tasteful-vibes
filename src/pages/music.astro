@@ -1,0 +1,370 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Music vertical page - Brian Edwards' audio technology and music production work.
+Ghost Note: Rust VST3/CLAP audio plugin that converts poetry to song lyrics and melody.
+audio-forge-rs organization: High-performance Rust audio tools.
+DrivenByMoss: Bitwig Studio extensions for hardware controllers.
+nih-plug: Rust VST3/CLAP plugin framework for professional audio development.
+vibewig: Bitwig integration tools.
+Brian is an active musician with deep passion for audio technology and music production.
+`;
+---
+
+<BaseLayout title="Music" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Music & Audio Tech</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Where Rust meets rhythm. High-performance audio plugins built with vibe coding.
+        No compromises. No latency. Pure sonic power.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Intro -->
+      <section class="terminal-window">
+        <div class="terminal-header bg-terminal-accent/10">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-accent text-sm font-semibold">musician.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Musician First, Developer Second</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            I don't just write audio code. I <span class="text-terminal-yellow font-semibold">live</span> in DAWs.
+            Bitwig Studio is my instrument. Every plugin I build solves a problem I've felt in my own productions.
+            This isn't academic software engineering - it's tools forged in the heat of actual music creation.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            The audio plugin industry is stuck in C++ land. Slow iteration. Memory bugs. Crashes during live performance.
+            <span class="text-terminal-accent font-semibold">Rust changes everything.</span> Memory safety without garbage collection.
+            Zero-cost abstractions. And with vibe coding? I ship plugins in days that would take months in traditional workflows.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow">
+            <p class="text-terminal-yellow font-semibold mb-2">The Vibe Coding Advantage:</p>
+            <p class="text-terminal-muted">
+              Claude Code understands both Rust and audio DSP. I describe the sound I want, the algorithm clicks into place.
+              Real-time audio demands perfection - and AI-assisted Rust delivers it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ghost Note - Flagship Project -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">ghost-note.rs</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Ghost Note</h2>
+          <p class="text-terminal-yellow text-sm">Flagship Project | Rust VST3/CLAP Plugin</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-green font-semibold">Poetry to melody.</span> Ghost Note is an AI-powered audio plugin
+            that transforms written poetry into song lyrics with suggested melodic contours. Feed it verse, get back music.
+          </p>
+
+          <div class="screenshot-container my-6">
+            <img
+              src="/screenshots/ghost-note-app.png"
+              alt="Ghost Note audio plugin interface"
+              class="screenshot-img"
+            />
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <h3 class="font-semibold text-terminal-accent">Built With</h3>
+              <ul class="text-terminal-muted text-sm space-y-1 mt-2">
+                <li>Rust + nih-plug framework</li>
+                <li>VST3 & CLAP formats</li>
+                <li>Real-time safe processing</li>
+                <li>Cross-platform (Win/Mac/Linux)</li>
+              </ul>
+            </div>
+            <div class="border-l-2 border-terminal-green pl-4">
+              <h3 class="font-semibold text-terminal-green">Features</h3>
+              <ul class="text-terminal-muted text-sm space-y-1 mt-2">
+                <li>Poetry-to-lyrics conversion</li>
+                <li>Melodic suggestion engine</li>
+                <li>DAW-integrated workflow</li>
+                <li>Low-latency processing</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+            <a href="https://audio-forge-rs.github.io/ghost-note/" target="_blank" class="tag tag-accent">Live Demo</a>
+            <a href="https://github.com/audio-forge-rs/ghost-note" target="_blank" class="tag tag-green">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- audio-forge-rs Organization -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">audio-forge-rs.org</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">audio-forge-rs</h2>
+          <p class="text-terminal-yellow text-sm">GitHub Organization | Rust Audio Ecosystem</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            My GitHub organization dedicated to <span class="text-terminal-accent font-semibold">high-performance Rust audio tools</span>.
+            Every repo is production-ready. Every plugin is battle-tested. This isn't hobby code - it's professional-grade
+            audio software that rivals (and often beats) commercial alternatives.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <p class="text-terminal-green font-semibold mb-2">Why Rust for Audio?</p>
+            <ul class="text-terminal-muted text-sm space-y-2">
+              <li><span class="text-terminal-text">Zero-cost abstractions</span> - High-level code, bare-metal performance</li>
+              <li><span class="text-terminal-text">Memory safety</span> - No crashes, no buffer overflows, no undefined behavior</li>
+              <li><span class="text-terminal-text">Fearless concurrency</span> - Multi-threaded DSP without data races</li>
+              <li><span class="text-terminal-text">Modern tooling</span> - Cargo, rust-analyzer, clippy - developer experience matters</li>
+            </ul>
+          </div>
+
+          <a href="https://github.com/audio-forge-rs" target="_blank" class="tag tag-accent mt-4 inline-block">
+            View Organization on GitHub
+          </a>
+        </div>
+      </section>
+
+      <!-- nih-plug -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">nih-plug.rs</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-yellow">nih-plug</h2>
+          <p class="text-terminal-muted text-sm">Rust VST3/CLAP Plugin Framework</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            The foundation of modern Rust audio development. nih-plug is a
+            <span class="text-terminal-yellow font-semibold">framework for building VST3 and CLAP plugins</span>
+            that handles all the boilerplate so you can focus on the DSP.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm">
+            <p class="text-terminal-muted">// Define your plugin with declarative Rust</p>
+            <p class="text-terminal-green">impl Plugin for GhostNote {'{'}}</p>
+            <p class="text-terminal-green">  fn process(&mut self, buffer: &mut Buffer) {'{'}</p>
+            <p class="text-terminal-green">    // Your DSP magic here</p>
+            <p class="text-terminal-green">  {'}'}</p>
+            <p class="text-terminal-green">{'}'}</p>
+          </div>
+
+          <p class="text-terminal-muted text-sm">
+            I use nih-plug for all my Rust audio plugins. It's fast, well-documented, and actively maintained.
+            Ghost Note is built on top of it.
+          </p>
+
+          <a href="https://github.com/audio-forge-rs/nih-plug" target="_blank" class="tag tag-yellow mt-4 inline-block">
+            Explore nih-plug
+          </a>
+        </div>
+      </section>
+
+      <!-- DrivenByMoss -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">DrivenByMoss.java</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-green">DrivenByMoss</h2>
+          <p class="text-terminal-muted text-sm">Bitwig Studio Extensions</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-green font-semibold">The most comprehensive controller scripts for Bitwig Studio.</span>
+            DrivenByMoss supports dozens of hardware controllers - from Ableton Push to Novation Launchpad to
+            Native Instruments Maschine. If you use Bitwig with hardware, you've probably used this code.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-4 text-center">
+            <div class="bg-terminal-bg p-3 rounded-lg">
+              <div class="text-2xl font-bold text-terminal-green">456</div>
+              <div class="text-terminal-muted text-xs">Files</div>
+            </div>
+            <div class="bg-terminal-bg p-3 rounded-lg">
+              <div class="text-2xl font-bold text-terminal-green">1,200+</div>
+              <div class="text-terminal-muted text-xs">Commits</div>
+            </div>
+            <div class="bg-terminal-bg p-3 rounded-lg">
+              <div class="text-2xl font-bold text-terminal-green">12.3 MB</div>
+              <div class="text-terminal-muted text-xs">Codebase</div>
+            </div>
+          </div>
+
+          <p class="text-terminal-muted text-sm mt-4">
+            DrivenByMoss is one of the largest open-source Bitwig extension projects in existence.
+            It's a labor of love for the Bitwig community.
+          </p>
+
+          <a href="https://github.com/audio-forge-rs/DrivenByMoss" target="_blank" class="tag tag-green mt-4 inline-block">
+            View DrivenByMoss
+          </a>
+        </div>
+      </section>
+
+      <!-- vibewig -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">vibewig.rs</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-purple">vibewig</h2>
+          <p class="text-terminal-muted text-sm">Bitwig Integration Tools</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-purple font-semibold">Vibe coding meets Bitwig Studio.</span>
+            vibewig is a collection of tools for integrating AI-assisted development workflows
+            directly into Bitwig's ecosystem. Automation scripts, preset generators, and more.
+          </p>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <p class="text-terminal-muted text-sm">
+              When you can describe a sound and have AI generate the preset... when you can
+              explain a workflow and have automation scripts appear... that's vibewig.
+            </p>
+          </div>
+
+          <a href="https://github.com/audio-forge-rs/vibewig" target="_blank" class="tag tag-purple mt-4 inline-block">
+            Explore vibewig
+          </a>
+        </div>
+      </section>
+
+      <!-- Concept Albums -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">concept-albums.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-red">Concept Albums Project</h2>
+          <p class="text-terminal-muted text-sm">AI-Assisted Music Creation</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            Beyond plugins, I'm exploring <span class="text-terminal-red font-semibold">AI-assisted concept album creation</span>.
+            Using LLMs for lyric generation, melodic suggestion, and narrative structure.
+            The goal: cohesive musical storytelling where human creativity and AI capability merge.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red">
+            <p class="text-terminal-red font-semibold mb-2">The Vision:</p>
+            <p class="text-terminal-muted text-sm">
+              A full concept album where every lyric, every melodic motif, every structural decision
+              is a collaboration between human artistic vision and AI capability. Not AI-generated music -
+              AI-augmented artistry.
+            </p>
+          </div>
+
+          <a href="https://github.com/bedwards/concept-albums" target="_blank" class="tag tag-red mt-4 inline-block">
+            Follow the Project
+          </a>
+        </div>
+      </section>
+
+      <!-- The Stack -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">audio-stack.toml</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">The Audio Tech Stack</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-terminal-accent font-semibold mb-2">Development</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="border-l-2 border-terminal-accent pl-2">
+                  <span class="text-terminal-text">Rust</span>
+                  <span class="text-terminal-muted"> - Primary language for all audio code</span>
+                </li>
+                <li class="border-l-2 border-terminal-yellow pl-2">
+                  <span class="text-terminal-text">nih-plug</span>
+                  <span class="text-terminal-muted"> - VST3/CLAP plugin framework</span>
+                </li>
+                <li class="border-l-2 border-terminal-green pl-2">
+                  <span class="text-terminal-text">CPAL</span>
+                  <span class="text-terminal-muted"> - Cross-platform audio I/O</span>
+                </li>
+                <li class="border-l-2 border-terminal-purple pl-2">
+                  <span class="text-terminal-text">Claude Code</span>
+                  <span class="text-terminal-muted"> - AI-assisted development</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Production</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="border-l-2 border-terminal-accent pl-2">
+                  <span class="text-terminal-text">Bitwig Studio</span>
+                  <span class="text-terminal-muted"> - Primary DAW</span>
+                </li>
+                <li class="border-l-2 border-terminal-yellow pl-2">
+                  <span class="text-terminal-text">Hardware controllers</span>
+                  <span class="text-terminal-muted"> - Push, Launchpad, etc.</span>
+                </li>
+                <li class="border-l-2 border-terminal-green pl-2">
+                  <span class="text-terminal-text">Custom VST3/CLAP plugins</span>
+                  <span class="text-terminal-muted"> - Built with nih-plug</span>
+                </li>
+                <li class="border-l-2 border-terminal-purple pl-2">
+                  <span class="text-terminal-text">DrivenByMoss</span>
+                  <span class="text-terminal-muted"> - Controller integration</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center py-12">
+        <h2 class="text-2xl font-bold mb-4">Need Audio Software Built?</h2>
+        <p class="text-terminal-muted mb-4 max-w-xl mx-auto">
+          VST plugins. DAW integrations. Audio processing pipelines. Real-time DSP.
+          I build it all - fast, reliable, and with the performance only Rust can deliver.
+        </p>
+        <p class="text-terminal-yellow mb-8">
+          Vibe coding + Rust + deep audio knowledge = plugins shipped in days, not months.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/hire" class="btn-primary">Hire Me</a>
+          <a href="/projects" class="btn-secondary">See All Projects</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
