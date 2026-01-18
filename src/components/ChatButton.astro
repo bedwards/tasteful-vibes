@@ -6,6 +6,16 @@ interface Props {
 const { pageContext } = Astro.props;
 ---
 
+<style>
+  .typing-cursor {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+</style>
+
 <!-- Chat Button -->
 <button
   id="chat-toggle"
@@ -156,7 +166,70 @@ const { pageContext } = Astro.props;
 
   function addMessage(role, content) {
     messages.push({ role, content });
-    renderMessages();
+    if (role === 'assistant') {
+      renderMessagesWithTyping(content);
+    } else {
+      renderMessages();
+    }
+  }
+
+  function renderMessagesWithTyping(newContent) {
+    // Render all messages except the last assistant one (which we'll type out)
+    const prevMessages = messages.slice(0, -1);
+
+    let html = '';
+    if (prevMessages.length === 0) {
+      html = '';
+    } else {
+      html = prevMessages.map(msg => `
+        <div class="flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}">
+          <div class="max-w-[80%] rounded-lg px-3 py-2 text-sm ${
+            msg.role === 'user'
+              ? 'bg-terminal-accent text-terminal-bg'
+              : 'bg-terminal-bg text-terminal-text'
+          }">
+            ${msg.content}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Add the typing container for the new message
+    html += `
+      <div id="typing-message" class="flex justify-start">
+        <div class="max-w-[80%] rounded-lg px-3 py-2 text-sm bg-terminal-bg text-terminal-text">
+          <span id="typed-content"></span><span class="typing-cursor">▋</span>
+        </div>
+      </div>
+    `;
+
+    messagesContainer.innerHTML = html;
+
+    // Scroll to show the new message at top of view
+    const typingMsg = document.getElementById('typing-message');
+    if (typingMsg) {
+      typingMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Type out the content
+    const typedEl = document.getElementById('typed-content');
+    const cursorEl = messagesContainer.querySelector('.typing-cursor');
+    let i = 0;
+    const speed = 12; // ms per character
+
+    function typeChar() {
+      if (i < newContent.length) {
+        typedEl.textContent += newContent.charAt(i);
+        i++;
+        setTimeout(typeChar, speed);
+      } else {
+        // Done typing - remove cursor
+        if (cursorEl) cursorEl.remove();
+      }
+    }
+
+    // Small delay before starting to type
+    setTimeout(typeChar, 300);
   }
 
   function showLoading() {
