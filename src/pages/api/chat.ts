@@ -73,7 +73,7 @@ Be helpful, concise, and direct. If asked about something not related to Brian o
         'Authorization': `Bearer ${groqApiKey}`,
       },
       body: JSON.stringify({
-        model: 'llama-3.1-70b-versatile',
+        model: 'llama-3.3-70b-versatile',
         messages: [
           { role: 'system', content: systemPrompt },
           ...messages.slice(-10), // Keep last 10 messages for context
