@@ -297,3 +297,96 @@
 .video-embed-wrapper iframe {
   @apply absolute inset-0 w-full h-full;
 }
+
+/* Code Showcase Styles */
+.code-block-wrapper {
+  @apply rounded-lg overflow-hidden border border-terminal-border bg-black;
+}
+
+.code-block-header {
+  @apply flex items-center justify-between px-3 py-2 bg-terminal-bg border-b border-terminal-border;
+}
+
+.code-block {
+  @apply p-4 overflow-x-auto text-sm leading-relaxed;
+  background: #000000;
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.code-block code {
+  @apply text-terminal-text;
+  font-family: inherit;
+}
+
+/* Copy button */
+.copy-btn {
+  @apply p-1.5 rounded text-terminal-muted hover:text-terminal-text hover:bg-terminal-border/50 transition-all duration-200;
+}
+
+.copy-btn:active {
+  @apply scale-95;
+}
+
+.copy-btn.copied {
+  @apply text-terminal-green;
+}
+
+.copy-btn.copied svg {
+  display: none;
+}
+
+.copy-btn.copied::after {
+  content: 'Copied!';
+  @apply text-xs font-semibold;
+}
+
+/* Syntax Highlighting Colors - Terminal Theme */
+.code-keyword {
+  color: #ff79c6;
+  font-weight: 500;
+}
+
+.code-string {
+  color: #f1fa8c;
+}
+
+.code-number {
+  color: #bd93f9;
+}
+
+.code-function {
+  color: #50fa7b;
+}
+
+.code-type {
+  color: #8be9fd;
+  font-style: italic;
+}
+
+.code-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.code-variable {
+  color: #ffb86c;
+}
+
+.code-operator {
+  color: #ff79c6;
+}
+
+/* Code example container */
+.code-example {
+  @apply border-l-2 border-terminal-border pl-4;
+}
+
+/* Hover effect for code blocks */
+.code-block-wrapper:hover {
+  @apply border-terminal-accent/50;
+}
+
+.code-block-wrapper:hover .code-block-header {
+  @apply border-terminal-accent/30;
+}

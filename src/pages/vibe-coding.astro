@@ -7,6 +7,179 @@ Vibe Coding page - Learn about AI-first development with Claude Code.
 Brian Edwards is a vibe coding expert who has built 100+ projects using this methodology.
 This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git worktrees, effective prompts, and more.
 `;
+
+// Code examples stored as raw strings to avoid JSX parsing issues
+const codeExample1 = `<span class="code-keyword">import</span> { useState, useEffect, useCallback } <span class="code-keyword">from</span> <span class="code-string">'react'</span>;
+
+<span class="code-keyword">interface</span> <span class="code-type">UseFetchResult</span>&lt;<span class="code-type">T</span>&gt; {
+  data: <span class="code-type">T</span> | <span class="code-keyword">null</span>;
+  loading: <span class="code-type">boolean</span>;
+  error: <span class="code-type">Error</span> | <span class="code-keyword">null</span>;
+  refetch: () =&gt; <span class="code-type">void</span>;
+}
+
+<span class="code-keyword">export function</span> <span class="code-function">useFetch</span>&lt;<span class="code-type">T</span>&gt;(
+  url: <span class="code-type">string</span>,
+  options?: <span class="code-type">RequestInit</span>,
+  retries = <span class="code-number">3</span>
+): <span class="code-type">UseFetchResult</span>&lt;<span class="code-type">T</span>&gt; {
+  <span class="code-keyword">const</span> [data, setData] = <span class="code-function">useState</span>&lt;<span class="code-type">T</span> | <span class="code-keyword">null</span>&gt;(<span class="code-keyword">null</span>);
+  <span class="code-keyword">const</span> [loading, setLoading] = <span class="code-function">useState</span>(<span class="code-keyword">true</span>);
+  <span class="code-keyword">const</span> [error, setError] = <span class="code-function">useState</span>&lt;<span class="code-type">Error</span> | <span class="code-keyword">null</span>&gt;(<span class="code-keyword">null</span>);
+
+  <span class="code-keyword">const</span> <span class="code-function">fetchData</span> = <span class="code-function">useCallback</span>(<span class="code-keyword">async</span> (
+    controller: <span class="code-type">AbortController</span>,
+    attempt = <span class="code-number">0</span>
+  ) =&gt; {
+    <span class="code-keyword">try</span> {
+      <span class="code-keyword">const</span> response = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(url, {
+        ...options,
+        signal: controller.signal,
+      });
+      <span class="code-keyword">if</span> (!response.ok) <span class="code-keyword">throw new</span> <span class="code-type">Error</span>(response.statusText);
+      <span class="code-keyword">const</span> json = <span class="code-keyword">await</span> response.<span class="code-function">json</span>();
+      <span class="code-function">setData</span>(json);
+      <span class="code-function">setError</span>(<span class="code-keyword">null</span>);
+    } <span class="code-keyword">catch</span> (err) {
+      <span class="code-keyword">if</span> (err <span class="code-keyword">instanceof</span> <span class="code-type">Error</span> &amp;&amp; err.name !== <span class="code-string">'AbortError'</span>) {
+        <span class="code-keyword">if</span> (attempt &lt; retries) {
+          <span class="code-keyword">await</span> <span class="code-keyword">new</span> <span class="code-type">Promise</span>(r =&gt; <span class="code-function">setTimeout</span>(r, <span class="code-number">1000</span> * attempt));
+          <span class="code-keyword">return</span> <span class="code-function">fetchData</span>(controller, attempt + <span class="code-number">1</span>);
+        }
+        <span class="code-function">setError</span>(err);
+      }
+    } <span class="code-keyword">finally</span> {
+      <span class="code-function">setLoading</span>(<span class="code-keyword">false</span>);
+    }
+  }, [url, options, retries]);
+
+  <span class="code-comment">// Auto-fetch on mount with cleanup</span>
+  <span class="code-function">useEffect</span>(() =&gt; {
+    <span class="code-keyword">const</span> controller = <span class="code-keyword">new</span> <span class="code-type">AbortController</span>();
+    <span class="code-function">fetchData</span>(controller);
+    <span class="code-keyword">return</span> () =&gt; controller.<span class="code-function">abort</span>();
+  }, [fetchData]);
+
+  <span class="code-keyword">return</span> { data, loading, error, refetch: () =&gt; <span class="code-function">fetchData</span>(<span class="code-keyword">new</span> <span class="code-type">AbortController</span>()) };
+}`;
+
+const codeExample2 = `<span class="code-comment">#!/bin/bash</span>
+<span class="code-keyword">set</span> -euo pipefail
+
+<span class="code-comment"># Configuration</span>
+<span class="code-variable">BACKUP_DIR</span>=<span class="code-string">"/var/backups/postgres"</span>
+<span class="code-variable">S3_BUCKET</span>=<span class="code-string">"s3://my-backups/postgres"</span>
+<span class="code-variable">RETENTION_DAYS</span>=<span class="code-number">7</span>
+<span class="code-variable">LOG_FILE</span>=<span class="code-string">"/var/log/pg-backup.log"</span>
+<span class="code-variable">DATE</span>=&#36;(<span class="code-function">date</span> +%Y-%m-%d_%H%M%S)
+
+<span class="code-function">log</span>() { <span class="code-keyword">echo</span> <span class="code-string">"[&#36;(date '+%Y-%m-%d %H:%M:%S')] &#36;1"</span> | tee -a <span class="code-string">"&#36;LOG_FILE"</span>; }
+
+<span class="code-function">log</span> <span class="code-string">"Starting PostgreSQL backup..."</span>
+mkdir -p <span class="code-string">"&#36;BACKUP_DIR"</span>
+
+<span class="code-comment"># Backup all databases</span>
+<span class="code-keyword">for</span> db <span class="code-keyword">in</span> &#36;(psql -U postgres -t -c <span class="code-string">"SELECT datname FROM pg_database;"</span>); <span class="code-keyword">do</span>
+  <span class="code-variable">FILENAME</span>=<span class="code-string">"&#36;{db}_&#36;{DATE}.sql.gz"</span>
+  <span class="code-function">log</span> <span class="code-string">"Backing up database: &#36;db"</span>
+
+  <span class="code-keyword">if</span> pg_dump -U postgres <span class="code-string">"&#36;db"</span> | gzip &gt; <span class="code-string">"&#36;BACKUP_DIR/&#36;FILENAME"</span>; <span class="code-keyword">then</span>
+    <span class="code-function">log</span> <span class="code-string">"Successfully backed up &#36;db"</span>
+
+    <span class="code-comment"># Upload to S3</span>
+    <span class="code-keyword">if</span> aws s3 cp <span class="code-string">"&#36;BACKUP_DIR/&#36;FILENAME"</span> <span class="code-string">"&#36;S3_BUCKET/&#36;FILENAME"</span>; <span class="code-keyword">then</span>
+      <span class="code-function">log</span> <span class="code-string">"Uploaded &#36;FILENAME to S3"</span>
+    <span class="code-keyword">else</span>
+      <span class="code-function">log</span> <span class="code-string">"ERROR: Failed to upload to S3"</span>
+      <span class="code-keyword">exit</span> <span class="code-number">1</span>
+    <span class="code-keyword">fi</span>
+  <span class="code-keyword">else</span>
+    <span class="code-function">log</span> <span class="code-string">"ERROR: Failed to backup &#36;db"</span>
+    <span class="code-keyword">exit</span> <span class="code-number">1</span>
+  <span class="code-keyword">fi</span>
+<span class="code-keyword">done</span>
+
+<span class="code-comment"># Clean up old backups</span>
+<span class="code-function">log</span> <span class="code-string">"Cleaning up backups older than &#36;RETENTION_DAYS days..."</span>
+find <span class="code-string">"&#36;BACKUP_DIR"</span> -name <span class="code-string">"*.sql.gz"</span> -mtime +<span class="code-string">"&#36;RETENTION_DAYS"</span> -delete
+
+<span class="code-function">log</span> <span class="code-string">"Backup complete!"</span>`;
+
+const codeExample3 = `<span class="code-keyword">interface</span> <span class="code-type">Env</span> {
+  DB: <span class="code-type">D1Database</span>;
+}
+
+<span class="code-keyword">interface</span> <span class="code-type">RegisterBody</span> {
+  email: <span class="code-type">string</span>;
+  password: <span class="code-type">string</span>;
+}
+
+<span class="code-keyword">const</span> <span class="code-variable">EMAIL_REGEX</span> = <span class="code-string">/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/</span>;
+
+<span class="code-keyword">async function</span> <span class="code-function">hashPassword</span>(password: <span class="code-type">string</span>): <span class="code-type">Promise</span>&lt;<span class="code-type">string</span>&gt; {
+  <span class="code-keyword">const</span> encoder = <span class="code-keyword">new</span> <span class="code-type">TextEncoder</span>();
+  <span class="code-keyword">const</span> data = encoder.<span class="code-function">encode</span>(password);
+  <span class="code-keyword">const</span> hash = <span class="code-keyword">await</span> crypto.subtle.<span class="code-function">digest</span>(<span class="code-string">'SHA-256'</span>, data);
+  <span class="code-keyword">return</span> <span class="code-type">Array</span>.<span class="code-function">from</span>(<span class="code-keyword">new</span> <span class="code-type">Uint8Array</span>(hash))
+    .<span class="code-function">map</span>(b =&gt; b.<span class="code-function">toString</span>(<span class="code-number">16</span>).<span class="code-function">padStart</span>(<span class="code-number">2</span>, <span class="code-string">'0'</span>))
+    .<span class="code-function">join</span>(<span class="code-string">''</span>);
+}
+
+<span class="code-keyword">function</span> <span class="code-function">jsonResponse</span>(data: <span class="code-type">object</span>, status = <span class="code-number">200</span>): <span class="code-type">Response</span> {
+  <span class="code-keyword">return new</span> <span class="code-type">Response</span>(<span class="code-type">JSON</span>.<span class="code-function">stringify</span>(data), {
+    status,
+    headers: { <span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span> },
+  });
+}
+
+<span class="code-keyword">export default</span> {
+  <span class="code-keyword">async</span> <span class="code-function">fetch</span>(request: <span class="code-type">Request</span>, env: <span class="code-type">Env</span>): <span class="code-type">Promise</span>&lt;<span class="code-type">Response</span>&gt; {
+    <span class="code-keyword">if</span> (request.method !== <span class="code-string">'POST'</span>) {
+      <span class="code-keyword">return</span> <span class="code-function">jsonResponse</span>({ error: <span class="code-string">'Method not allowed'</span> }, <span class="code-number">405</span>);
+    }
+
+    <span class="code-keyword">let</span> body: <span class="code-type">RegisterBody</span>;
+    <span class="code-keyword">try</span> {
+      body = <span class="code-keyword">await</span> request.<span class="code-function">json</span>();
+    } <span class="code-keyword">catch</span> {
+      <span class="code-keyword">return</span> <span class="code-function">jsonResponse</span>({ error: <span class="code-string">'Invalid JSON'</span> }, <span class="code-number">400</span>);
+    }
+
+    <span class="code-comment">// Validate email</span>
+    <span class="code-keyword">if</span> (!body.email || !<span class="code-variable">EMAIL_REGEX</span>.<span class="code-function">test</span>(body.email)) {
+      <span class="code-keyword">return</span> <span class="code-function">jsonResponse</span>({ error: <span class="code-string">'Invalid email'</span> }, <span class="code-number">400</span>);
+    }
+
+    <span class="code-comment">// Validate password</span>
+    <span class="code-keyword">if</span> (!body.password || body.password.length &lt; <span class="code-number">8</span>) {
+      <span class="code-keyword">return</span> <span class="code-function">jsonResponse</span>({
+        error: <span class="code-string">'Password must be 8+ characters'</span>
+      }, <span class="code-number">400</span>);
+    }
+
+    <span class="code-comment">// Check if user exists</span>
+    <span class="code-keyword">const</span> existing = <span class="code-keyword">await</span> env.DB
+      .<span class="code-function">prepare</span>(<span class="code-string">'SELECT id FROM users WHERE email = ?'</span>)
+      .<span class="code-function">bind</span>(body.email.toLowerCase())
+      .<span class="code-function">first</span>();
+
+    <span class="code-keyword">if</span> (existing) {
+      <span class="code-keyword">return</span> <span class="code-function">jsonResponse</span>({ error: <span class="code-string">'Email exists'</span> }, <span class="code-number">409</span>);
+    }
+
+    <span class="code-comment">// Create user</span>
+    <span class="code-keyword">const</span> hashed = <span class="code-keyword">await</span> <span class="code-function">hashPassword</span>(body.password);
+    <span class="code-keyword">const</span> result = <span class="code-keyword">await</span> env.DB
+      .<span class="code-function">prepare</span>(<span class="code-string">'INSERT INTO users (email, password) VALUES (?, ?)'</span>)
+      .<span class="code-function">bind</span>(body.email.toLowerCase(), hashed)
+      .<span class="code-function">run</span>();
+
+    <span class="code-keyword">return</span> <span class="code-function">jsonResponse</span>({
+      success: <span class="code-keyword">true</span>,
+      userId: result.meta.last_row_id
+    }, <span class="code-number">201</span>);
+  },
+};`;
 ---
 
 <BaseLayout title="Vibe Coding" pageContext={pageContext}>
@@ -353,6 +526,156 @@ This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git workt
             <p class="text-terminal-muted">
               Be specific about outcomes. Let Claude handle implementation. Verify it worked. Iterate.
               These prompts work because they describe <span class="text-terminal-accent">what success looks like</span>, not how to get there.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Code Showcase -->
+      <section class="terminal-window" id="code-showcase">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">code-showcase.tsx</span>
+        </div>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-2xl font-bold text-terminal-accent">Code Showcase</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            See vibe coding in action. These examples show the prompt, the generated code, and the output.
+            Click the copy button to grab any code snippet.
+          </p>
+
+          <!-- Example 1: React Hook -->
+          <div class="code-example space-y-4">
+            <h3 class="text-lg font-semibold text-terminal-yellow">Example 1: React Hook from Natural Language</h3>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span class="text-terminal-muted text-xs">PROMPT</span>
+                <button class="copy-btn" data-target="prompt-1" title="Copy to clipboard">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="code-block" id="prompt-1"><code class="language-text"><span class="code-comment"># User prompt to Claude Code:</span>
+Create a React hook that fetches data with loading and error states.
+Should support cancellation and automatic retry on failure.
+TypeScript, clean code, no external dependencies.</code></pre>
+            </div>
+
+            <div class="flex items-center justify-center">
+              <div class="flex items-center gap-2 text-terminal-accent">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+                <span class="text-sm">Generated in ~15 seconds</span>
+              </div>
+            </div>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span class="text-terminal-muted text-xs">GENERATED CODE</span>
+                <button class="copy-btn" data-target="code-1" title="Copy to clipboard">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="code-block" id="code-1"><code class="language-typescript" set:html={codeExample1}></code></pre>
+            </div>
+          </div>
+
+          <!-- Example 2: Shell Script -->
+          <div class="code-example space-y-4 mt-8">
+            <h3 class="text-lg font-semibold text-terminal-green">Example 2: Shell Script Automation</h3>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span class="text-terminal-muted text-xs">PROMPT</span>
+                <button class="copy-btn" data-target="prompt-2" title="Copy to clipboard">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="code-block" id="prompt-2"><code class="language-text"><span class="code-comment"># User prompt to Claude Code:</span>
+Write a bash script to back up all postgres databases,
+compress them, upload to S3, and clean up files older than 7 days.
+Include error handling and logging.</code></pre>
+            </div>
+
+            <div class="flex items-center justify-center">
+              <div class="flex items-center gap-2 text-terminal-green">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+                <span class="text-sm">Generated in ~20 seconds</span>
+              </div>
+            </div>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span class="text-terminal-muted text-xs">GENERATED CODE</span>
+                <button class="copy-btn" data-target="code-2" title="Copy to clipboard">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="code-block" id="code-2"><code class="language-bash" set:html={codeExample2}></code></pre>
+            </div>
+          </div>
+
+          <!-- Example 3: Cloudflare Worker -->
+          <div class="code-example space-y-4 mt-8">
+            <h3 class="text-lg font-semibold text-terminal-purple">Example 3: Cloudflare Worker API</h3>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span class="text-terminal-muted text-xs">PROMPT</span>
+                <button class="copy-btn" data-target="prompt-3" title="Copy to clipboard">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="code-block" id="prompt-3"><code class="language-text"><span class="code-comment"># User prompt to Claude Code:</span>
+Create a Cloudflare Worker endpoint for user registration.
+Validate email and password, hash the password, store in D1.
+Return proper error responses. TypeScript.</code></pre>
+            </div>
+
+            <div class="flex items-center justify-center">
+              <div class="flex items-center gap-2 text-terminal-purple">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+                <span class="text-sm">Generated in ~25 seconds</span>
+              </div>
+            </div>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span class="text-terminal-muted text-xs">GENERATED CODE</span>
+                <button class="copy-btn" data-target="code-3" title="Copy to clipboard">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <pre class="code-block" id="code-3"><code class="language-typescript" set:html={codeExample3}></code></pre>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent mt-6">
+            <p class="text-terminal-accent font-semibold mb-2">The Magic of Vibe Coding:</p>
+            <p class="text-terminal-muted">
+              Notice how the prompts describe <span class="text-terminal-yellow">what</span>, not <span class="text-terminal-red">how</span>.
+              Claude handles boilerplate, error handling, edge cases, and best practices automatically.
+              You focus on intent; Claude handles implementation.
             </p>
           </div>
         </div>
@@ -751,24 +1074,73 @@ This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git workt
       }
     }
 
-    function getBorderColor(index: number): string {
+    function getBorderColor(index) {
       const colors = ['border-terminal-accent', 'border-terminal-green', 'border-terminal-yellow', 'border-terminal-purple', 'border-terminal-red'];
       return colors[index % colors.length];
     }
 
-    function getTextColor(index: number): string {
+    function getTextColor(index) {
       const colors = ['text-terminal-accent', 'text-terminal-green', 'text-terminal-yellow', 'text-terminal-purple', 'text-terminal-red'];
       return colors[index % colors.length];
     }
 
-    function escapeHtml(text: string): string {
+    function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
     }
 
+    // Copy to clipboard functionality for code showcase
+    function initCopyButtons() {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const targetId = button.getAttribute('data-target');
+          if (!targetId) return;
+
+          const codeBlock = document.getElementById(targetId);
+          if (!codeBlock) return;
+
+          // Get text content (strips HTML tags for clean copy)
+          const text = codeBlock.textContent || '';
+
+          try {
+            await navigator.clipboard.writeText(text);
+
+            // Visual feedback
+            button.classList.add('copied');
+
+            // Reset after 2 seconds
+            setTimeout(() => {
+              button.classList.remove('copied');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            button.classList.add('copied');
+            setTimeout(() => {
+              button.classList.remove('copied');
+            }, 2000);
+          }
+        });
+      });
+    }
+
     // Fetch posts when the page loads
     document.addEventListener('DOMContentLoaded', fetchSubstackPosts);
+    // Initialize copy buttons
+    document.addEventListener('DOMContentLoaded', initCopyButtons);
   </script>
 
   <ChatButton pageContext={pageContext} />
