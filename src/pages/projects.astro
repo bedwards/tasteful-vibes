@@ -69,9 +69,214 @@ const verticalColors: Record<string, string> = {
 ---
 
 <BaseLayout title="Projects" pageContext={pageContext}>
+  <!-- ============================================ -->
+  <!-- PROJECT STATISTICS SECTION                   -->
+  <!-- ============================================ -->
+  <div class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-terminal-border">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="terminal-prompt text-lg mb-4">cat ./project-stats.json</div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        <span class="text-terminal-accent" id="total-counter">100</span><span class="text-terminal-green">+</span> Projects
+      </h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Shipped fast. Built with vibe coding and Claude Code.
+      </p>
+    </div>
+
+    <!-- Key Stats Grid with Animated Counters -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="stat-card card-hover">
+        <div class="stat-value"><span class="counter" data-target="100">0</span>+</div>
+        <div class="stat-label">GitHub Repos</div>
+      </div>
+      <div class="stat-card card-hover">
+        <div class="stat-value"><span class="counter" data-target="6">0</span></div>
+        <div class="stat-label">Major Verticals</div>
+      </div>
+      <div class="stat-card card-hover">
+        <div class="stat-value"><span class="counter" data-target="15">0</span>+</div>
+        <div class="stat-label">Roblox Games</div>
+      </div>
+      <div class="stat-card card-hover">
+        <div class="stat-value"><span class="counter" data-target="5">0</span>+</div>
+        <div class="stat-label">Kaggle Competitions</div>
+      </div>
+    </div>
+
+    <!-- ASCII-Style Vertical Distribution Chart -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="text-terminal-muted text-sm ml-2">projects-by-vertical.sh</span>
+      </div>
+      <div class="terminal-body">
+        <div class="text-terminal-muted text-xs mb-4">$ ./analyze-verticals.sh --format=ascii</div>
+        <div class="space-y-3 font-mono text-sm">
+          <!-- Education -->
+          <div class="flex items-center gap-3">
+            <span class="w-24 text-terminal-accent truncate">Education</span>
+            <div class="flex-1 h-6 bg-terminal-bg rounded overflow-hidden relative">
+              <div class="progress-bar h-full bg-terminal-accent/60 rounded" data-width="85" style="width: 0%"></div>
+            </div>
+            <span class="w-12 text-right text-terminal-muted">18</span>
+          </div>
+          <!-- Healthcare -->
+          <div class="flex items-center gap-3">
+            <span class="w-24 text-terminal-green truncate">Healthcare</span>
+            <div class="flex-1 h-6 bg-terminal-bg rounded overflow-hidden relative">
+              <div class="progress-bar h-full bg-terminal-green/60 rounded" data-width="45" style="width: 0%"></div>
+            </div>
+            <span class="w-12 text-right text-terminal-muted">9</span>
+          </div>
+          <!-- Music -->
+          <div class="flex items-center gap-3">
+            <span class="w-24 text-terminal-yellow truncate">Music</span>
+            <div class="flex-1 h-6 bg-terminal-bg rounded overflow-hidden relative">
+              <div class="progress-bar h-full bg-terminal-yellow/60 rounded" data-width="70" style="width: 0%"></div>
+            </div>
+            <span class="w-12 text-right text-terminal-muted">14</span>
+          </div>
+          <!-- Gaming -->
+          <div class="flex items-center gap-3">
+            <span class="w-24 text-terminal-red truncate">Gaming</span>
+            <div class="flex-1 h-6 bg-terminal-bg rounded overflow-hidden relative">
+              <div class="progress-bar h-full bg-terminal-red/60 rounded" data-width="75" style="width: 0%"></div>
+            </div>
+            <span class="w-12 text-right text-terminal-muted">15</span>
+          </div>
+          <!-- E-commerce -->
+          <div class="flex items-center gap-3">
+            <span class="w-24 text-terminal-purple truncate">E-commerce</span>
+            <div class="flex-1 h-6 bg-terminal-bg rounded overflow-hidden relative">
+              <div class="progress-bar h-full bg-terminal-purple/60 rounded" data-width="50" style="width: 0%"></div>
+            </div>
+            <span class="w-12 text-right text-terminal-muted">10</span>
+          </div>
+          <!-- Data Science -->
+          <div class="flex items-center gap-3">
+            <span class="w-24 text-terminal-green truncate">Data Science</span>
+            <div class="flex-1 h-6 bg-terminal-bg rounded overflow-hidden relative">
+              <div class="progress-bar h-full bg-terminal-green/60 rounded" data-width="90" style="width: 0%"></div>
+            </div>
+            <span class="w-12 text-right text-terminal-muted">22</span>
+          </div>
+        </div>
+        <div class="text-terminal-muted text-xs mt-4 pt-4 border-t border-terminal-border">
+          <span class="text-terminal-green">Total:</span> 100+ projects across 6 verticals
+        </div>
+      </div>
+    </div>
+
+    <!-- Build Speed Showcase -->
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="terminal-window card-hover">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="text-terminal-muted text-sm ml-2">build-speed.log</span>
+        </div>
+        <div class="terminal-body">
+          <div class="text-terminal-muted text-xs mb-3">$ cat ./delivery-times.txt</div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-terminal-green">Folk Care</span>
+              <span class="text-terminal-accent font-bold">28 days</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-terminal-green">Ghost Note VST</span>
+              <span class="text-terminal-accent font-bold">14 days</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-terminal-green">Imaginary Crime Lab</span>
+              <span class="text-terminal-accent font-bold">21 days</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-terminal-green">Smash Showdown</span>
+              <span class="text-terminal-accent font-bold">7 days</span>
+            </div>
+          </div>
+          <div class="text-terminal-muted text-xs mt-4 pt-3 border-t border-terminal-border">
+            <span class="text-terminal-yellow">Days, not months.</span> That's the vibe coding difference.
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-window card-hover">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="text-terminal-muted text-sm ml-2">open-source.stats</span>
+        </div>
+        <div class="terminal-body">
+          <div class="text-terminal-muted text-xs mb-3">$ gh repo list --json name | wc -l</div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-terminal-muted">Public Repositories</span>
+              <span class="text-terminal-accent font-bold">50+</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-terminal-muted">Open Source Contributions</span>
+              <span class="text-terminal-green font-bold">Active</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-terminal-muted">Kaggle Notebooks</span>
+              <span class="text-terminal-purple font-bold">12+</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-terminal-muted">VST/CLAP Plugins</span>
+              <span class="text-terminal-yellow font-bold">3</span>
+            </div>
+          </div>
+          <div class="text-terminal-muted text-xs mt-4 pt-3 border-t border-terminal-border">
+            <span class="text-terminal-green">Building in public</span> since 2023
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASCII Timeline -->
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="text-terminal-muted text-sm ml-2">vibe-coding-timeline.ascii</span>
+      </div>
+      <div class="terminal-body overflow-x-auto">
+        <div class="text-terminal-muted text-xs mb-4">$ cat ./timeline.txt</div>
+        <pre class="text-xs sm:text-sm font-mono leading-relaxed whitespace-pre">
+<span class="text-terminal-accent">2023</span> ──────────────────────────────────────────────────────── <span class="text-terminal-accent">2025</span>
+  │                                                              │
+  ├─<span class="text-terminal-green">●</span> Claude Code Early Adopter                                  │
+  │   └── First 10 projects shipped                             │
+  │                                                              │
+  ├───────<span class="text-terminal-yellow">●</span> Folk Care Healthcare Platform                       │
+  │         └── 28 days, 312 commits                            │
+  │                                                              │
+  ├─────────────<span class="text-terminal-purple">●</span> Audio Forge RS (Rust Plugins)                │
+  │               └── Ghost Note, nih-plug ecosystem            │
+  │                                                              │
+  ├──────────────────<span class="text-terminal-red">●</span> Splash Screen Studio                    │
+  │                    └── 15+ Roblox games shipped             │
+  │                                                              │
+  └────────────────────────<span class="text-terminal-green">●</span> <span class="text-terminal-accent">100+ Projects Milestone</span>        ─┘
+                             └── And counting...
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ORIGINAL PROJECTS SECTION                    -->
+  <!-- ============================================ -->
   <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold mb-4">100+ Projects</h1>
+      <h2 class="text-4xl font-bold mb-4">Browse Projects</h2>
       <p class="text-terminal-muted max-w-2xl mx-auto">
         All built with vibe coding and Claude Code. Ranked by total file size.
         Click any project to view on GitHub.
@@ -121,6 +326,73 @@ const verticalColors: Record<string, string> = {
   <ChatButton pageContext={pageContext} />
 
   <script>
+    // ==========================================
+    // Animated Counter Function
+    // ==========================================
+    function animateCounter(element: HTMLElement, target: number, duration: number = 2000) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          element.textContent = target.toString();
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(start).toString();
+        }
+      }, 16);
+    }
+
+    // ==========================================
+    // Progress Bar Animation
+    // ==========================================
+    function animateProgressBars() {
+      document.querySelectorAll('.progress-bar').forEach((bar) => {
+        const targetWidth = bar.getAttribute('data-width');
+        if (targetWidth) {
+          setTimeout(() => {
+            (bar as HTMLElement).style.transition = 'width 1.5s ease-out';
+            (bar as HTMLElement).style.width = targetWidth + '%';
+          }, 300);
+        }
+      });
+    }
+
+    // ==========================================
+    // Intersection Observer for Animations
+    // ==========================================
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate counters
+          document.querySelectorAll('.counter').forEach((counter) => {
+            const target = parseInt(counter.getAttribute('data-target') || '0');
+            animateCounter(counter as HTMLElement, target);
+          });
+
+          // Animate progress bars
+          animateProgressBars();
+
+          // Stop observing after animation
+          observer.disconnect();
+        }
+      });
+    }, observerOptions);
+
+    // Observe the stats section
+    const statsSection = document.querySelector('.stat-card');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    // ==========================================
+    // Project Filter Functionality (Original)
+    // ==========================================
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         // Update active state
