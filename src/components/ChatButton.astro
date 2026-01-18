@@ -1,0 +1,237 @@
+---
+interface Props {
+  pageContext: string;
+}
+
+const { pageContext } = Astro.props;
+---
+
+<!-- Chat Button -->
+<button
+  id="chat-toggle"
+  class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-terminal-accent text-terminal-bg rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+  aria-label="Open chat"
+>
+  <svg id="chat-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+  </svg>
+  <svg id="chat-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+<!-- Chat Modal -->
+<div id="chat-modal" class="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] bg-terminal-surface border border-terminal-border rounded-lg shadow-2xl overflow-hidden hidden">
+  <!-- Header -->
+  <div class="bg-terminal-bg border-b border-terminal-border px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 bg-terminal-green rounded-full animate-pulse"></span>
+      <span class="font-semibold text-sm">Ask AI about Brian</span>
+    </div>
+    <span id="messages-left" class="text-xs text-terminal-muted">5 messages left today</span>
+  </div>
+
+  <!-- Messages -->
+  <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-4">
+    <div class="text-terminal-muted text-sm text-center py-8">
+      <p>Ask me anything about Brian's work, skills, or projects!</p>
+      <p class="mt-2 text-xs">Examples:</p>
+      <ul class="mt-1 space-y-1 text-xs">
+        <li>"What projects has Brian built?"</li>
+        <li>"What is vibe coding?"</li>
+        <li>"Can Brian help with healthcare software?"</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="border-t border-terminal-border p-3">
+    <div class="flex gap-2">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Type a message..."
+        class="flex-1 bg-terminal-bg border border-terminal-border rounded px-3 py-2 text-sm text-terminal-text placeholder-terminal-muted focus:outline-none focus:border-terminal-accent disabled:opacity-50"
+      />
+      <button
+        id="chat-send"
+        class="bg-terminal-accent text-terminal-bg px-4 py-2 rounded text-sm font-semibold hover:bg-terminal-accent/90 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Send
+      </button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ pageContext }}>
+  const DAILY_LIMIT = 5;
+  const STORAGE_KEY = 'tasteful-vibes-chat';
+
+  // DOM elements
+  const toggleBtn = document.getElementById('chat-toggle');
+  const modal = document.getElementById('chat-modal');
+  const openIcon = document.getElementById('chat-icon-open');
+  const closeIcon = document.getElementById('chat-icon-close');
+  const messagesContainer = document.getElementById('chat-messages');
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
+  const messagesLeftSpan = document.getElementById('messages-left');
+
+  let isOpen = false;
+  let messages = [];
+  let dailyCount = 0;
+  let isLoading = false;
+
+  // Load stored data
+  function loadStoredData() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return;
+
+    try {
+      const data = JSON.parse(stored);
+      const today = new Date().toISOString().split('T')[0];
+
+      if (data.date === today) {
+        messages = data.messages || [];
+        dailyCount = data.count || 0;
+        renderMessages();
+      }
+    } catch (e) {
+      console.error('Error loading chat data:', e);
+    }
+
+    updateMessagesLeft();
+  }
+
+  function saveData() {
+    const today = new Date().toISOString().split('T')[0];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      messages,
+      count: dailyCount,
+      date: today
+    }));
+  }
+
+  function updateMessagesLeft() {
+    const left = DAILY_LIMIT - dailyCount;
+    messagesLeftSpan.textContent = `${left} message${left !== 1 ? 's' : ''} left today`;
+
+    if (left <= 0) {
+      input.disabled = true;
+      input.placeholder = 'Daily limit reached';
+      sendBtn.disabled = true;
+    }
+  }
+
+  function renderMessages() {
+    if (messages.length === 0) {
+      messagesContainer.innerHTML = `
+        <div class="text-terminal-muted text-sm text-center py-8">
+          <p>Ask me anything about Brian's work, skills, or projects!</p>
+          <p class="mt-2 text-xs">Examples:</p>
+          <ul class="mt-1 space-y-1 text-xs">
+            <li>"What projects has Brian built?"</li>
+            <li>"What is vibe coding?"</li>
+            <li>"Can Brian help with healthcare software?"</li>
+          </ul>
+        </div>
+      `;
+      return;
+    }
+
+    messagesContainer.innerHTML = messages.map(msg => `
+      <div class="flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}">
+        <div class="max-w-[80%] rounded-lg px-3 py-2 text-sm ${
+          msg.role === 'user'
+            ? 'bg-terminal-accent text-terminal-bg'
+            : 'bg-terminal-bg text-terminal-text'
+        }">
+          ${msg.content}
+        </div>
+      </div>
+    `).join('');
+
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function addMessage(role, content) {
+    messages.push({ role, content });
+    renderMessages();
+  }
+
+  function showLoading() {
+    const loadingEl = document.createElement('div');
+    loadingEl.id = 'chat-loading';
+    loadingEl.className = 'flex justify-start';
+    loadingEl.innerHTML = `
+      <div class="bg-terminal-bg rounded-lg px-3 py-2 text-sm text-terminal-muted">
+        <span class="animate-pulse">Thinking...</span>
+      </div>
+    `;
+    messagesContainer.appendChild(loadingEl);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function hideLoading() {
+    const loadingEl = document.getElementById('chat-loading');
+    if (loadingEl) loadingEl.remove();
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || isLoading || dailyCount >= DAILY_LIMIT) return;
+
+    addMessage('user', text);
+    input.value = '';
+    isLoading = true;
+    sendBtn.disabled = true;
+    showLoading();
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages,
+          context: pageContext
+        })
+      });
+
+      hideLoading();
+
+      if (!response.ok) throw new Error('Failed to get response');
+
+      const data = await response.json();
+      addMessage('assistant', data.content);
+      dailyCount++;
+      updateMessagesLeft();
+      saveData();
+    } catch (err) {
+      hideLoading();
+      addMessage('assistant', 'Sorry, I encountered an error. Please try again.');
+    } finally {
+      isLoading = false;
+      sendBtn.disabled = dailyCount >= DAILY_LIMIT;
+    }
+  }
+
+  // Event listeners
+  toggleBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    modal.classList.toggle('hidden', !isOpen);
+    openIcon.classList.toggle('hidden', isOpen);
+    closeIcon.classList.toggle('hidden', !isOpen);
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // Initialize
+  loadStoredData();
+</script>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ChatButton from '../components/ChatButton';
+import ChatButton from '../components/ChatButton.astro';
 
 const pageContext = `
 Projects page - Brian Edwards has built 100+ projects using vibe coding and Claude Code.
@@ -118,7 +118,7 @@ const verticalColors: Record<string, string> = {
     </div>
   </div>
 
-  <ChatButton client:load pageContext={pageContext} />
+  <ChatButton pageContext={pageContext} />
 
   <script>
     document.querySelectorAll('.filter-btn').forEach(btn => {

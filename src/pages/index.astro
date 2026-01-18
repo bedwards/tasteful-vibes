@@ -4,7 +4,7 @@ import TerminalHero from '../components/TerminalHero.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import VerticalCards from '../components/VerticalCards.astro';
 import ScarySection from '../components/ScarySection.astro';
-import ChatButton from '../components/ChatButton';
+import ChatButton from '../components/ChatButton.astro';
 
 const pageContext = `
 Brian Edwards - Vibe Coding Expert & AI-First Developer
@@ -91,5 +91,5 @@ He can deliver projects in 1/4 of the traditional time. He can train your team t
     </div>
   </section>
 
-  <ChatButton client:load pageContext={pageContext} />
+  <ChatButton pageContext={pageContext} />
 </BaseLayout>

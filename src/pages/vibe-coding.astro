@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ChatButton from '../components/ChatButton';
+import ChatButton from '../components/ChatButton.astro';
 
 const pageContext = `
 Vibe Coding page - Learn about AI-first development with Claude Code.
@@ -225,5 +225,5 @@ This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git workt
     </div>
   </div>
 
-  <ChatButton client:load pageContext={pageContext} />
+  <ChatButton pageContext={pageContext} />
 </BaseLayout>

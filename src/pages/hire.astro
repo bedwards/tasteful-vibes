@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ChatButton from '../components/ChatButton';
+import ChatButton from '../components/ChatButton.astro';
 
 const pageContext = `
 Hire Brian Edwards page - Services, rates, and contact information.
@@ -200,5 +200,5 @@ Location: Waco, Texas, USA
     </div>
   </div>
 
-  <ChatButton client:load pageContext={pageContext} />
+  <ChatButton pageContext={pageContext} />
 </BaseLayout>
