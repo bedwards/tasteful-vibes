@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const body = await request.json();
     const { messages, context } = body;
@@ -14,7 +14,9 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const groqApiKey = import.meta.env.GROQ_API_KEY;
+    // Access Cloudflare environment from locals.runtime.env
+    const runtime = (locals as any).runtime;
+    const groqApiKey = runtime?.env?.GROQ_API_KEY || import.meta.env.GROQ_API_KEY;
     if (!groqApiKey) {
       console.error('GROQ_API_KEY not configured');
       return new Response(JSON.stringify({ error: 'API not configured' }), {
