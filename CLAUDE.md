@@ -78,18 +78,26 @@ Set Cloudflare secrets:
 npx wrangler pages secret put GROQ_API_KEY --project-name tasteful-vibes
 ```
 
-## GitHub Issues (22 Open)
+## GitHub Issues
 
 All work is tracked in GitHub issues. Always create issues for new features.
 
-Key issues:
+**Completed:**
+- ~~#4: Build homepage~~ ✅
+- ~~#5: AI chat implementation~~ ✅
+
+**Key Open Issues:**
 - #2: Integrate Substack feeds
 - #3: Git submodule all repos
-- #5: AI chat implementation (DONE)
 - #6: Stripe payment integration
+- #14-19: Vertical pages (Education, Healthcare, Music, Gaming, Data Science, Enterprise)
 - #20: Comprehensive project statistics
 - #21: Testimonials section
 - #22: Claude session logs and prompts
+- #23: Animated terminal typing effect (NEW)
+- #24: Interactive code playground (NEW)
+- #25: Live GitHub activity feed (NEW)
+- #26: Video demos of vibe coding (NEW)
 
 ## Values (MUST PRESERVE)
 
