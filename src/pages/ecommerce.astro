@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+E-commerce vertical page - Brian Edwards builds distributed e-commerce systems on Cloudflare.
+Projects include: Imaginary Crime Lab (mystery cases e-commerce), Liquidity (Shopify Liquid utilities), Shopivibelize (playful Shopify workflows).
+Expertise: Cloudflare Workers, Cloudflare Pages, edge computing, Shopify Liquid themes, distributed architecture.
+Brian delivers e-commerce solutions in days, not months. Contact for rapid e-commerce development.
+`;
+---
+
+<BaseLayout title="E-commerce" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">E-commerce at the Edge</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Lightning-fast storefronts powered by Cloudflare. Shopify themes that actually work.
+        E-commerce development at vibe coding speed.
+      </p>
+    </div>
+
+    <!-- Hero Statement -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">edge-commerce.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Why Build E-commerce on Cloudflare?</h2>
+
+        <div class="grid md:grid-cols-3 gap-6 my-6">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-accent glow-text">&lt;50ms</div>
+            <p class="text-terminal-muted text-sm mt-2">Global response times from 300+ edge locations</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-green glow-text">$0</div>
+            <p class="text-terminal-muted text-sm mt-2">Egress fees - your margins stay intact</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-yellow glow-text">Infinite</div>
+            <p class="text-terminal-muted text-sm mt-2">Scale - handle Black Friday without blinking</p>
+          </div>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          Traditional e-commerce platforms are slow, expensive, and locked-in. Cloudflare Workers
+          change everything. Your storefront runs at the edge, milliseconds from every customer.
+          Your data lives in Durable Objects, globally distributed and instantly consistent.
+          <span class="text-terminal-accent font-semibold">This is the future of e-commerce.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Imaginary Crime Lab -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">imaginary-crime-lab.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Imaginary Crime Lab</h2>
+        <p class="text-terminal-yellow font-semibold">Distributed E-commerce on Cloudflare</p>
+
+        <p class="text-terminal-text leading-relaxed">
+          A mystery-themed e-commerce platform selling detective cases and evidence collection kits.
+          Built entirely on Cloudflare's edge infrastructure - Workers for compute, D1 for data,
+          R2 for assets, Pages for the storefront.
+        </p>
+
+        <div class="screenshot-container my-6">
+          <img
+            src="/screenshots/imaginary-crime-lab.png"
+            alt="Imaginary Crime Lab storefront"
+            class="screenshot-img"
+          />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold">Edge-Native Architecture</h3>
+            <p class="text-terminal-muted text-sm">
+              No origin server. Everything runs at Cloudflare's edge. Cart state in Durable Objects.
+              Product catalog in D1. Images in R2.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold">Mystery Case Subscriptions</h3>
+            <p class="text-terminal-muted text-sm">
+              Recurring shipments of detective cases. Evidence bags, forensic reports, suspect dossiers.
+              Each case a new mystery to solve.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold">Zero Cold Starts</h3>
+            <p class="text-terminal-muted text-sm">
+              Workers start in under 5ms. No Lambda cold start tax. Customers get instant responses
+              whether it's 3am or Black Friday.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold">Global by Default</h3>
+            <p class="text-terminal-muted text-sm">
+              Deploy once, run everywhere. A customer in Tokyo gets the same sub-50ms experience
+              as someone in Texas.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent mt-4">
+          <p class="text-terminal-accent font-semibold mb-2">Tech Stack:</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag tag-accent">Cloudflare Workers</span>
+            <span class="tag tag-green">Cloudflare Pages</span>
+            <span class="tag tag-yellow">D1 Database</span>
+            <span class="tag tag-purple">R2 Storage</span>
+            <span class="tag tag-accent">Durable Objects</span>
+            <span class="tag tag-green">Hono Framework</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopify Tools -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">shopify-tools.md</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-2xl font-bold text-terminal-accent">Shopify Development Tools</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Shopify's Liquid templating language is powerful but painful. These tools make theme
+          development faster and less error-prone.
+        </p>
+
+        <div class="space-y-6">
+          <!-- Liquidity -->
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="text-xl font-semibold text-terminal-green">Liquidity</h3>
+            <p class="text-terminal-yellow text-sm mb-2">Shopify Liquid Theme Utilities</p>
+
+            <p class="text-terminal-muted text-sm mb-4">
+              A collection of battle-tested Liquid snippets and patterns. Reusable components for
+              product grids, cart drawers, collection filters, and more. Stop rewriting the same
+              Liquid code for every client.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="tag tag-green">Liquid Templates</span>
+              <span class="tag tag-accent">Theme Components</span>
+              <span class="tag tag-yellow">JSON Templates</span>
+            </div>
+          </div>
+
+          <!-- Shopivibelize -->
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="text-xl font-semibold text-terminal-purple">Shopivibelize</h3>
+            <p class="text-terminal-yellow text-sm mb-2">Playful Shopify Workflows</p>
+
+            <p class="text-terminal-muted text-sm mb-4">
+              Shopify development with vibe coding energy. Automation scripts, theme deployment
+              pipelines, and development workflows that make Shopify actually enjoyable to work with.
+              Because e-commerce development shouldn't feel like a chore.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="tag tag-purple">Workflow Automation</span>
+              <span class="tag tag-accent">Theme CLI</span>
+              <span class="tag tag-green">Dev Pipelines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cloudflare Expertise -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">cloudflare-expertise.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Cloudflare Stack Expertise</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          I don't just use Cloudflare - I build production systems on their full stack. Here's what
+          I can deploy for your e-commerce operation:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <h3 class="font-semibold text-terminal-accent mb-2">Cloudflare Workers</h3>
+            <p class="text-terminal-muted text-sm">
+              Serverless compute at the edge. API routes, checkout flows, inventory checks - all
+              running in under 50ms worldwide.
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <h3 class="font-semibold text-terminal-green mb-2">Cloudflare Pages</h3>
+            <p class="text-terminal-muted text-sm">
+              Static storefronts with dynamic capabilities. Astro, Next.js, SvelteKit - deployed
+              globally with automatic preview deployments.
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <h3 class="font-semibold text-terminal-yellow mb-2">D1 Database</h3>
+            <p class="text-terminal-muted text-sm">
+              SQLite at the edge. Product catalogs, order history, customer data - with the
+              simplicity of SQL and the speed of edge computing.
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <h3 class="font-semibold text-terminal-purple mb-2">Durable Objects</h3>
+            <p class="text-terminal-muted text-sm">
+              Stateful edge computing. Shopping carts, inventory locks, real-time collaboration -
+              consistent state without a central database.
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <h3 class="font-semibold text-terminal-accent mb-2">R2 Storage</h3>
+            <p class="text-terminal-muted text-sm">
+              S3-compatible object storage with zero egress fees. Product images, downloadable
+              goods, backups - without the AWS bill shock.
+            </p>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <h3 class="font-semibold text-terminal-green mb-2">Workers AI</h3>
+            <p class="text-terminal-muted text-sm">
+              Run AI models at the edge. Product recommendations, search enhancement, chatbots -
+              without shipping data to external APIs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Me -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">why-hire-me.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Ship Your Store in Weeks, Not Months</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Traditional e-commerce agencies quote 3-6 months and six figures. I build faster because
+          I use vibe coding - AI-first development that compresses timelines dramatically.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 my-6">
+          <div class="border-l-2 border-terminal-red pl-4">
+            <h3 class="font-semibold text-terminal-red">Traditional Agency</h3>
+            <ul class="text-terminal-muted text-sm space-y-1 mt-2">
+              <li>3-6 month timeline</li>
+              <li>$50k-150k budget</li>
+              <li>Legacy platform lock-in</li>
+              <li>Slow page loads, high hosting costs</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold text-terminal-green">Vibe Coding + Cloudflare</h3>
+            <ul class="text-terminal-muted text-sm space-y-1 mt-2">
+              <li>2-4 week timeline</li>
+              <li>Fraction of agency cost</li>
+              <li>Edge-native, vendor-portable</li>
+              <li>Sub-50ms global, minimal hosting</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          Your e-commerce platform should be a competitive advantage, not a legacy burden.
+          <span class="text-terminal-accent font-semibold">Let's build something fast.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-12">
+      <h2 class="text-2xl font-bold mb-4">Ready to Build Your Edge-Native Store?</h2>
+      <p class="text-terminal-muted mb-8 max-w-xl mx-auto">
+        Whether you need a full Cloudflare storefront, Shopify theme work, or just want to
+        modernize your existing e-commerce stack - let's talk.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/hire" class="btn-primary text-lg px-8 py-4">Hire Me</a>
+        <a href="/projects" class="btn-secondary">See All Projects</a>
+      </div>
+    </div>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
