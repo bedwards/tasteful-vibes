@@ -85,19 +85,38 @@ All work is tracked in GitHub issues. Always create issues for new features.
 **Completed:**
 - ~~#4: Build homepage~~ ✅
 - ~~#5: AI chat implementation~~ ✅
+- ~~#9: Project verticals pages~~ ✅
+- ~~#14: Education vertical page~~ ✅
+- ~~#15: Healthcare vertical page~~ ✅
+- ~~#16: Music/Audio vertical page~~ ✅
+- ~~#17: Gaming vertical page~~ ✅
+- ~~#18: Data Science vertical page~~ ✅
 
 **Key Open Issues:**
 - #2: Integrate Substack feeds
 - #3: Git submodule all repos
 - #6: Stripe payment integration
-- #14-19: Vertical pages (Education, Healthcare, Music, Gaming, Data Science, Enterprise)
+- #7: Kaggle integration
+- #19: MSP/Enterprise services page
 - #20: Comprehensive project statistics
 - #21: Testimonials section
 - #22: Claude session logs and prompts
-- #23: Animated terminal typing effect (NEW)
-- #24: Interactive code playground (NEW)
-- #25: Live GitHub activity feed (NEW)
-- #26: Video demos of vibe coding (NEW)
+- #23: Animated terminal typing effect
+- #24: Interactive code playground
+- #25: Live GitHub activity feed
+- #26: Video demos of vibe coding
+- #27: Screenshot pipeline and gallery
+
+## Screenshots
+
+Processed screenshots in `/public/screenshots/`:
+- Folk Care: demo-accounts, substack, patreon, discord-dev
+- Education: conjunction-junction, future-educator-lessons, lesson-plan-slides, lesson-plan-quizzes, tea-aligned-slides
+- Gaming: roblox-games-grid, roblox-profile, roblox-creator-dashboard, roblox-profile-full
+- Music: ghost-note-app
+- Data Science: graphyard-article
+- E-commerce: imaginary-crime-lab
+- Resources: metavibe-books, hex-index-deepdives
 
 ## Values (MUST PRESERVE)
 
