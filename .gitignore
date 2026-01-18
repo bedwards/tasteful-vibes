@@ -69,6 +69,16 @@ web_modules/
 .env
 .env.*
 !.env.example
+.dev.vars
+
+# Wrangler
+.wrangler/
+
+# Secrets (never commit)
+*.pem
+*.key
+credentials.json
+service-account*.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
