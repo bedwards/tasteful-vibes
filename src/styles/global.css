@@ -123,6 +123,64 @@
   .tag-purple {
     @apply bg-terminal-purple/20 text-terminal-purple;
   }
+
+  /* Screenshot styling - terminal vibe */
+  .screenshot-container {
+    @apply relative rounded-lg overflow-hidden border border-terminal-border;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 255, 136, 0.05);
+  }
+
+  .screenshot-container::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 255, 136, 0.03) 0%,
+      transparent 50%,
+      rgba(0, 255, 136, 0.02) 100%
+    );
+    z-index: 1;
+  }
+
+  .screenshot-container:hover {
+    @apply border-terminal-accent;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6), 0 0 60px rgba(0, 255, 136, 0.1);
+  }
+
+  .screenshot-img {
+    @apply w-full h-auto block transition-transform duration-300;
+  }
+
+  .screenshot-container:hover .screenshot-img {
+    @apply scale-[1.02];
+  }
+
+  /* Screenshot with terminal window frame */
+  .screenshot-terminal {
+    @apply terminal-window;
+  }
+
+  .screenshot-terminal .screenshot-img {
+    @apply border-t border-terminal-border;
+  }
+
+  /* Screenshot caption */
+  .screenshot-caption {
+    @apply text-xs text-terminal-muted mt-2 text-center font-mono;
+  }
+
+  /* Screenshot grid */
+  .screenshot-grid {
+    @apply grid gap-6;
+  }
+
+  .screenshot-grid.cols-2 {
+    @apply md:grid-cols-2;
+  }
+
+  .screenshot-grid.cols-3 {
+    @apply md:grid-cols-2 lg:grid-cols-3;
+  }
 }
 
 @layer utilities {
