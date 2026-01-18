@@ -4,6 +4,7 @@ import ChatButton from '../components/ChatButton.astro';
 
 const pageContext = `
 Music vertical page - Brian Edwards' audio technology and music production work.
+Groove Link: Control Bitwig Studio from Claude Code via Rust TCP proxy, Java extension, and Python CLI. Fuzzy search presets, YAML project definitions, ABC notation to MIDI.
 Ghost Note: Rust VST3/CLAP audio plugin that converts poetry to song lyrics and melody.
 audio-forge-rs organization: High-performance Rust audio tools.
 DrivenByMoss: Bitwig Studio extensions for hardware controllers.
@@ -53,6 +54,83 @@ Brian is an active musician with deep passion for audio technology and music pro
               Claude Code understands both Rust and audio DSP. I describe the sound I want, the algorithm clicks into place.
               Real-time audio demands perfection - and AI-assisted Rust delivers it.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Groove Link - Control Bitwig from Claude Code -->
+      <section class="terminal-window">
+        <div class="terminal-header bg-terminal-purple/10">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-purple text-sm font-semibold">groove-link</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-purple">Groove Link</h2>
+          <p class="text-terminal-yellow text-sm">Control Bitwig Studio from Claude Code | Rust + Java + Python</p>
+
+          <p class="text-terminal-text leading-relaxed">
+            <span class="text-terminal-purple font-semibold">Music production meets AI coding.</span> Groove Link bridges
+            Claude Code directly to Bitwig Studio. Search presets, create tracks, define entire projects in YAML,
+            and let Claude handle the DAW automation. This is vibe coding for music producers.
+          </p>
+
+          <!-- Demo Video -->
+          <div class="video-embed-wrapper my-6">
+            <iframe
+              src="https://www.youtube.com/embed/0mXTOJuuA5U"
+              title="Groove Link Demo - Control Bitwig from Claude Code"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- Screenshot -->
+          <div class="screenshot-container my-6">
+            <img
+              src="/screenshots/groove-link.png"
+              alt="Groove Link - Claude Code controlling Bitwig Studio with YAML project creation"
+              class="screenshot-img"
+            />
+            <p class="screenshot-caption">Claude Code creating a LoFi project with tracks, presets, and effects in Bitwig Studio</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="border-l-2 border-terminal-purple pl-4">
+              <h3 class="font-semibold text-terminal-purple">Architecture</h3>
+              <ul class="text-terminal-muted text-sm space-y-1 mt-2">
+                <li><span class="text-terminal-accent">Rust TCP Proxy</span> - JSON-RPC message routing</li>
+                <li><span class="text-terminal-green">Java Extension</span> - Bitwig Studio integration</li>
+                <li><span class="text-terminal-yellow">Python CLI</span> - User-facing commands</li>
+                <li><span class="text-terminal-purple">Claude Code</span> - Natural language control</li>
+              </ul>
+            </div>
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <h3 class="font-semibold text-terminal-accent">Capabilities</h3>
+              <ul class="text-terminal-muted text-sm space-y-1 mt-2">
+                <li>Fuzzy search: presets, VST3, AU, CLAP</li>
+                <li>YAML project definitions</li>
+                <li>ABC notation to MIDI conversion</li>
+                <li>Track creation & effect chains</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto">
+            <p class="text-terminal-muted"># Example: Create a track with a synth</p>
+            <p class="text-terminal-green">$ bitwig preset "Polymer" --type instrument</p>
+            <p class="text-terminal-text mt-2">Found: Polymer (Bitwig Synth) - Creating instrument track...</p>
+            <p class="text-terminal-muted mt-2"># Or define an entire project in YAML</p>
+            <p class="text-terminal-green">$ bitwig project create lofi-study.yaml</p>
+            <p class="text-terminal-yellow mt-2">→ Song: LoFi Study | 85 BPM, D minor</p>
+            <p class="text-terminal-yellow">→ Tracks: keys (Rusty Rhodes), bass (Acoustic), drums (v0 E-drums)</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+            <a href="https://www.youtube.com/watch?v=0mXTOJuuA5U" target="_blank" class="tag tag-purple">Watch Demo</a>
+            <a href="https://github.com/audio-forge-rs/groove-link" target="_blank" class="tag tag-green">GitHub</a>
           </div>
         </div>
       </section>
