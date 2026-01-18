@@ -231,3 +231,69 @@
   display: inline-flex;
   align-items: baseline;
 }
+
+/* Video Demo Cards */
+.video-demo-card {
+  @apply bg-terminal-bg border border-terminal-border rounded-lg overflow-hidden transition-all duration-300;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.video-demo-card:hover {
+  @apply border-terminal-accent;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.15), 0 0 40px rgba(0, 255, 136, 0.05);
+  transform: translateY(-2px);
+}
+
+.video-demo-thumbnail {
+  @apply relative aspect-video bg-terminal-surface flex items-center justify-center;
+  background-image:
+    linear-gradient(45deg, rgba(0, 255, 136, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0, 255, 136, 0.03) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 255, 136, 0.03) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 255, 136, 0.03) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.video-demo-play-icon {
+  @apply text-terminal-green/50 transition-all duration-300;
+}
+
+.video-demo-card:hover .video-demo-play-icon {
+  @apply text-terminal-green;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
+}
+
+.video-demo-coming-soon {
+  @apply absolute top-3 right-3 px-2 py-1 text-xs font-semibold rounded;
+  @apply bg-terminal-yellow/20 text-terminal-yellow border border-terminal-yellow/30;
+}
+
+.video-demo-tag {
+  @apply inline-block px-2 py-0.5 text-xs font-semibold rounded uppercase tracking-wider;
+}
+
+.video-demo-tag-workflow {
+  @apply bg-terminal-accent/20 text-terminal-accent border border-terminal-accent/30;
+}
+
+.video-demo-tag-speed {
+  @apply bg-terminal-purple/20 text-terminal-purple border border-terminal-purple/30;
+}
+
+.video-demo-tag-tutorial {
+  @apply bg-terminal-green/20 text-terminal-green border border-terminal-green/30;
+}
+
+.video-demo-tag-debug {
+  @apply bg-terminal-red/20 text-terminal-red border border-terminal-red/30;
+}
+
+/* Video embed wrapper for actual videos */
+.video-embed-wrapper {
+  @apply relative aspect-video rounded-lg overflow-hidden border border-terminal-border;
+}
+
+.video-embed-wrapper iframe {
+  @apply absolute inset-0 w-full h-full;
+}
