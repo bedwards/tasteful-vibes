@@ -3,10 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChatButton from '../components/ChatButton.astro';
 
 const pageContext = `
-About Brian Edwards page.
-Brian is a full-time teacher at Future Educator Academy, Waco ISD who has built 100+ projects using vibe coding.
-Background: Atlassian/Bitbucket, Zenoss, education technology, music production, data science.
-Location: Waco, Texas, USA.
+About Brian Edwards - Full background and career history.
+
+Brian Edwards is pioneering vibe coding—AI-assisted development that multiplies team velocity 6-10x.
+
+Education: University of Florida, B.S. Computer Engineering (1994-1997)
+
+Career:
+- Folk Care/Chief Vibe Coder (Oct 2025-Present) - Built open-source home healthcare platform in 28 days with Claude Code
+- Undertow Ink (2021-2025) - 5 years, creative platform, writing, digital media
+- Atlassian/Bitbucket Cloud (2015-2021) - 6 years, Senior Software Engineer, Python/Django/Golang, served 10+ million users
+- 21CT (2013-2015) - 2 years, healthcare fraud detection, Java/DropWizard
+- Zenoss (2008-2013) - 5 years, IT monitoring software, Python/Zope
+- Juniper Networks - CCIE certification from Cisco, wrote a book on multicast routing, active in IETF
+- Taught himself Java, won $20k placing 2nd in poker AI tournament
+
+Currently teaching at Future Educator Academy, Waco ISD while building 100+ projects with vibe coding.
+
+Location: Waco, Texas, USA
+Contact: brian.mabry.edwards@gmail.com, 512-584-6841
 `;
 ---
 
@@ -14,74 +29,234 @@ Location: Waco, Texas, USA.
   <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold mb-4">About Brian Edwards</h1>
-      <p class="text-terminal-muted">
-        Vibe Coding Expert. Teacher. Builder.
+      <p class="text-terminal-muted text-lg">
+        Pioneering vibe coding—AI-assisted development that multiplies team velocity 6-10x.
       </p>
     </div>
 
     <div class="space-y-12">
-      <!-- Intro -->
+      <!-- Bio -->
       <section class="terminal-window">
         <div class="terminal-header">
           <span class="terminal-dot bg-terminal-red"></span>
           <span class="terminal-dot bg-terminal-yellow"></span>
           <span class="terminal-dot bg-terminal-green"></span>
-          <span class="ml-4 text-terminal-muted text-sm">whoami.txt</span>
+          <span class="ml-4 text-terminal-muted text-sm">bio.txt</span>
         </div>
         <div class="terminal-body space-y-4">
           <p class="text-terminal-text leading-relaxed">
-            I'm a full-time teacher at <span class="text-terminal-accent">Future Educator Academy</span> in Waco ISD.
-            During the day, I teach. After hours, I build software at an unreasonable pace using
-            Claude Code and vibe coding methodology.
+            I'm pioneering <span class="text-terminal-accent font-semibold">vibe coding</span>—AI-assisted development
+            that multiplies team velocity 6-10x—through <a href="https://about.folk.care" target="_blank" class="link-accent">Folk Care</a>,
+            an open-source home healthcare management platform I built in <span class="text-terminal-green font-semibold">28 days</span> with Claude Code.
           </p>
 
           <p class="text-terminal-text leading-relaxed">
-            In the last 6 months, I've shipped over 100 projects across education, healthcare, music production,
-            gaming, e-commerce, and data science. Not experiments - real, deployed, useful software.
+            Folk Care is production-ready, fully deployed, and available for agencies to self-host at $20-30/month,
+            delivering enterprise features (EVV compliance, scheduling, billing, family portals) that typically
+            cost $750-2,250/user/month from traditional vendors.
           </p>
 
           <p class="text-terminal-text leading-relaxed">
-            I believe the future of software development is AI-first. The engineers who embrace these
-            tools today will define how we build software tomorrow. I'm helping lead that transition.
+            Drawing on experience as Senior Software Engineer at <span class="text-terminal-accent">Atlassian (Bitbucket)</span>
+            and <span class="text-terminal-accent">Zenoss</span>, I combine software engineering best practices,
+            dev team management, CTO-level strategic thinking, and product management expertise to demonstrate
+            how businesses can achieve nearly impossible project scopes through vibe coding.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            I train and consult with teams adopting these transformative practices, proving that with the right
+            AI-assisted workflows, <span class="text-terminal-yellow font-semibold">a single developer can accomplish
+            what traditionally required 4-6 engineers over 3-4 months</span>.
           </p>
         </div>
       </section>
 
-      <!-- Background -->
+      <!-- Career Timeline -->
       <section class="terminal-window">
         <div class="terminal-header">
           <span class="terminal-dot bg-terminal-red"></span>
           <span class="terminal-dot bg-terminal-yellow"></span>
           <span class="terminal-dot bg-terminal-green"></span>
-          <span class="ml-4 text-terminal-muted text-sm">background.txt</span>
+          <span class="ml-4 text-terminal-muted text-sm">career.log</span>
         </div>
-        <div class="terminal-body space-y-4">
-          <h2 class="text-xl font-bold text-terminal-accent">Background</h2>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-xl font-bold text-terminal-accent">Career Timeline</h2>
 
-          <div class="space-y-4">
+          <div class="space-y-6">
+            <!-- Folk Care -->
             <div class="border-l-2 border-terminal-accent pl-4">
-              <h3 class="font-semibold">Current: Future Educator Academy, Waco ISD</h3>
-              <p class="text-terminal-muted text-sm">
-                Full-time teacher. Automating Google Classroom, attendance, scheduling, and more.
-                Building tools that save teachers hours of administrative work every week.
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-terminal-green font-semibold">Oct 2025 - Present</span>
+                <span class="tag tag-accent text-xs">Current</span>
+              </div>
+              <h3 class="font-semibold">Chief Vibe Coder @ Folk Care</h3>
+              <p class="text-terminal-muted text-sm mt-1">
+                Pioneering vibe coding through Folk Care, an open-source home healthcare platform.
+                Built production-ready EVV compliance, scheduling, billing, and family portals in 28 days.
+                Self-employed, Waco, Texas.
               </p>
             </div>
 
+            <!-- Undertow Ink -->
             <div class="border-l-2 border-terminal-muted pl-4">
-              <h3 class="font-semibold">Previous: Tech Industry</h3>
-              <p class="text-terminal-muted text-sm">
-                Background in enterprise software including Atlassian/Bitbucket and Zenoss.
-                Deep experience with distributed systems, APIs, and developer tools.
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-terminal-muted">2021 - Dec 2025</span>
+                <span class="text-terminal-muted text-xs">5 years</span>
+              </div>
+              <h3 class="font-semibold">Founding Creator @ Undertow Ink</h3>
+              <p class="text-terminal-muted text-sm mt-1">
+                Built and led a multifaceted creative platform. Educated and inspired through writing,
+                design, and digital media projects. Taught technical and artistic skills.
+                Self-employed, Waco, Texas.
               </p>
             </div>
 
+            <!-- Atlassian -->
             <div class="border-l-2 border-terminal-muted pl-4">
-              <h3 class="font-semibold">Side Projects</h3>
-              <p class="text-terminal-muted text-sm">
-                Music production (Bitwig Studio plugins), Kaggle competitions, Roblox game development,
-                open source healthcare software, and more.
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-terminal-muted">2015 - 2021</span>
+                <span class="text-terminal-muted text-xs">6 years</span>
+              </div>
+              <h3 class="font-semibold">Senior Software Engineer @ Atlassian (Bitbucket Cloud)</h3>
+              <p class="text-terminal-muted text-sm mt-1">
+                Developed and maintained Bitbucket Cloud serving <span class="text-terminal-accent">10+ million users</span>.
+                Migrated key components to Golang for scalability. Led webhooks renovation, performance improvements,
+                code review features. Python, Django, PostgreSQL, React, Redux, Git, AWS.
+                Austin, Texas.
               </p>
             </div>
+
+            <!-- 21CT -->
+            <div class="border-l-2 border-terminal-muted pl-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-terminal-muted">2013 - 2015</span>
+                <span class="text-terminal-muted text-xs">2 years</span>
+              </div>
+              <h3 class="font-semibold">Senior Software Engineer @ 21CT</h3>
+              <p class="text-terminal-muted text-sm mt-1">
+                Healthcare fraud-detection software using Java and DropWizard.
+                Analyzed large datasets with Vertica database to identify fraud patterns.
+                Austin, Texas.
+              </p>
+            </div>
+
+            <!-- Zenoss -->
+            <div class="border-l-2 border-terminal-muted pl-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-terminal-muted">2008 - 2013</span>
+                <span class="text-terminal-muted text-xs">5 years</span>
+              </div>
+              <h3 class="font-semibold">Senior Software Engineer @ Zenoss</h3>
+              <p class="text-terminal-muted text-sm mt-1">
+                IT monitoring software using Python and Zope. Designed and implemented features,
+                improved stability and performance. Mentored junior engineers, collaborated with cross-functional teams.
+                Austin, Texas.
+              </p>
+            </div>
+
+            <!-- Early Career -->
+            <div class="border-l-2 border-terminal-muted pl-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-terminal-muted">Earlier</span>
+              </div>
+              <h3 class="font-semibold">AlterPoint, Juniper Networks, IETF</h3>
+              <p class="text-terminal-muted text-sm mt-1">
+                Earned CCIE certification from Cisco while at Juniper Networks' tech support team.
+                Active in the IETF. <span class="text-terminal-accent">Wrote a book on multicast routing.</span>
+                Network management software at AlterPoint.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education & Achievements -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">achievements.txt</span>
+        </div>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-xl font-bold text-terminal-accent">Education & Achievements</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="border-l-2 border-terminal-accent pl-4">
+                <h3 class="font-semibold">University of Florida</h3>
+                <p class="text-terminal-muted text-sm">B.S. Computer Engineering, 1994-1997</p>
+              </div>
+
+              <div class="border-l-2 border-terminal-green pl-4">
+                <h3 class="font-semibold">CCIE Certification</h3>
+                <p class="text-terminal-muted text-sm">Cisco Systems - achieved while at Juniper Networks</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="border-l-2 border-terminal-yellow pl-4">
+                <h3 class="font-semibold">Published Author</h3>
+                <p class="text-terminal-muted text-sm">Wrote a book on multicast routing</p>
+              </div>
+
+              <div class="border-l-2 border-terminal-purple pl-4">
+                <h3 class="font-semibold">Poker AI Tournament</h3>
+                <p class="text-terminal-muted text-sm">Won $20k placing 2nd - taught himself Java to compete</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommendations -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">recommendations.txt</span>
+        </div>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-xl font-bold text-terminal-accent">What People Say</h2>
+
+          <div class="space-y-6">
+            <blockquote class="border-l-2 border-terminal-accent pl-4 italic">
+              <p class="text-terminal-text">
+                "Brian is a great software engineer that understands systems end to end.
+                He always strived to build robust product without taking shortcuts.
+                Highly recommend for any Python or Java teams out there."
+              </p>
+              <footer class="text-terminal-muted text-sm mt-2 not-italic">
+                — <span class="text-terminal-accent">Ryan Kruse</span>, VP Hockey Strategy & Analytics at Chicago Blackhawks
+                <span class="text-terminal-muted">(worked together at AlterPoint)</span>
+              </footer>
+            </blockquote>
+
+            <blockquote class="border-l-2 border-terminal-green pl-4 italic">
+              <p class="text-terminal-text">
+                "Brian is an excellent software engineer. He's productive, smart, and easy to get along with.
+                I enjoyed talking shop with him because I knew I could always learn something,
+                and I appreciated his depth of technical knowledge and commitment to quality.
+                He'd be an asset to any software development team."
+              </p>
+              <footer class="text-terminal-muted text-sm mt-2 not-italic">
+                — <span class="text-terminal-accent">Matt Shostak</span>, Senior Software Engineer
+              </footer>
+            </blockquote>
+
+            <blockquote class="border-l-2 border-terminal-yellow pl-4 italic">
+              <p class="text-terminal-text">
+                "I've had the privilege of collaborating with Brian on several projects, and he consistently
+                impresses me with his thoughtful approach and exceptional software engineering skills.
+                His ability to bridge the gap between complex technical solutions and practical implementation
+                is remarkable. Brian not only delivers high-quality work but also brings a collaborative
+                spirit that elevates the entire team. Highly recommend him for any challenging software endeavor."
+              </p>
+              <footer class="text-terminal-muted text-sm mt-2 not-italic">
+                — <span class="text-terminal-accent">Mike Lunt</span>, Collaborator
+              </footer>
+            </blockquote>
           </div>
         </div>
       </section>
@@ -92,56 +267,55 @@ Location: Waco, Texas, USA.
           <span class="terminal-dot bg-terminal-red"></span>
           <span class="terminal-dot bg-terminal-yellow"></span>
           <span class="terminal-dot bg-terminal-green"></span>
-          <span class="ml-4 text-terminal-muted text-sm">skills.txt</span>
+          <span class="ml-4 text-terminal-muted text-sm">skills.json</span>
         </div>
-        <div class="terminal-body space-y-4">
+        <div class="terminal-body space-y-6">
           <h2 class="text-xl font-bold text-terminal-accent">Technical Skills</h2>
 
           <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 class="text-terminal-green font-semibold mb-2">AI/Development Tools</h3>
-              <div class="flex flex-wrap gap-1">
-                <span class="tag tag-accent">Claude Code CLI</span>
-                <span class="tag">Gemini CLI</span>
-                <span class="tag">Codex</span>
-                <span class="tag">Cursor</span>
-                <span class="tag">VS Code</span>
-                <span class="tag">IntelliJ IDEA</span>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="text-terminal-green font-semibold mb-2">Languages</h3>
-              <div class="flex flex-wrap gap-1">
-                <span class="tag tag-accent">TypeScript</span>
-                <span class="tag tag-green">Python</span>
-                <span class="tag tag-yellow">Rust</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">PHP</span>
-                <span class="tag">Java</span>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="text-terminal-green font-semibold mb-2">Frameworks & Platforms</h3>
-              <div class="flex flex-wrap gap-1">
-                <span class="tag">React</span>
-                <span class="tag">Astro</span>
-                <span class="tag">Node.js</span>
-                <span class="tag tag-accent">Cloudflare</span>
-                <span class="tag">Google APIs</span>
-                <span class="tag">Shopify</span>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="text-terminal-green font-semibold mb-2">Specialties</h3>
+              <h3 class="text-terminal-green font-semibold mb-2">Core Expertise</h3>
               <div class="flex flex-wrap gap-1">
                 <span class="tag tag-purple">Vibe Coding</span>
-                <span class="tag">Rapid Prototyping</span>
-                <span class="tag">Automation</span>
-                <span class="tag">AI Integration</span>
-                <span class="tag">Audio Plugins</span>
+                <span class="tag tag-accent">Claude Code</span>
+                <span class="tag">Python</span>
+                <span class="tag">Golang</span>
+                <span class="tag">Java</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag tag-yellow">Rust</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Frameworks & Tools</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag">Django</span>
+                <span class="tag">React</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Git</span>
+                <span class="tag">Docker</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Specializations</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag">Neural Networks</span>
+                <span class="tag">Data Analytics</span>
+                <span class="tag">Microservices</span>
+                <span class="tag">Network Engineering</span>
+                <span class="tag">Audio/VST Plugins</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Leadership</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag">Software Design</span>
+                <span class="tag">Team Mentoring</span>
+                <span class="tag">Product Management</span>
+                <span class="tag">Technical Writing</span>
               </div>
             </div>
           </div>
@@ -157,11 +331,11 @@ Location: Waco, Texas, USA.
           <span class="ml-4 text-terminal-muted text-sm">writing.txt</span>
         </div>
         <div class="terminal-body space-y-4">
-          <h2 class="text-xl font-bold text-terminal-accent">Writing (Substacks)</h2>
+          <h2 class="text-xl font-bold text-terminal-accent">Writing (8 Substacks)</h2>
 
           <div class="grid md:grid-cols-2 gap-4">
             <a href="https://vibingcode.substack.com" target="_blank" class="tag tag-purple p-3 block text-center hover:bg-terminal-purple/30">Vibing Code</a>
-            <a href="https://neighborhoodlab.substack.com" target="_blank" class="tag tag-green p-3 block text-center hover:bg-terminal-green/30">Neighborhood Lab</a>
+            <a href="https://neighborhoodlab.substack.com" target="_blank" class="tag tag-green p-3 block text-center hover:bg-terminal-green/30">Neighborhood Lab | Folk Care</a>
             <a href="https://graphyard.substack.com" target="_blank" class="tag tag-accent p-3 block text-center hover:bg-terminal-accent/30">Graphyard</a>
             <a href="https://lluminate.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">LLuMinate</a>
             <a href="https://unaccounted.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">Unaccounted</a>
@@ -172,20 +346,29 @@ Location: Waco, Texas, USA.
         </div>
       </section>
 
-      <!-- Location -->
+      <!-- Location & Contact -->
       <section class="terminal-window">
         <div class="terminal-header">
           <span class="terminal-dot bg-terminal-red"></span>
           <span class="terminal-dot bg-terminal-yellow"></span>
           <span class="terminal-dot bg-terminal-green"></span>
-          <span class="ml-4 text-terminal-muted text-sm">location.txt</span>
+          <span class="ml-4 text-terminal-muted text-sm">contact.txt</span>
         </div>
         <div class="terminal-body">
-          <div class="flex items-center gap-4">
-            <div class="text-4xl">📍</div>
+          <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <p class="font-semibold">Waco, Texas, USA</p>
+              <h3 class="font-semibold mb-2">Location</h3>
+              <p class="text-terminal-muted">Waco, Texas, USA</p>
               <p class="text-terminal-muted text-sm">Available for remote work worldwide</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Connect</h3>
+              <div class="space-y-1 text-sm">
+                <p><a href="mailto:brian.mabry.edwards@gmail.com" class="link-accent">brian.mabry.edwards@gmail.com</a></p>
+                <p><a href="tel:512-584-6841" class="link-accent">512-584-6841</a></p>
+                <p><a href="https://www.linkedin.com/in/brian-mabry-edwards/" target="_blank" class="link-accent">LinkedIn</a></p>
+                <p><a href="https://github.com/bedwards" target="_blank" class="link-accent">GitHub</a></p>
+              </div>
             </div>
           </div>
         </div>
@@ -193,6 +376,7 @@ Location: Waco, Texas, USA.
 
       <!-- CTA -->
       <section class="text-center py-8">
+        <p class="text-terminal-muted mb-4">Ready to multiply your team's velocity?</p>
         <a href="/hire" class="btn-primary text-lg px-8 py-4">Hire Me</a>
       </section>
     </div>
