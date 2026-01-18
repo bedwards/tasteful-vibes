@@ -56,8 +56,22 @@ const fullTitle = title === "Home" ? "Tasteful Vibes | Brian Edwards" : `${title
           <div class="hidden md:flex items-center gap-6 text-sm">
             <a href="/projects" class="text-terminal-muted hover:text-terminal-text transition-colors">Projects</a>
             <a href="/vibe-coding" class="text-terminal-muted hover:text-terminal-text transition-colors">Vibe Coding</a>
-            <a href="/education" class="text-terminal-muted hover:text-terminal-text transition-colors">Education</a>
-            <a href="/music" class="text-terminal-muted hover:text-terminal-text transition-colors">Music</a>
+            <div class="relative group">
+              <button class="text-terminal-muted hover:text-terminal-text transition-colors flex items-center gap-1">
+                Verticals
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute top-full left-0 mt-2 w-48 bg-terminal-surface border border-terminal-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <a href="/education" class="block px-4 py-2 text-terminal-muted hover:text-terminal-text hover:bg-terminal-bg">Education</a>
+                <a href="/healthcare" class="block px-4 py-2 text-terminal-muted hover:text-terminal-text hover:bg-terminal-bg">Healthcare</a>
+                <a href="/music" class="block px-4 py-2 text-terminal-muted hover:text-terminal-text hover:bg-terminal-bg">Music & Audio</a>
+                <a href="/gaming" class="block px-4 py-2 text-terminal-muted hover:text-terminal-text hover:bg-terminal-bg">Gaming</a>
+                <a href="/data-science" class="block px-4 py-2 text-terminal-muted hover:text-terminal-text hover:bg-terminal-bg">Data Science</a>
+                <a href="/ecommerce" class="block px-4 py-2 text-terminal-muted hover:text-terminal-text hover:bg-terminal-bg">E-commerce</a>
+              </div>
+            </div>
             <a href="/about" class="text-terminal-muted hover:text-terminal-text transition-colors">About</a>
             <a href="/hire" class="btn-primary text-sm py-2 px-4">Hire Me</a>
           </div>
@@ -76,9 +90,16 @@ const fullTitle = title === "Home" ? "Tasteful Vibes | Brian Edwards" : `${title
         <div class="px-4 py-4 space-y-3">
           <a href="/projects" class="block text-terminal-muted hover:text-terminal-text">Projects</a>
           <a href="/vibe-coding" class="block text-terminal-muted hover:text-terminal-text">Vibe Coding</a>
-          <a href="/education" class="block text-terminal-muted hover:text-terminal-text">Education</a>
-          <a href="/music" class="block text-terminal-muted hover:text-terminal-text">Music</a>
-          <a href="/about" class="block text-terminal-muted hover:text-terminal-text">About</a>
+          <div class="border-t border-terminal-border pt-3 mt-3">
+            <p class="text-terminal-accent text-xs uppercase tracking-wider mb-2">Verticals</p>
+            <a href="/education" class="block text-terminal-muted hover:text-terminal-text py-1">Education</a>
+            <a href="/healthcare" class="block text-terminal-muted hover:text-terminal-text py-1">Healthcare</a>
+            <a href="/music" class="block text-terminal-muted hover:text-terminal-text py-1">Music & Audio</a>
+            <a href="/gaming" class="block text-terminal-muted hover:text-terminal-text py-1">Gaming</a>
+            <a href="/data-science" class="block text-terminal-muted hover:text-terminal-text py-1">Data Science</a>
+            <a href="/ecommerce" class="block text-terminal-muted hover:text-terminal-text py-1">E-commerce</a>
+          </div>
+          <a href="/about" class="block text-terminal-muted hover:text-terminal-text border-t border-terminal-border pt-3">About</a>
           <a href="/hire" class="block btn-primary text-center mt-4">Hire Me</a>
         </div>
       </div>
@@ -111,6 +132,7 @@ const fullTitle = title === "Home" ? "Tasteful Vibes | Brian Edwards" : `${title
               <li><a href="/healthcare" class="hover:text-terminal-text">Healthcare</a></li>
               <li><a href="/music" class="hover:text-terminal-text">Music & Audio</a></li>
               <li><a href="/gaming" class="hover:text-terminal-text">Gaming</a></li>
+              <li><a href="/data-science" class="hover:text-terminal-text">Data Science</a></li>
               <li><a href="/ecommerce" class="hover:text-terminal-text">E-commerce</a></li>
             </ul>
           </div>
