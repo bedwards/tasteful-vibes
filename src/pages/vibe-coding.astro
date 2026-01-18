@@ -518,6 +518,38 @@ This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git workt
         </div>
       </section>
 
+      <!-- Latest from Substack -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">substack-feed.rss</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Latest from Substack</h2>
+
+          <p class="text-terminal-muted mb-4">
+            Recent posts from <a href="https://vibingcode.substack.com" target="_blank" class="text-terminal-accent hover:underline">Vibing Code</a> newsletter.
+          </p>
+
+          <div id="substack-posts" class="space-y-4">
+            <div class="text-terminal-muted animate-pulse">
+              <span class="text-terminal-green">$</span> Fetching latest posts...
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-4">
+            <p class="text-terminal-yellow font-semibold mb-2">Subscribe:</p>
+            <p class="text-terminal-muted">
+              <a href="https://vibingcode.substack.com/subscribe" target="_blank" class="text-terminal-accent hover:underline">
+                Get vibe coding insights delivered to your inbox
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- CTA -->
       <section class="text-center py-12">
         <h2 class="text-2xl font-bold mb-4">Ready to vibe code?</h2>
@@ -531,6 +563,104 @@ This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git workt
       </section>
     </div>
   </div>
+
+  <script>
+    async function fetchSubstackPosts() {
+      const container = document.getElementById('substack-posts');
+      if (!container) return;
+
+      try {
+        // Use a CORS proxy to fetch the RSS feed
+        const feedUrl = 'https://vibingcode.substack.com/feed';
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
+
+        const response = await fetch(proxyUrl);
+        const data = await response.json();
+
+        if (!data.contents) {
+          throw new Error('Failed to fetch feed');
+        }
+
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data.contents, 'text/xml');
+        const items = xml.querySelectorAll('item');
+
+        if (items.length === 0) {
+          container.innerHTML = `
+            <div class="text-terminal-muted">
+              <span class="text-terminal-yellow">!</span> No posts found. Visit
+              <a href="https://vibingcode.substack.com" target="_blank" class="text-terminal-accent hover:underline">
+                vibingcode.substack.com
+              </a> directly.
+            </div>
+          `;
+          return;
+        }
+
+        const posts = Array.from(items).slice(0, 5).map(item => {
+          const title = item.querySelector('title')?.textContent || 'Untitled';
+          const link = item.querySelector('link')?.textContent || '#';
+          const description = item.querySelector('description')?.textContent || '';
+          const pubDate = item.querySelector('pubDate')?.textContent || '';
+
+          // Strip HTML tags from description and truncate
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = description;
+          const excerpt = tempDiv.textContent?.substring(0, 150) || '';
+
+          // Format date
+          const date = pubDate ? new Date(pubDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          }) : '';
+
+          return { title, link, excerpt, date };
+        });
+
+        container.innerHTML = posts.map((post, index) => `
+          <div class="border-l-2 ${getBorderColor(index)} pl-4">
+            <a href="${post.link}" target="_blank" class="${getTextColor(index)} hover:underline text-lg font-semibold">
+              ${escapeHtml(post.title)}
+            </a>
+            <p class="text-terminal-muted text-sm mt-1">
+              ${post.date ? `<span class="text-terminal-green">${post.date}</span> - ` : ''}${escapeHtml(post.excerpt)}${post.excerpt.length >= 150 ? '...' : ''}
+            </p>
+          </div>
+        `).join('');
+
+      } catch (error) {
+        console.error('Error fetching Substack feed:', error);
+        container.innerHTML = `
+          <div class="text-terminal-muted">
+            <span class="text-terminal-red">!</span> Could not load posts. Visit
+            <a href="https://vibingcode.substack.com" target="_blank" class="text-terminal-accent hover:underline">
+              vibingcode.substack.com
+            </a> directly.
+          </div>
+        `;
+      }
+    }
+
+    function getBorderColor(index: number): string {
+      const colors = ['border-terminal-accent', 'border-terminal-green', 'border-terminal-yellow', 'border-terminal-purple', 'border-terminal-red'];
+      return colors[index % colors.length];
+    }
+
+    function getTextColor(index: number): string {
+      const colors = ['text-terminal-accent', 'text-terminal-green', 'text-terminal-yellow', 'text-terminal-purple', 'text-terminal-red'];
+      return colors[index % colors.length];
+    }
+
+    function escapeHtml(text: string): string {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Fetch posts when the page loads
+    document.addEventListener('DOMContentLoaded', fetchSubstackPosts);
+  </script>
 
   <ChatButton pageContext={pageContext} />
 </BaseLayout>
