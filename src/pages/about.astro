@@ -375,6 +375,229 @@ Contact: brian.mabry.edwards@gmail.com, 512-584-6841
         </div>
       </section>
 
+      <!-- GitHub Activity Feed -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">git log --oneline</span>
+        </div>
+        <div class="terminal-body">
+          <h2 class="text-xl font-bold text-terminal-accent mb-4">Recent GitHub Activity</h2>
+          <div id="github-activity" class="space-y-3 font-mono text-sm">
+            <!-- Loading state -->
+            <div id="github-loading" class="flex items-center gap-2 text-terminal-muted">
+              <span class="animate-pulse">Fetching activity...</span>
+              <span class="terminal-cursor"></span>
+            </div>
+            <!-- Error state (hidden by default) -->
+            <div id="github-error" class="hidden text-terminal-red">
+              <span class="text-terminal-yellow">!</span> Failed to fetch GitHub activity. Please try again later.
+            </div>
+            <!-- Activity entries will be injected here -->
+            <div id="github-entries"></div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        const GITHUB_USERNAME = 'bedwards';
+        const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/events/public`;
+        const MAX_EVENTS = 10;
+
+        // Event type configurations with colors and descriptions
+        const eventConfig = {
+          PushEvent: {
+            color: 'text-terminal-green',
+            icon: '+',
+            getDescription: (event) => {
+              const commits = event.payload.commits || [];
+              const count = commits.length;
+              const branch = event.payload.ref?.replace('refs/heads/', '') || 'main';
+              if (count === 0) return `pushed to ${branch}`;
+              const msg = commits[0]?.message?.split('\n')[0] || 'commits';
+              return count === 1 ? `pushed: "${msg}"` : `pushed ${count} commits to ${branch}`;
+            }
+          },
+          CreateEvent: {
+            color: 'text-terminal-accent',
+            icon: '*',
+            getDescription: (event) => {
+              const type = event.payload.ref_type;
+              const ref = event.payload.ref;
+              if (type === 'repository') return 'created repository';
+              return `created ${type} ${ref || ''}`;
+            }
+          },
+          DeleteEvent: {
+            color: 'text-terminal-red',
+            icon: '-',
+            getDescription: (event) => {
+              const type = event.payload.ref_type;
+              const ref = event.payload.ref;
+              return `deleted ${type} ${ref || ''}`;
+            }
+          },
+          WatchEvent: {
+            color: 'text-terminal-yellow',
+            icon: '*',
+            getDescription: () => 'starred'
+          },
+          ForkEvent: {
+            color: 'text-terminal-purple',
+            icon: 'Y',
+            getDescription: (event) => `forked to ${event.payload.forkee?.full_name || 'fork'}`
+          },
+          IssuesEvent: {
+            color: 'text-terminal-accent',
+            icon: '#',
+            getDescription: (event) => {
+              const action = event.payload.action;
+              const title = event.payload.issue?.title || '';
+              return `${action} issue: "${title.substring(0, 40)}${title.length > 40 ? '...' : ''}"`;
+            }
+          },
+          IssueCommentEvent: {
+            color: 'text-terminal-muted',
+            icon: '>',
+            getDescription: (event) => {
+              const issueNum = event.payload.issue?.number;
+              return `commented on issue #${issueNum || '?'}`;
+            }
+          },
+          PullRequestEvent: {
+            color: 'text-terminal-green',
+            icon: 'P',
+            getDescription: (event) => {
+              const action = event.payload.action;
+              const title = event.payload.pull_request?.title || '';
+              return `${action} PR: "${title.substring(0, 40)}${title.length > 40 ? '...' : ''}"`;
+            }
+          },
+          PullRequestReviewEvent: {
+            color: 'text-terminal-yellow',
+            icon: 'R',
+            getDescription: (event) => {
+              const state = event.payload.review?.state || 'reviewed';
+              return `${state} PR`;
+            }
+          },
+          PullRequestReviewCommentEvent: {
+            color: 'text-terminal-muted',
+            icon: '>',
+            getDescription: () => 'commented on PR'
+          },
+          ReleaseEvent: {
+            color: 'text-terminal-accent',
+            icon: '@',
+            getDescription: (event) => {
+              const tag = event.payload.release?.tag_name || '';
+              return `released ${tag}`;
+            }
+          },
+          PublicEvent: {
+            color: 'text-terminal-green',
+            icon: '!',
+            getDescription: () => 'made repository public'
+          }
+        };
+
+        function formatRelativeTime(dateString) {
+          const date = new Date(dateString);
+          const now = new Date();
+          const diffMs = now - date;
+          const diffMins = Math.floor(diffMs / 60000);
+          const diffHours = Math.floor(diffMs / 3600000);
+          const diffDays = Math.floor(diffMs / 86400000);
+
+          if (diffMins < 1) return 'just now';
+          if (diffMins < 60) return `${diffMins}m ago`;
+          if (diffHours < 24) return `${diffHours}h ago`;
+          if (diffDays < 7) return `${diffDays}d ago`;
+          return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        function createEventElement(event) {
+          const config = eventConfig[event.type] || {
+            color: 'text-terminal-muted',
+            icon: '?',
+            getDescription: () => event.type.replace('Event', '').toLowerCase()
+          };
+
+          const repoName = event.repo?.name?.replace(`${GITHUB_USERNAME}/`, '') || 'unknown';
+          const repoUrl = `https://github.com/${event.repo?.name || ''}`;
+          const description = config.getDescription(event);
+          const timeAgo = formatRelativeTime(event.created_at);
+
+          const div = document.createElement('div');
+          div.className = 'flex flex-wrap items-start gap-x-2 py-1 border-b border-terminal-border/30 last:border-0';
+          div.innerHTML = `
+            <span class="${config.color} font-bold w-4 shrink-0">${config.icon}</span>
+            <span class="text-terminal-yellow shrink-0">${timeAgo}</span>
+            <a href="${repoUrl}" target="_blank" class="text-terminal-accent hover:underline font-semibold shrink-0">${repoName}</a>
+            <span class="text-terminal-text break-words">${description}</span>
+          `;
+          return div;
+        }
+
+        async function fetchGitHubActivity() {
+          const loadingEl = document.getElementById('github-loading');
+          const errorEl = document.getElementById('github-error');
+          const entriesEl = document.getElementById('github-entries');
+
+          try {
+            const response = await fetch(API_URL, {
+              headers: {
+                'Accept': 'application/vnd.github.v3+json'
+              }
+            });
+
+            if (!response.ok) {
+              throw new Error(`GitHub API returned ${response.status}`);
+            }
+
+            const events = await response.json();
+            const displayEvents = events.slice(0, MAX_EVENTS);
+
+            loadingEl.classList.add('hidden');
+
+            if (displayEvents.length === 0) {
+              entriesEl.innerHTML = '<p class="text-terminal-muted">No recent public activity found.</p>';
+              return;
+            }
+
+            displayEvents.forEach(event => {
+              entriesEl.appendChild(createEventElement(event));
+            });
+
+            // Add footer with link to full profile
+            const footer = document.createElement('div');
+            footer.className = 'mt-4 pt-3 border-t border-terminal-border text-sm';
+            footer.innerHTML = `
+              <a href="https://github.com/${GITHUB_USERNAME}" target="_blank"
+                 class="text-terminal-accent hover:underline flex items-center gap-2">
+                <span>View full profile on GitHub</span>
+                <span class="text-terminal-muted">-></span>
+              </a>
+            `;
+            entriesEl.appendChild(footer);
+
+          } catch (error) {
+            console.error('Failed to fetch GitHub activity:', error);
+            loadingEl.classList.add('hidden');
+            errorEl.classList.remove('hidden');
+          }
+        }
+
+        // Fetch activity when the page loads
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', fetchGitHubActivity);
+        } else {
+          fetchGitHubActivity();
+        }
+      </script>
+
       <!-- CTA -->
       <section class="text-center py-8">
         <p class="text-terminal-muted mb-4">Ready to multiply your team's velocity?</p>
