@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton.astro';
+
+const pageContext = `
+Healthcare vertical page - Brian Edwards' work disrupting the healthcare software industry.
+Folk Care: Open source home healthcare platform built in 28 days.
+Features: EVV compliance, HIPAA-compliant architecture, family portals, scheduling, billing.
+Enterprise features at $20-30/month vs $750-2250/user/month from legacy vendors.
+Neighborhood Lab Substack for healthcare technology thought leadership.
+`;
+---
+
+<BaseLayout title="Healthcare" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Healthcare Software is Broken</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Legacy vendors charge $750-2,250 per user per month for buggy, outdated software.
+        I built an enterprise-grade alternative in 28 days. Open source. $20-30/month.
+      </p>
+    </div>
+
+    <!-- The Problem -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-red/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-red text-sm font-semibold">the-problem.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-red">The Healthcare Software Cartel</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Home healthcare agencies are getting robbed. Legacy vendors like WellSky, MatrixCare, and Axxess
+          charge obscene prices for software that looks like it was built in 2005. Because it was.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red">
+            <p class="text-3xl font-bold text-terminal-red">$750-2,250</p>
+            <p class="text-terminal-muted text-sm mt-1">Per user per month from legacy vendors</p>
+          </div>
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-yellow">
+            <p class="text-3xl font-bold text-terminal-yellow">18-24 mo</p>
+            <p class="text-terminal-muted text-sm mt-1">Typical implementation timeline</p>
+          </div>
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-muted">
+            <p class="text-3xl font-bold text-terminal-muted">1990s</p>
+            <p class="text-terminal-muted text-sm mt-1">When the UX was designed</p>
+          </div>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          Small agencies can't afford these prices. They use spreadsheets and paper.
+          Patients suffer. Caregivers suffer. Only the vendors win.
+        </p>
+      </div>
+    </section>
+
+    <!-- Folk Care -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-green/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-green text-sm font-semibold">folk-care.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-green">Folk Care: The Open Source Answer</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          <span class="text-terminal-accent font-semibold">Built in 28 days.</span> Enterprise-grade home healthcare platform.
+          Open source. HIPAA-compliant. EVV-ready. The vendors don't want you to know this is possible.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 my-6">
+          <div class="border-l-2 border-terminal-accent pl-4">
+            <h3 class="font-semibold text-terminal-accent">EVV Compliance</h3>
+            <p class="text-terminal-muted text-sm">
+              Electronic Visit Verification built-in. GPS tracking, time stamps, signature capture.
+              Meets 21st Century Cures Act requirements.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-green pl-4">
+            <h3 class="font-semibold text-terminal-green">HIPAA Architecture</h3>
+            <p class="text-terminal-muted text-sm">
+              Encryption at rest and in transit. Audit logging. Access controls.
+              Built for healthcare from day one.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-yellow pl-4">
+            <h3 class="font-semibold text-terminal-yellow">Family Portals</h3>
+            <p class="text-terminal-muted text-sm">
+              Families see care schedules, visit notes, and caregiver info.
+              Transparency that builds trust.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-terminal-purple pl-4">
+            <h3 class="font-semibold text-terminal-purple">Scheduling & Billing</h3>
+            <p class="text-terminal-muted text-sm">
+              Drag-and-drop scheduling. Automated billing. Payroll integration.
+              Everything an agency needs to operate.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-green">
+          <p class="text-terminal-green font-semibold mb-2">The Math:</p>
+          <p class="text-terminal-text">
+            Legacy vendor: 10 users x $1,000/month = <span class="text-terminal-red">$120,000/year</span>
+          </p>
+          <p class="text-terminal-text">
+            Folk Care: 10 users x $25/month = <span class="text-terminal-green">$3,000/year</span>
+          </p>
+          <p class="text-terminal-muted text-sm mt-2">
+            That's $117,000 saved. Every. Single. Year.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">screenshots/</span>
+      </div>
+      <div class="terminal-body space-y-6">
+        <h2 class="text-2xl font-bold text-terminal-accent">See It In Action</h2>
+
+        <div class="screenshot-grid cols-2">
+          <div>
+            <div class="screenshot-container">
+              <img src="/screenshots/folkcare-demo-accounts.png" alt="Folk Care Demo Accounts" class="screenshot-img" />
+            </div>
+            <p class="screenshot-caption">Multi-tenant demo accounts for agencies, caregivers, and families</p>
+          </div>
+
+          <div>
+            <div class="screenshot-container">
+              <img src="/screenshots/folkcare-substack.png" alt="Neighborhood Lab Substack" class="screenshot-img" />
+            </div>
+            <p class="screenshot-caption">Neighborhood Lab Substack - Healthcare technology thought leadership</p>
+          </div>
+
+          <div>
+            <div class="screenshot-container">
+              <img src="/screenshots/folkcare-patreon.png" alt="Folk Care Patreon" class="screenshot-img" />
+            </div>
+            <p class="screenshot-caption">Community-supported development through Patreon</p>
+          </div>
+
+          <div>
+            <div class="screenshot-container">
+              <img src="/screenshots/folkcare-discord-dev.png" alt="Folk Care Discord Development" class="screenshot-img" />
+            </div>
+            <p class="screenshot-caption">Active Discord community for development discussions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Matters -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">why-this-matters.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Why This Matters</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Home healthcare is how we keep aging parents at home instead of nursing homes.
+          It's how we support people with disabilities in their communities.
+          It's one of the fastest-growing sectors in healthcare.
+        </p>
+
+        <p class="text-terminal-text leading-relaxed">
+          And it's being strangled by software vendors who charge more for a single user license
+          than a caregiver earns in a week. That's not just inefficient. It's immoral.
+        </p>
+
+        <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-accent">
+          <p class="text-terminal-accent font-semibold mb-2">The Vibe Coding Advantage:</p>
+          <p class="text-terminal-muted">
+            What would take a traditional team 18-24 months, I built in 28 days using Claude Code.
+            Not a prototype. Not an MVP. A production-ready platform with enterprise features.
+            This is what AI-first development makes possible.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Neighborhood Lab -->
+    <section class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">neighborhood-lab.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Neighborhood Lab</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          Folk Care is part of Neighborhood Lab, my initiative to build technology that serves communities,
+          not corporations. Healthcare access shouldn't depend on how much money you have.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="https://neighborhoodlab.substack.com" target="_blank" class="btn-secondary">
+            Read the Substack
+          </a>
+          <a href="https://github.com/neighborhood-lab/folk-care" target="_blank" class="btn-secondary">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="terminal-window">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">hire-me.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Ready to Disrupt Your Industry?</h2>
+
+        <p class="text-terminal-text leading-relaxed">
+          If I can build enterprise healthcare software in 28 days, imagine what I can do for your industry.
+          Legacy vendors are scared. They should be.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-6">
+          <a href="/hire" class="btn-primary">Hire Me</a>
+          <a href="/projects" class="btn-secondary">See All Projects</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <ChatButton pageContext={pageContext} />
+</BaseLayout>
