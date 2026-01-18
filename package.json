@@ -1,0 +1,45 @@
+{
+  "name": "tasteful-vibes",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portfolio website for Brian Edwards - Vibe Coding Expert & AI-First Developer",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "pages:dev": "npx wrangler pages dev ./dist",
+    "pages:deploy": "npm run build && npx wrangler pages deploy ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bedwards/tasteful-vibes.git"
+  },
+  "keywords": [
+    "portfolio",
+    "vibe-coding",
+    "claude-code",
+    "ai-first",
+    "cloudflare-pages"
+  ],
+  "author": "Brian Edwards <brian.mabry.edwards@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bedwards/tasteful-vibes/issues"
+  },
+  "homepage": "https://tasteful-vibes.pages.dev",
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.16.11",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.0.0"
+  }
+}

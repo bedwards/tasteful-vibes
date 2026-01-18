@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton';
+
+const pageContext = `
+Hire Brian Edwards page - Services, rates, and contact information.
+Brian offers: full project delivery, workflow audit, team training, ongoing support.
+He delivers in 1/4 the traditional time. He can train your team to do the same.
+Contact: brian.mabry.edwards@gmail.com, 512-584-6841
+Location: Waco, Texas, USA
+`;
+---
+
+<BaseLayout title="Hire Me" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Hire Brian Edwards</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Vibe coding expert. AI-first developer. Ready to build your next project or train your team.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+      <!-- Services -->
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">services.txt</span>
+        </div>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-xl font-bold text-terminal-accent">Services</h2>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <h3 class="font-semibold">Full Project Delivery</h3>
+              <p class="text-terminal-muted text-sm">
+                From concept to deployed product. I build in days what used to take months.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-terminal-green pl-4">
+              <h3 class="font-semibold">Workflow Audit & Optimization</h3>
+              <p class="text-terminal-muted text-sm">
+                Evaluate your current development process. Identify opportunities for AI acceleration.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-terminal-yellow pl-4">
+              <h3 class="font-semibold">Team Training</h3>
+              <p class="text-terminal-muted text-sm">
+                Teach your engineers vibe coding. Claude Code, effective prompts, AI-first development.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-terminal-purple pl-4">
+              <h3 class="font-semibold">Ongoing Support & Retainer</h3>
+              <p class="text-terminal-muted text-sm">
+                Continuous access for questions, code reviews, and rapid feature development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">contact.txt</span>
+        </div>
+        <div class="terminal-body space-y-6">
+          <h2 class="text-xl font-bold text-terminal-accent">Contact</h2>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-terminal-muted text-sm">Email</p>
+              <a href="mailto:brian.mabry.edwards@gmail.com" class="link-accent">
+                brian.mabry.edwards@gmail.com
+              </a>
+            </div>
+
+            <div>
+              <p class="text-terminal-muted text-sm">Phone</p>
+              <a href="tel:512-584-6841" class="link-accent">512-584-6841</a>
+            </div>
+
+            <div>
+              <p class="text-terminal-muted text-sm">Location</p>
+              <p>Waco, Texas, USA</p>
+            </div>
+
+            <div>
+              <p class="text-terminal-muted text-sm">LinkedIn</p>
+              <a href="https://www.linkedin.com/in/brian-mabry-edwards/" target="_blank" class="link-accent">
+                linkedin.com/in/brian-mabry-edwards
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-4 space-y-2">
+            <p class="text-terminal-muted text-sm">Also find me on:</p>
+            <div class="flex flex-wrap gap-2">
+              <a href="https://github.com/bedwards" target="_blank" class="tag tag-accent">GitHub</a>
+              <a href="https://www.kaggle.com/brianedwards" target="_blank" class="tag tag-green">Kaggle</a>
+              <a href="https://www.fiverr.com/users/tasteful_vibes/" target="_blank" class="tag tag-yellow">Fiverr</a>
+              <a href="https://www.upwork.com/freelancers/~brian_edwards" target="_blank" class="tag tag-purple">Upwork</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Pitch -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header bg-terminal-accent/10">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-accent text-sm font-semibold">the-pitch.md</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-2xl font-bold text-terminal-accent">Why Hire Me?</h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-accent glow-text">1/4x</div>
+            <p class="text-terminal-muted text-sm mt-2">Delivery time vs traditional development</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-green glow-text">100+</div>
+            <p class="text-terminal-muted text-sm mt-2">Projects built with vibe coding</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-terminal-yellow glow-text">15+</div>
+            <p class="text-terminal-muted text-sm mt-2">Organizations & verticals</p>
+          </div>
+        </div>
+
+        <p class="text-terminal-text leading-relaxed">
+          I'm a full-time teacher during the day. I've still shipped more production code in the last
+          6 months than most engineering teams ship in a year. That's the power of vibe coding.
+        </p>
+
+        <p class="text-terminal-text leading-relaxed">
+          I can build your project faster than you thought possible. Or I can train your team to do it themselves.
+          Either way, you'll see results in weeks, not months.
+        </p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="terminal-window mb-12">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">values.txt</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <h2 class="text-xl font-bold text-terminal-accent">Values & Preferences</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-terminal-green font-semibold mb-2">Preferred Industries</h3>
+            <ul class="space-y-1 text-terminal-muted text-sm">
+              <li>+ Open source projects</li>
+              <li>+ Charitable organizations</li>
+              <li>+ Music & arts</li>
+              <li>+ Gaming (Roblox, etc.)</li>
+              <li>+ Environmental causes</li>
+              <li>+ Science & AI research</li>
+              <li>+ Education technology</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-terminal-red font-semibold mb-2">Will Not Work With</h3>
+            <ul class="space-y-1 text-terminal-muted text-sm">
+              <li>- Defense contractors</li>
+              <li>- US federal government contracts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-8">
+      <p class="text-terminal-muted mb-4">Ready to get started?</p>
+      <a
+        href="mailto:brian.mabry.edwards@gmail.com?subject=Hiring Inquiry from Tasteful Vibes"
+        class="btn-primary text-lg px-8 py-4"
+      >
+        Email Me
+      </a>
+    </div>
+  </div>
+
+  <ChatButton client:load pageContext={pageContext} />
+</BaseLayout>

@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton';
+
+const pageContext = `
+About Brian Edwards page.
+Brian is a full-time teacher at Future Educator Academy, Waco ISD who has built 100+ projects using vibe coding.
+Background: Atlassian/Bitbucket, Zenoss, education technology, music production, data science.
+Location: Waco, Texas, USA.
+`;
+---
+
+<BaseLayout title="About" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">About Brian Edwards</h1>
+      <p class="text-terminal-muted">
+        Vibe Coding Expert. Teacher. Builder.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Intro -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">whoami.txt</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <p class="text-terminal-text leading-relaxed">
+            I'm a full-time teacher at <span class="text-terminal-accent">Future Educator Academy</span> in Waco ISD.
+            During the day, I teach. After hours, I build software at an unreasonable pace using
+            Claude Code and vibe coding methodology.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            In the last 6 months, I've shipped over 100 projects across education, healthcare, music production,
+            gaming, e-commerce, and data science. Not experiments - real, deployed, useful software.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            I believe the future of software development is AI-first. The engineers who embrace these
+            tools today will define how we build software tomorrow. I'm helping lead that transition.
+          </p>
+        </div>
+      </section>
+
+      <!-- Background -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">background.txt</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-xl font-bold text-terminal-accent">Background</h2>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <h3 class="font-semibold">Current: Future Educator Academy, Waco ISD</h3>
+              <p class="text-terminal-muted text-sm">
+                Full-time teacher. Automating Google Classroom, attendance, scheduling, and more.
+                Building tools that save teachers hours of administrative work every week.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-terminal-muted pl-4">
+              <h3 class="font-semibold">Previous: Tech Industry</h3>
+              <p class="text-terminal-muted text-sm">
+                Background in enterprise software including Atlassian/Bitbucket and Zenoss.
+                Deep experience with distributed systems, APIs, and developer tools.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-terminal-muted pl-4">
+              <h3 class="font-semibold">Side Projects</h3>
+              <p class="text-terminal-muted text-sm">
+                Music production (Bitwig Studio plugins), Kaggle competitions, Roblox game development,
+                open source healthcare software, and more.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">skills.txt</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-xl font-bold text-terminal-accent">Technical Skills</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">AI/Development Tools</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag tag-accent">Claude Code CLI</span>
+                <span class="tag">Gemini CLI</span>
+                <span class="tag">Codex</span>
+                <span class="tag">Cursor</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">IntelliJ IDEA</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Languages</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag tag-accent">TypeScript</span>
+                <span class="tag tag-green">Python</span>
+                <span class="tag tag-yellow">Rust</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">Java</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Frameworks & Platforms</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag">React</span>
+                <span class="tag">Astro</span>
+                <span class="tag">Node.js</span>
+                <span class="tag tag-accent">Cloudflare</span>
+                <span class="tag">Google APIs</span>
+                <span class="tag">Shopify</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-terminal-green font-semibold mb-2">Specialties</h3>
+              <div class="flex flex-wrap gap-1">
+                <span class="tag tag-purple">Vibe Coding</span>
+                <span class="tag">Rapid Prototyping</span>
+                <span class="tag">Automation</span>
+                <span class="tag">AI Integration</span>
+                <span class="tag">Audio Plugins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Substacks -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">writing.txt</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-xl font-bold text-terminal-accent">Writing (Substacks)</h2>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <a href="https://vibingcode.substack.com" target="_blank" class="tag tag-purple p-3 block text-center hover:bg-terminal-purple/30">Vibing Code</a>
+            <a href="https://neighborhoodlab.substack.com" target="_blank" class="tag tag-green p-3 block text-center hover:bg-terminal-green/30">Neighborhood Lab</a>
+            <a href="https://graphyard.substack.com" target="_blank" class="tag tag-accent p-3 block text-center hover:bg-terminal-accent/30">Graphyard</a>
+            <a href="https://lluminate.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">LLuMinate</a>
+            <a href="https://unaccounted.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">Unaccounted</a>
+            <a href="https://schmidhuber.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">Schmidhuber</a>
+            <a href="https://weeklyvibe.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">Weekly Vibe</a>
+            <a href="https://codingvibe.substack.com" target="_blank" class="tag p-3 block text-center hover:bg-terminal-border">Coding Vibe</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">location.txt</span>
+        </div>
+        <div class="terminal-body">
+          <div class="flex items-center gap-4">
+            <div class="text-4xl">📍</div>
+            <div>
+              <p class="font-semibold">Waco, Texas, USA</p>
+              <p class="text-terminal-muted text-sm">Available for remote work worldwide</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center py-8">
+        <a href="/hire" class="btn-primary text-lg px-8 py-4">Hire Me</a>
+      </section>
+    </div>
+  </div>
+
+  <ChatButton client:load pageContext={pageContext} />
+</BaseLayout>

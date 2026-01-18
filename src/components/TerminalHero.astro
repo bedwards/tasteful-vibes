@@ -1,0 +1,92 @@
+---
+// Terminal-style hero section
+---
+
+<section class="min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl w-full">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">tasteful-vibes ~ main</span>
+      </div>
+      <div class="terminal-body text-base sm:text-lg space-y-6 py-8">
+        <!-- Typing effect intro -->
+        <div class="overflow-hidden">
+          <p class="text-terminal-green">
+            <span class="text-terminal-muted">$</span> cat welcome.txt
+          </p>
+        </div>
+
+        <div class="space-y-4 text-terminal-text">
+          <p class="text-2xl sm:text-3xl font-bold">
+            <span class="text-terminal-accent">Brian Edwards</span>
+          </p>
+          <p class="text-terminal-muted">
+            Vibe Coding Expert & AI-First Developer
+          </p>
+        </div>
+
+        <div class="border-l-2 border-terminal-accent pl-4 space-y-2">
+          <p class="text-terminal-yellow font-semibold">
+            If you're not vibe coding, you're already behind.
+          </p>
+          <p class="text-terminal-muted">
+            I build in days what used to take months.<br />
+            I deliver in weeks what used to take quarters.<br />
+            And I can teach your team to do the same.
+          </p>
+        </div>
+
+        <div class="pt-4">
+          <p class="text-terminal-green">
+            <span class="text-terminal-muted">$</span> ls projects/ | wc -l
+          </p>
+          <p class="text-4xl font-bold text-terminal-accent glow-text">100+</p>
+          <p class="text-terminal-muted text-sm mt-1">repositories across 15+ organizations</p>
+        </div>
+
+        <div class="pt-4 flex flex-wrap gap-4">
+          <a href="/projects" class="btn-primary">
+            Explore Projects
+          </a>
+          <a href="/hire" class="btn-secondary">
+            Hire Me
+          </a>
+        </div>
+
+        <div class="pt-6 flex flex-wrap gap-2 text-sm">
+          <span class="tag tag-accent">Claude Code</span>
+          <span class="tag tag-green">Vibe Coding</span>
+          <span class="tag tag-purple">AI-First</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">Rust</span>
+          <span class="tag">React</span>
+          <span class="tag">Cloudflare</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div class="stat-card">
+        <div class="stat-value">100+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">15+</div>
+        <div class="stat-label">Organizations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">8</div>
+        <div class="stat-label">Substacks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1/4x</div>
+        <div class="stat-label">Delivery Time</div>
+      </div>
+    </div>
+  </div>
+</section>

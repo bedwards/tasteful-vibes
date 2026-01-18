@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalHero from '../components/TerminalHero.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import VerticalCards from '../components/VerticalCards.astro';
+import ScarySection from '../components/ScarySection.astro';
+import ChatButton from '../components/ChatButton';
+
+const pageContext = `
+Brian Edwards - Vibe Coding Expert & AI-First Developer
+Location: Waco, Texas, USA
+Email: brian.mabry.edwards@gmail.com
+Phone: 512-584-6841
+
+Brian is a full-time teacher at Future Educator Academy, Waco ISD who has built 100+ projects using vibe coding and Claude Code. He automates Google Classroom, builds scheduling systems, creates VST plugins for music production, develops Roblox games, and more.
+
+Core expertise: Claude Code CLI, vibe coding, AI-first development, rapid prototyping, automation.
+
+Values: Open source, charitable organizations, music, gaming, environmental causes, science, AI research, education technology. NO defense contracts. NO US federal government contracts.
+
+He can deliver projects in 1/4 of the traditional time. He can train your team to do the same.
+`;
+---
+
+<BaseLayout title="Home" pageContext={pageContext}>
+  <TerminalHero />
+
+  <ScarySection />
+
+  <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">100+ Projects. All Built with AI.</h2>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        Ranked by total file size. Click any project to see file count, commit history, and delivery timeline.
+      </p>
+    </div>
+    <ProjectGrid />
+  </section>
+
+  <section class="py-20 bg-terminal-surface">
+    <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Target Industries</h2>
+        <p class="text-terminal-muted max-w-2xl mx-auto">
+          I build solutions for specific verticals. Whatever your industry, I've probably already built something for it.
+        </p>
+      </div>
+      <VerticalCards />
+    </div>
+  </section>
+
+  <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="terminal-window max-w-3xl mx-auto">
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-sm">hire-brian.sh</span>
+      </div>
+      <div class="terminal-body space-y-4">
+        <div>
+          <span class="terminal-prompt">whoami</span>
+        </div>
+        <div class="text-terminal-muted">
+          Brian Edwards - Vibe Coding Expert
+        </div>
+        <div>
+          <span class="terminal-prompt">cat services.txt</span>
+        </div>
+        <div class="text-terminal-muted space-y-1">
+          <p>- Full project delivery (days, not months)</p>
+          <p>- Workflow audit & optimization</p>
+          <p>- Team training on vibe coding</p>
+          <p>- Replace N engineers with AI-first development</p>
+          <p>- Ongoing support & retainer</p>
+        </div>
+        <div>
+          <span class="terminal-prompt">cat contact.txt</span>
+        </div>
+        <div class="text-terminal-muted">
+          <p>Email: brian.mabry.edwards@gmail.com</p>
+          <p>Phone: 512-584-6841</p>
+          <p>Location: Waco, Texas, USA</p>
+        </div>
+        <div class="pt-4">
+          <a href="/hire" class="btn-primary inline-block">
+            ./hire-me.sh
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ChatButton client:load pageContext={pageContext} />
+</BaseLayout>

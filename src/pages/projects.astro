@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton';
+
+const pageContext = `
+Projects page - Brian Edwards has built 100+ projects using vibe coding and Claude Code.
+Projects span multiple verticals: Education, Healthcare, Music, Gaming, E-commerce, Data Science.
+Projects are ranked by total file size and include metrics like file count, commits, and delivery time.
+`;
+
+// This will eventually be populated from actual repo data
+const projects = [
+  // Education
+  { name: "google-classroom", org: "bme-wacoisd", description: "Google Classroom API automation", vertical: "Education", size: "1.8 MB", files: 67, commits: 89 },
+  { name: "tea", org: "bme-wacoisd", description: "Teacher assistant tools", vertical: "Education", size: "1.2 MB", files: 45, commits: 56 },
+  { name: "elementary", org: "bme-wacoisd", description: "Elementary school management", vertical: "Education", size: "980 KB", files: 34, commits: 42 },
+  { name: "school-scheduling", org: "bedwards", description: "School scheduling system", vertical: "Education", size: "1.5 MB", files: 52, commits: 78 },
+  { name: "conjunction", org: "bedwards", description: "Educational game for conjunction learning", vertical: "Education", size: "890 KB", files: 28, commits: 45 },
+
+  // Healthcare
+  { name: "folk-care", org: "neighborhood-lab", description: "Open source home healthcare software", vertical: "Healthcare", size: "8.7 MB", files: 156, commits: 312 },
+  { name: "med-record-space", org: "bedwards", description: "Privacy-first micro-EHR system", vertical: "Healthcare", size: "1.1 MB", files: 38, commits: 56 },
+  { name: "derm-ai-stack", org: "bridgenet-tech", description: "AI dermatology stack", vertical: "Healthcare", size: "2.3 MB", files: 67, commits: 89 },
+
+  // Music & Audio
+  { name: "ghost-note", org: "audio-forge-rs", description: "Rust VST/CLAP audio plugin", vertical: "Music", size: "4.1 MB", files: 89, commits: 234 },
+  { name: "DrivenByMoss", org: "audio-forge-rs", description: "Bitwig Studio extensions for many controllers", vertical: "Music", size: "12.3 MB", files: 456, commits: 1200 },
+  { name: "nih-plug", org: "audio-forge-rs", description: "Rust VST3 and CLAP plugin framework", vertical: "Music", size: "3.4 MB", files: 123, commits: 345 },
+  { name: "vibewig", org: "audio-forge-rs", description: "Bitwig vibe integration", vertical: "Music", size: "890 KB", files: 34, commits: 67 },
+  { name: "concept-albums", org: "bedwards", description: "Concept album creation tools", vertical: "Music", size: "1.2 MB", files: 45, commits: 78 },
+
+  // Gaming
+  { name: "studio-rust-mcp-server", org: "splash-screen-studio", description: "Roblox Studio MCP Server", vertical: "Gaming", size: "890 KB", files: 23, commits: 45 },
+  { name: "smash-showdown", org: "bedwards", description: "Game mechanics project", vertical: "Gaming", size: "1.8 MB", files: 56, commits: 89 },
+  { name: "cubed-worlds", org: "world-stitchers", description: "Voxel world generation", vertical: "Gaming", size: "2.1 MB", files: 67, commits: 123 },
+
+  // E-commerce
+  { name: "imaginary-crime-lab", org: "bedwards", description: "Distributed e-commerce on Cloudflare", vertical: "E-commerce", size: "3.4 MB", files: 112, commits: 156 },
+  { name: "liquidity", org: "bedwards", description: "Shopify Liquid theme utilities", vertical: "E-commerce", size: "780 KB", files: 28, commits: 45 },
+  { name: "shopivibelize", org: "bedwards", description: "Playful Shopify workflows", vertical: "E-commerce", size: "560 KB", files: 19, commits: 34 },
+
+  // Data Science
+  { name: "wdi-py", org: "bedwards", description: "World Bank Development Indicators with Polars", vertical: "Data Science", size: "1.1 MB", files: 28, commits: 67 },
+  { name: "graphyard", org: "bedwards", description: "Graph analysis tools", vertical: "Data Science", size: "2.3 MB", files: 78, commits: 145 },
+  { name: "mania", org: "bedwards", description: "March Machine Learning Mania Kaggle", vertical: "Data Science", size: "4.5 MB", files: 89, commits: 178 },
+  { name: "conduit", org: "bedwards", description: "Kaggle competition pipeline", vertical: "Data Science", size: "1.8 MB", files: 45, commits: 89 },
+  { name: "gnn", org: "bedwards", description: "Graph Neural Networks", vertical: "Data Science", size: "3.2 MB", files: 67, commits: 134 },
+  { name: "gyat", org: "bedwards", description: "Graph Predictive Attention Network", vertical: "Data Science", size: "2.1 MB", files: 56, commits: 112 },
+
+  // Vibe Coding Meta
+  { name: "nanochat", org: "bedwards", description: "The best ChatGPT that $100 can buy", vertical: "Vibe Coding", size: "2.3 MB", files: 45, commits: 127 },
+  { name: "metavibe", org: "bedwards", description: "Meta-level vibe coding tools", vertical: "Vibe Coding", size: "1.2 MB", files: 34, commits: 78 },
+  { name: "claude-base", org: "bedwards", description: "Foundation for Claude Code projects", vertical: "Vibe Coding", size: "890 KB", files: 23, commits: 56 },
+  { name: "claude-exporter", org: "bedwards", description: "Parse Claude conversation exports", vertical: "Vibe Coding", size: "670 KB", files: 18, commits: 34 },
+  { name: "vibe-coding", org: "bedwards", description: "Vibe coding resources and examples", vertical: "Vibe Coding", size: "1.5 MB", files: 42, commits: 89 },
+];
+
+const verticals = [...new Set(projects.map(p => p.vertical))];
+
+const verticalColors: Record<string, string> = {
+  "Education": "tag-accent",
+  "Healthcare": "tag-green",
+  "Music": "tag-yellow",
+  "Gaming": "tag-red",
+  "E-commerce": "tag-purple",
+  "Data Science": "tag-green",
+  "Vibe Coding": "tag-purple",
+};
+---
+
+<BaseLayout title="Projects" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">100+ Projects</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        All built with vibe coding and Claude Code. Ranked by total file size.
+        Click any project to view on GitHub.
+      </p>
+    </div>
+
+    <!-- Filter by vertical -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12">
+      <button class="tag tag-accent filter-btn active" data-vertical="all">All</button>
+      {verticals.map(v => (
+        <button class={`tag ${verticalColors[v]} filter-btn`} data-vertical={v}>{v}</button>
+      ))}
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="projects-grid">
+      {projects.map(project => (
+        <a
+          href={`https://github.com/${project.org}/${project.name}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="terminal-window card-hover block project-card"
+          data-vertical={project.vertical}
+        >
+          <div class="p-4 space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-terminal-accent truncate">{project.name}</h3>
+              <span class={`tag text-xs ${verticalColors[project.vertical]}`}>{project.vertical}</span>
+            </div>
+            <p class="text-terminal-muted text-sm truncate">{project.description}</p>
+            <div class="flex items-center gap-4 text-xs text-terminal-muted">
+              <span class="text-terminal-text">{project.org}</span>
+              <span>{project.files} files</span>
+              <span>{project.commits} commits</span>
+              <span class="text-terminal-accent">{project.size}</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mt-12 text-terminal-muted">
+      <p>This is a subset of 100+ projects. See full list on <a href="https://github.com/bedwards" class="link-accent" target="_blank">GitHub</a>.</p>
+    </div>
+  </div>
+
+  <ChatButton client:load pageContext={pageContext} />
+
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'ring-2', 'ring-terminal-accent'));
+        btn.classList.add('active', 'ring-2', 'ring-terminal-accent');
+
+        const vertical = btn.getAttribute('data-vertical');
+
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (vertical === 'all' || card.getAttribute('data-vertical') === vertical) {
+            (card as HTMLElement).style.display = 'block';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

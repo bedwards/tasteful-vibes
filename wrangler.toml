@@ -1,0 +1,12 @@
+# Cloudflare Pages configuration
+name = "tasteful-vibes"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Environment variables (secrets should be set via wrangler secret or dashboard)
+[vars]
+# Non-secret variables only
+
+# Note: Secrets like GROQ_API_KEY and STRIPE_SECRET_KEY should be set via:
+# npx wrangler pages secret put GROQ_API_KEY
+# npx wrangler pages secret put STRIPE_SECRET_KEY

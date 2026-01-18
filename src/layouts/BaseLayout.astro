@@ -1,0 +1,164 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  pageContext?: string;
+}
+
+const {
+  title,
+  description = "Brian Edwards - Vibe Coding Expert & AI-First Developer",
+  pageContext = ""
+} = Astro.props;
+
+const fullTitle = title === "Home" ? "Tasteful Vibes | Brian Edwards" : `${title} | Tasteful Vibes`;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Brian Edwards" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tasteful-vibes.pages.dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullTitle}</title>
+
+    <!-- Page context for AI chat -->
+    <script define:vars={{ pageContext }}>
+      window.__PAGE_CONTEXT__ = pageContext;
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-terminal-bg/90 backdrop-blur-sm border-b border-terminal-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-2 text-terminal-accent font-bold">
+            <span class="text-terminal-green">$</span>
+            <span>tasteful-vibes</span>
+          </a>
+
+          <div class="hidden md:flex items-center gap-6 text-sm">
+            <a href="/projects" class="text-terminal-muted hover:text-terminal-text transition-colors">Projects</a>
+            <a href="/vibe-coding" class="text-terminal-muted hover:text-terminal-text transition-colors">Vibe Coding</a>
+            <a href="/education" class="text-terminal-muted hover:text-terminal-text transition-colors">Education</a>
+            <a href="/music" class="text-terminal-muted hover:text-terminal-text transition-colors">Music</a>
+            <a href="/about" class="text-terminal-muted hover:text-terminal-text transition-colors">About</a>
+            <a href="/hire" class="btn-primary text-sm py-2 px-4">Hire Me</a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-terminal-muted hover:text-terminal-text">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-terminal-border">
+        <div class="px-4 py-4 space-y-3">
+          <a href="/projects" class="block text-terminal-muted hover:text-terminal-text">Projects</a>
+          <a href="/vibe-coding" class="block text-terminal-muted hover:text-terminal-text">Vibe Coding</a>
+          <a href="/education" class="block text-terminal-muted hover:text-terminal-text">Education</a>
+          <a href="/music" class="block text-terminal-muted hover:text-terminal-text">Music</a>
+          <a href="/about" class="block text-terminal-muted hover:text-terminal-text">About</a>
+          <a href="/hire" class="block btn-primary text-center mt-4">Hire Me</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex-1 pt-16">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-terminal-border bg-terminal-surface">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-terminal-accent font-bold mb-4">Brian Edwards</h3>
+            <p class="text-terminal-muted text-sm">
+              Vibe Coding Expert<br />
+              Waco, Texas, USA
+            </p>
+            <p class="text-terminal-muted text-sm mt-2">
+              <a href="mailto:brian.mabry.edwards@gmail.com" class="link-accent">brian.mabry.edwards@gmail.com</a>
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Verticals</h4>
+            <ul class="space-y-2 text-sm text-terminal-muted">
+              <li><a href="/education" class="hover:text-terminal-text">Education</a></li>
+              <li><a href="/healthcare" class="hover:text-terminal-text">Healthcare</a></li>
+              <li><a href="/music" class="hover:text-terminal-text">Music & Audio</a></li>
+              <li><a href="/gaming" class="hover:text-terminal-text">Gaming</a></li>
+              <li><a href="/ecommerce" class="hover:text-terminal-text">E-commerce</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2 text-sm text-terminal-muted">
+              <li><a href="/vibe-coding" class="hover:text-terminal-text">Vibe Coding</a></li>
+              <li><a href="/prompts" class="hover:text-terminal-text">Effective Prompts</a></li>
+              <li><a href="https://github.com/bedwards" class="hover:text-terminal-text" target="_blank">GitHub</a></li>
+              <li><a href="https://www.kaggle.com/brianedwards" class="hover:text-terminal-text" target="_blank">Kaggle</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Connect</h4>
+            <ul class="space-y-2 text-sm text-terminal-muted">
+              <li><a href="https://www.linkedin.com/in/brian-mabry-edwards/" class="hover:text-terminal-text" target="_blank">LinkedIn</a></li>
+              <li><a href="https://vibingcode.substack.com" class="hover:text-terminal-text" target="_blank">Substack</a></li>
+              <li><a href="/hire" class="hover:text-terminal-text">Hire Me</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-terminal-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-terminal-muted text-sm">
+            Built with Claude Code in a single session. This is vibe coding.
+          </p>
+          <div class="flex gap-4 text-sm text-terminal-muted">
+            <span>No defense contracts</span>
+            <span>|</span>
+            <span>Open source preferred</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Chat button will be injected here -->
+    <div id="chat-root"></div>
+
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatButton from '../components/ChatButton';
+
+const pageContext = `
+Vibe Coding page - Learn about AI-first development with Claude Code.
+Brian Edwards is a vibe coding expert who has built 100+ projects using this methodology.
+This page covers: What is vibe coding, Claude Code CLI, RALPH pattern, git worktrees, effective prompts, and more.
+`;
+---
+
+<BaseLayout title="Vibe Coding" pageContext={pageContext}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Vibe Coding</h1>
+      <p class="text-terminal-muted max-w-2xl mx-auto">
+        The art of AI-first software development. Build faster, ship more, iterate relentlessly.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- What is Vibe Coding -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">what-is-vibe-coding.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">What is Vibe Coding?</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            Vibe coding is a development methodology where you describe what you want in natural language
+            and let AI write the code. Rather than writing detailed specifications, you have a conversation.
+            Rather than debugging line by line, you explain the problem and let the AI fix it.
+          </p>
+
+          <p class="text-terminal-text leading-relaxed">
+            The term was coined by Andrej Karpathy, but the practice has exploded since tools like
+            Claude Code made it practical for real-world development. I've built over 100 projects
+            this way, from VST plugins to healthcare software to Roblox games.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border">
+            <p class="text-terminal-yellow font-semibold mb-2">The Core Principle:</p>
+            <p class="text-terminal-muted">
+              Don't fight the AI. Give it context, let it plan, verify it worked, iterate.
+              Working code is the specification.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Claude Code CLI -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">claude-code-tips.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Claude Code CLI Tips</h2>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-terminal-green"><span class="text-terminal-muted">$</span> /init</p>
+              <p class="text-terminal-muted text-sm mt-1">
+                Scans your codebase and generates a CLAUDE.md file with project context.
+                Always start here.
+              </p>
+            </div>
+
+            <div>
+              <p class="text-terminal-green"><span class="text-terminal-muted">$</span> /clear</p>
+              <p class="text-terminal-muted text-sm mt-1">
+                Clear context between tasks. Prevents token waste and confusion.
+                Use frequently.
+              </p>
+            </div>
+
+            <div>
+              <p class="text-terminal-green"><span class="text-terminal-muted">$</span> Press # to add instructions</p>
+              <p class="text-terminal-muted text-sm mt-1">
+                Add context that persists across the session. Great for project-specific rules.
+              </p>
+            </div>
+
+            <div>
+              <p class="text-terminal-green"><span class="text-terminal-muted">$</span> Ctrl+B</p>
+              <p class="text-terminal-muted text-sm mt-1">
+                Background an agent or shell command. Continue working while it runs.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-border mt-6">
+            <p class="text-terminal-yellow font-semibold mb-2">Pro Tip:</p>
+            <p class="text-terminal-muted">
+              Keep CLAUDE.md under 150 instructions. Too much context wastes tokens and
+              confuses the model. Be concise.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RALPH Pattern -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">ralph-pattern.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">The RALPH Pattern</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            RALPH (named after Ralph Wiggum) is a pattern for autonomous development loops.
+            You define a task with clear completion criteria, and Claude iterates until done.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm">
+            <p class="text-terminal-green">/ralph-loop "Build a REST API for todos.</p>
+            <p class="text-terminal-green">Requirements: CRUD operations, input validation, tests.</p>
+            <p class="text-terminal-green">Output &lt;promise&gt;COMPLETE&lt;/promise&gt; when done."</p>
+            <p class="text-terminal-muted">--completion-promise "COMPLETE"</p>
+            <p class="text-terminal-muted">--max-iterations 50</p>
+          </div>
+
+          <p class="text-terminal-muted text-sm">
+            The model keeps iterating until it outputs the completion promise or hits max iterations.
+            Great for well-defined tasks with automatic verification (like "all tests pass").
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg border border-terminal-red mt-4">
+            <p class="text-terminal-red font-semibold mb-2">Warning:</p>
+            <p class="text-terminal-muted">
+              RALPH can get expensive. Set max-iterations as a safety net.
+              $50-100+ is possible for large codebases with many iterations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Git Worktrees -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">git-worktrees.sh</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Git Worktrees for Parallel Development</h2>
+
+          <p class="text-terminal-text leading-relaxed">
+            Multiple Claude sessions conflict when sharing one git checkout.
+            Git worktrees let you check out multiple branches simultaneously in separate directories.
+          </p>
+
+          <div class="bg-terminal-bg p-4 rounded-lg font-mono text-sm space-y-2">
+            <p class="text-terminal-muted"># Create worktree for a feature</p>
+            <p class="text-terminal-green">git worktree add ../feature-auth feature-auth</p>
+            <p class="text-terminal-green">cd ../feature-auth</p>
+            <p class="text-terminal-green">claude # Start isolated session</p>
+          </div>
+
+          <p class="text-terminal-muted text-sm">
+            Each worktree has its own working directory but shares the same .git database.
+            Perfect for running multiple Claude agents on different features simultaneously.
+          </p>
+        </div>
+      </section>
+
+      <!-- Effective Prompts -->
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot bg-terminal-red"></span>
+          <span class="terminal-dot bg-terminal-yellow"></span>
+          <span class="terminal-dot bg-terminal-green"></span>
+          <span class="ml-4 text-terminal-muted text-sm">effective-prompts.md</span>
+        </div>
+        <div class="terminal-body space-y-4">
+          <h2 class="text-2xl font-bold text-terminal-accent">Effective Prompts</h2>
+
+          <p class="text-terminal-muted mb-4">Real prompts I've used that produced great results:</p>
+
+          <div class="space-y-6">
+            <div class="border-l-2 border-terminal-accent pl-4">
+              <p class="text-terminal-text">"Create interactive web site hosted on cloudflare pages, with cloudflare workers ai integration. [Detailed requirements follow...]"</p>
+              <p class="text-terminal-muted text-sm mt-2">This prompt built this entire portfolio site.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-green pl-4">
+              <p class="text-terminal-text">"Git submodule all repos since September 2025. Calculate file counts and sizes. Rank by total file size."</p>
+              <p class="text-terminal-muted text-sm mt-2">Organized 100+ repos automatically.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-yellow pl-4">
+              <p class="text-terminal-text">"Ask me many multiple choice questions to help you understand my taste and help you proceed."</p>
+              <p class="text-terminal-muted text-sm mt-2">Claude's AskUserQuestion tool handles preferences gathering.</p>
+            </div>
+
+            <div class="border-l-2 border-terminal-purple pl-4">
+              <p class="text-terminal-text">"Create HUMAN-*.md files in root for what you need from me. Report and STOP!"</p>
+              <p class="text-terminal-muted text-sm mt-2">Structured handoff points for human input.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center py-12">
+        <h2 class="text-2xl font-bold mb-4">Ready to vibe code?</h2>
+        <p class="text-terminal-muted mb-8">
+          I can train your team or build your project for you.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/hire" class="btn-primary">Hire Me</a>
+          <a href="/projects" class="btn-secondary">See My Projects</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <ChatButton client:load pageContext={pageContext} />
+</BaseLayout>

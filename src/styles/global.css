@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-terminal-bg text-terminal-text font-mono;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen antialiased;
+  }
+
+  ::selection {
+    @apply bg-terminal-accent/30;
+  }
+
+  /* Terminal-style scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-terminal-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-terminal-border rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-terminal-muted;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply bg-terminal-surface border border-terminal-border rounded-lg overflow-hidden;
+  }
+
+  .terminal-header {
+    @apply flex items-center gap-2 px-4 py-3 bg-terminal-bg border-b border-terminal-border;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  .terminal-body {
+    @apply p-4 font-mono text-sm;
+  }
+
+  .terminal-prompt {
+    @apply text-terminal-green;
+  }
+
+  .terminal-prompt::before {
+    content: '$ ';
+    @apply text-terminal-muted;
+  }
+
+  .terminal-cursor {
+    @apply inline-block w-2 h-4 bg-terminal-text animate-cursor-blink ml-1;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:border-terminal-accent hover:shadow-lg hover:shadow-terminal-accent/10;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-terminal-accent text-terminal-bg font-semibold rounded-lg
+           hover:bg-terminal-accent/90 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-terminal-accent text-terminal-accent font-semibold rounded-lg
+           hover:bg-terminal-accent/10 transition-colors duration-200;
+  }
+
+  .link-accent {
+    @apply text-terminal-accent hover:underline;
+  }
+
+  .stat-card {
+    @apply bg-terminal-surface border border-terminal-border rounded-lg p-4 text-center;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-terminal-accent;
+  }
+
+  .stat-label {
+    @apply text-sm text-terminal-muted mt-1;
+  }
+
+  .tag {
+    @apply inline-block px-2 py-1 text-xs rounded bg-terminal-border text-terminal-muted;
+  }
+
+  .tag-accent {
+    @apply bg-terminal-accent/20 text-terminal-accent;
+  }
+
+  .tag-green {
+    @apply bg-terminal-green/20 text-terminal-green;
+  }
+
+  .tag-yellow {
+    @apply bg-terminal-yellow/20 text-terminal-yellow;
+  }
+
+  .tag-red {
+    @apply bg-terminal-red/20 text-terminal-red;
+  }
+
+  .tag-purple {
+    @apply bg-terminal-purple/20 text-terminal-purple;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-terminal-accent to-terminal-purple bg-clip-text text-transparent;
+  }
+
+  .border-glow {
+    box-shadow: 0 0 10px theme('colors.terminal.accent / 30%');
+  }
+}

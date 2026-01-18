@@ -1,0 +1,98 @@
+---
+// Industry vertical cards
+
+interface Vertical {
+  name: string;
+  icon: string;
+  description: string;
+  projects: string[];
+  link: string;
+  color: string;
+}
+
+const verticals: Vertical[] = [
+  {
+    name: "Education",
+    icon: "🎓",
+    description: "Google Classroom automation, scheduling, attendance, lesson plans, quiz generation, data-informed instruction",
+    projects: ["google-classroom", "tea", "elementary", "school-scheduling"],
+    link: "/education",
+    color: "terminal-accent"
+  },
+  {
+    name: "Healthcare",
+    icon: "🏥",
+    description: "Open-source home healthcare, EVV, HIPAA-compliant scheduling, care plans, billing systems",
+    projects: ["folk-care", "med-record-space", "derm-ai-stack"],
+    link: "/healthcare",
+    color: "terminal-green"
+  },
+  {
+    name: "Music & Audio",
+    icon: "🎵",
+    description: "Bitwig Studio extensions, VST/CLAP plugins in Rust, audio processing, composition tools",
+    projects: ["ghost-note", "DrivenByMoss", "nih-plug", "vibewig"],
+    link: "/music",
+    color: "terminal-yellow"
+  },
+  {
+    name: "Gaming",
+    icon: "🎮",
+    description: "Roblox development, game mechanics, MCP server integration, studio tooling",
+    projects: ["studio-rust-mcp-server", "smash-showdown", "cubed-worlds"],
+    link: "/gaming",
+    color: "terminal-red"
+  },
+  {
+    name: "E-commerce",
+    icon: "🛒",
+    description: "Shopify theme development, inventory management, Liquid templates, distributed commerce",
+    projects: ["imaginary-crime-lab", "liquidity", "shopivibelize"],
+    link: "/ecommerce",
+    color: "terminal-purple"
+  },
+  {
+    name: "Data Science",
+    icon: "📊",
+    description: "Kaggle competitions, PyTorch, graph neural networks, data visualization with Polars/Altair",
+    projects: ["wdi-py", "graphyard", "mania", "conduit"],
+    link: "/data",
+    color: "terminal-accent"
+  }
+];
+---
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {verticals.map((vertical) => (
+    <a
+      href={vertical.link}
+      class="terminal-window card-hover block group"
+    >
+      <div class="p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">{vertical.icon}</span>
+          <h3 class={`text-xl font-bold text-${vertical.color} group-hover:glow-text transition-all`}>
+            {vertical.name}
+          </h3>
+        </div>
+
+        <p class="text-terminal-muted text-sm leading-relaxed">
+          {vertical.description}
+        </p>
+
+        <div class="space-y-2">
+          <p class="text-xs text-terminal-muted uppercase tracking-wide">Featured Projects:</p>
+          <div class="flex flex-wrap gap-1">
+            {vertical.projects.slice(0, 4).map((project) => (
+              <span class="tag text-xs">{project}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class={`text-${vertical.color} text-sm font-semibold group-hover:translate-x-1 transition-transform`}>
+          Explore {vertical.name} →
+        </div>
+      </div>
+    </a>
+  ))}
+</div>

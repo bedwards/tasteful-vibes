@@ -1,0 +1,204 @@
+---
+// Project grid showing featured projects with stats
+// TODO: This will be populated from actual repo data
+
+interface Project {
+  name: string;
+  description: string;
+  url: string;
+  org: string;
+  fileCount: number;
+  totalSize: string;
+  commits: number;
+  firstCommit: string;
+  lastCommit: string;
+  deliveryTime: string;
+  tags: string[];
+  vertical: string;
+}
+
+// Featured projects - will be populated from repo analysis
+const featuredProjects: Project[] = [
+  {
+    name: "nanochat",
+    description: "The best ChatGPT that $100 can buy. Full-featured chat interface with AI integration.",
+    url: "https://github.com/bedwards/nanochat",
+    org: "bedwards",
+    fileCount: 45,
+    totalSize: "2.3 MB",
+    commits: 127,
+    firstCommit: "Nov 2025",
+    lastCommit: "Jan 2026",
+    deliveryTime: "2 months",
+    tags: ["TypeScript", "React", "AI"],
+    vertical: "Vibe Coding"
+  },
+  {
+    name: "ghost-note",
+    description: "Rust VST/CLAP audio plugin for Bitwig Studio. Real-time audio processing.",
+    url: "https://github.com/audio-forge-rs/ghost-note",
+    org: "audio-forge-rs",
+    fileCount: 89,
+    totalSize: "4.1 MB",
+    commits: 234,
+    firstCommit: "Oct 2025",
+    lastCommit: "Jan 2026",
+    deliveryTime: "3 months",
+    tags: ["Rust", "VST", "Audio"],
+    vertical: "Music"
+  },
+  {
+    name: "folk-care",
+    description: "Open source home healthcare software. EVV, scheduling, care plans, and billing.",
+    url: "https://github.com/neighborhood-lab/folk-care",
+    org: "neighborhood-lab",
+    fileCount: 156,
+    totalSize: "8.7 MB",
+    commits: 312,
+    firstCommit: "Sep 2025",
+    lastCommit: "Jan 2026",
+    deliveryTime: "4 months",
+    tags: ["TypeScript", "Healthcare", "Open Source"],
+    vertical: "Healthcare"
+  },
+  {
+    name: "google-classroom",
+    description: "Google Classroom API automation. Assignments, quizzes, attendance tracking.",
+    url: "https://github.com/bme-wacoisd/google-classroom",
+    org: "bme-wacoisd",
+    fileCount: 67,
+    totalSize: "1.8 MB",
+    commits: 89,
+    firstCommit: "Dec 2025",
+    lastCommit: "Dec 2025",
+    deliveryTime: "3 weeks",
+    tags: ["Python", "Google API", "Education"],
+    vertical: "Education"
+  },
+  {
+    name: "metavibe",
+    description: "Meta-level vibe coding tools. Claude session log analysis and prompt engineering.",
+    url: "https://github.com/bedwards/metavibe",
+    org: "bedwards",
+    fileCount: 34,
+    totalSize: "1.2 MB",
+    commits: 78,
+    firstCommit: "Dec 2025",
+    lastCommit: "Jan 2026",
+    deliveryTime: "1 month",
+    tags: ["Claude", "AI", "Meta"],
+    vertical: "Vibe Coding"
+  },
+  {
+    name: "imaginary-crime-lab",
+    description: "Distributed e-commerce on Cloudflare Workers + Shopify. Maximum transparency.",
+    url: "https://github.com/bedwards/imaginary-crime-lab",
+    org: "bedwards",
+    fileCount: 112,
+    totalSize: "3.4 MB",
+    commits: 156,
+    firstCommit: "Oct 2025",
+    lastCommit: "Oct 2025",
+    deliveryTime: "2 weeks",
+    tags: ["Cloudflare", "Shopify", "E-commerce"],
+    vertical: "E-commerce"
+  },
+  {
+    name: "studio-rust-mcp-server",
+    description: "Standalone Roblox Studio MCP Server. AI integration for game development.",
+    url: "https://github.com/splash-screen-studio/studio-rust-mcp-server",
+    org: "splash-screen-studio",
+    fileCount: 23,
+    totalSize: "890 KB",
+    commits: 45,
+    firstCommit: "Nov 2025",
+    lastCommit: "Dec 2025",
+    deliveryTime: "3 weeks",
+    tags: ["Rust", "MCP", "Roblox"],
+    vertical: "Gaming"
+  },
+  {
+    name: "wdi-py",
+    description: "High-performance Polars data layer for World Bank Development Indicators.",
+    url: "https://github.com/bedwards/wdi-py",
+    org: "bedwards",
+    fileCount: 28,
+    totalSize: "1.1 MB",
+    commits: 67,
+    firstCommit: "Oct 2025",
+    lastCommit: "Oct 2025",
+    deliveryTime: "1 week",
+    tags: ["Python", "Polars", "Data"],
+    vertical: "Data Science"
+  }
+];
+
+const tagColors: Record<string, string> = {
+  "TypeScript": "tag-accent",
+  "Python": "tag-green",
+  "Rust": "tag-yellow",
+  "AI": "tag-purple",
+  "Claude": "tag-purple",
+  "Healthcare": "tag-green",
+  "Education": "tag-accent",
+  "Music": "tag-yellow",
+  "Gaming": "tag-red",
+  "Data": "tag-green",
+};
+---
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {featuredProjects.map((project) => (
+    <a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="terminal-window card-hover block"
+    >
+      <div class="terminal-header">
+        <span class="terminal-dot bg-terminal-red"></span>
+        <span class="terminal-dot bg-terminal-yellow"></span>
+        <span class="terminal-dot bg-terminal-green"></span>
+        <span class="ml-4 text-terminal-muted text-xs">{project.org}/{project.name}</span>
+      </div>
+      <div class="p-4 space-y-3">
+        <div>
+          <h3 class="font-bold text-terminal-accent">{project.name}</h3>
+          <p class="text-terminal-muted text-sm mt-1 line-clamp-2">{project.description}</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-xs">
+          <div class="bg-terminal-bg rounded p-2 text-center">
+            <div class="text-terminal-accent font-bold">{project.fileCount}</div>
+            <div class="text-terminal-muted">files</div>
+          </div>
+          <div class="bg-terminal-bg rounded p-2 text-center">
+            <div class="text-terminal-accent font-bold">{project.commits}</div>
+            <div class="text-terminal-muted">commits</div>
+          </div>
+          <div class="bg-terminal-bg rounded p-2 text-center">
+            <div class="text-terminal-green font-bold">{project.deliveryTime}</div>
+            <div class="text-terminal-muted">delivery</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-terminal-muted">
+          <span>{project.firstCommit} → {project.lastCommit}</span>
+          <span class="text-terminal-accent">{project.totalSize}</span>
+        </div>
+
+        <div class="flex flex-wrap gap-1">
+          {project.tags.map((tag) => (
+            <span class={`tag text-xs ${tagColors[tag] || ''}`}>{tag}</span>
+          ))}
+        </div>
+      </div>
+    </a>
+  ))}
+</div>
+
+<div class="text-center mt-8">
+  <a href="/projects" class="btn-secondary">
+    View All 100+ Projects →
+  </a>
+</div>
